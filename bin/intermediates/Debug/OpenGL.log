@@ -1,0 +1,10 @@
+﻿  ChunkMeshGenerator.cpp
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmesh.h(14): warning C4150: deletion of pointer to incomplete type 'VertexBufferLayout'; no destructor called
+  c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\rendering\vertexarray.h(4): note: see declaration of 'VertexBufferLayout'
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(107): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(108): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\desktop\portfolio\kernmodule\opengl\src\generation\chunkmeshgenerator.cpp(109): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  OpenGL.vcxproj -> C:\Users\Jelle Booij\Desktop\Portfolio\Kernmodule\bin\Debug\OpenGL.exe
