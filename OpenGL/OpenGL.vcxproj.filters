@@ -57,6 +57,12 @@
     <ClCompile Include="src\generation\Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\generation\WesselPerlinNoise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generation\WorldGeneration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Sprite.shader" />
@@ -1209,6 +1215,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\generation\ChunkMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generation\WesselPerlinNoise.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generation\WorldGeneration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
