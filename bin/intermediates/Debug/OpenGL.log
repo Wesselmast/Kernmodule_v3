@@ -1,45 +1,85 @@
-﻿  Block.cpp
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\block.cpp(55): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+﻿  ChunkGenerator.cpp
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(4): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  ChunkGenerator.cpp
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(18): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(5): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(35): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  ChunkMeshGenerator.cpp
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmesh.h(14): warning C4150: deletion of pointer to incomplete type 'VertexBufferLayout'; no destructor called
-  c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\vertexarray.h(4): note: see declaration of 'VertexBufferLayout'
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(107): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(108): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkmeshgenerator.cpp(109): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  PerlinNoise.cpp
-  BlockRenderer.cpp
-  Camera.cpp
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(40): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\jelle booij\documents\kernmodule_v3\opengl\src\rendering\camera.cpp(43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  IndexBuffer.cpp
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(6): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(13): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(14): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(26): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(27): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(32): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(35): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(41): warning C4244: 'argument': conversion from 'T' to 'const unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(42): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(43): warning C4244: 'argument': conversion from 'T' to 'const unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(44): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\chunkgenerator.cpp(45): warning C4244: '=': conversion from 'int' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+  WesselPerlinNoise.cpp
+  WorldGeneration.cpp
+c:\users\jelle booij\documents\kernmodule_v3\opengl\src\generation\worldgeneration.cpp(17): warning C4018: '<': signed/unsigned mismatch
   Main.cpp
 c:\users\jelle booij\documents\kernmodule_v3\opengl\src\main.cpp(149): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  Renderer.cpp
-  Shader.cpp
-  Texture.cpp
-  stb_image.cpp
-  VertexArray.cpp
-  VertexBuffer.cpp
   Generating Code...
+  LINK : C:\Users\Jelle Booij\Documents\Kernmodule_v3\bin\Debug\OpenGL.exe not found or not built by the last incremental link; performing full link
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
 glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'C:\Users\Jelle Booij\Documents\Kernmodule_v3\bin\Debug\vc120.pdb'; linking object as if no debug info
