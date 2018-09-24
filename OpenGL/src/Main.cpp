@@ -27,7 +27,7 @@
 
 #include "Chunk.h"
 
-
+const bool FULLSCREEN = false;
 
 float pos[] = {
 	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
@@ -45,14 +45,16 @@ float lastFrame = 0.0f; // Time of last frame
 bool endApp = false;
 
 
-const int SCREENWIDTH = 1000;
-const int SCREENHEIGHT = 1000;
+int SCREENWIDTH = FULLSCREEN ? 1920 : 800;
+int SCREENHEIGHT = FULLSCREEN ? 1080 : 800; 
 
 const glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / SCREENHEIGHT, 0.1f, 100.0f);
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
+	SCREENWIDTH = width;
+	SCREENHEIGHT = height;
 }
 
 void processInput(GLFWwindow *window)
@@ -79,7 +81,23 @@ int main(void)
 			return -1;
 
 		/* Create a windowed mode window and its OpenGL context */
+
+
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+
+		const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+
+		glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+		glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+		glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+		glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
 		window = glfwCreateWindow(SCREENWIDTH, SCREENHEIGHT, "Hello World", NULL, NULL);
+		
+		if(FULLSCREEN)
+			glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+
 		if (!window)
 		{
 			glfwTerminate();
@@ -150,7 +168,10 @@ int main(void)
 				{
 					for (size_t z = 0; z < 15; z++)
 					{
-						chunk->AddBlock(x, y, z, blockType::Dirt);
+						if(y == 14)
+							chunk->AddBlock(x, y, z, blockType::Grass);
+						else
+							chunk->AddBlock(x, y, z, blockType::Dirt);
 					}
 				}
 			}
