@@ -10,9 +10,11 @@ class ChunkGenerator
 {
 private:
 	int size, height;
-	float perlinOffsetX, perlinOffsetY;
-	glm::vec2 chunkOffset;
-	std::vector<glm::vec3> gPositions, dPositions;
+	glm::vec2 chunkOffset, perlinOffset;
+	glm::vec3* grassPos;
+	glm::vec3* dirtPos;
+	glm::vec3* stonePos;
+	std::vector<glm::vec3*> gPositions, dPositions, sPositions;
 	WesselPerlinNoise pn;
 	Chunk* chunk;
 private:

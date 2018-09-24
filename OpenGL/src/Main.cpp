@@ -135,9 +135,8 @@ int main(void)
 			Renderer renderer(proj, &view);
 			BlockRenderer r(renderer);
 			Camera cam(window);
-			ChunkGenerator c(64, 25);
+			ChunkGenerator c(10, 10);
 			ChunkMeshGenerator mg;
-			//WorldGeneration world(3,30,30,10);
 			Shader s("res/shaders/Sprite.shader");
 			
 			
@@ -159,21 +158,6 @@ int main(void)
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
 			
-			Chunk* chunk = new Chunk(15, 0, 0, 0);
-
-			for (size_t x = 0; x < 15; x++)
-			{
-				for (size_t y = 0; y < 15; y++)
-				{
-					for (size_t z = 0; z < 15; z++)
-					{
-						if(y == 14)
-							chunk->AddBlock(x, y, z, blockType::Grass);
-						else
-							chunk->AddBlock(x, y, z, blockType::Dirt);
-					}
-				}
-			}
 			c.generateChunk();
 			ChunkMesh* mesh = mg.generateMesh(*c.displayChunk());
 

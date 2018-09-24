@@ -13,10 +13,8 @@ WorldGeneration::WorldGeneration(int size, int height)
 	}
 }
 
-void WorldGeneration::displayWorld(BlockRenderer* r) {
-	for (int i = 0; i < chunks.size(); ++i) {
-		chunks[i].displayChunk();
-	}
+Chunk* WorldGeneration::displayWorld() {
+	return chunks[0].displayChunk();
 }
 WorldGeneration::~WorldGeneration()
 {
