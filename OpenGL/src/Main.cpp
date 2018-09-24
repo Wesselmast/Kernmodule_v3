@@ -141,13 +141,13 @@ int main(void)
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
 			
-			Chunk* chunk = new Chunk(150, 0, 0, 0);
+			Chunk* chunk = new Chunk(15, 0, 0, 0);
 
-			for (size_t x = 0; x < 150; x++)
+			for (size_t x = 0; x < 15; x++)
 			{
-				for (size_t y = 0; y < 150; y++)
+				for (size_t y = 0; y < 15; y++)
 				{
-					for (size_t z = 0; z < 150; z++)
+					for (size_t z = 0; z < 15; z++)
 					{
 						chunk->AddBlock(x, y, z, blockType::Dirt);
 					}
