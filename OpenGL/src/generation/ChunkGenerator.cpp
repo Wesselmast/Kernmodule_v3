@@ -4,7 +4,7 @@ ChunkGenerator::ChunkGenerator(int size, int height) : size(size), height(height
 	perlinOffsetX = rand() % 9999;
 	perlinOffsetY = rand() % 9999;
 
-	chunk = new Chunk(10,0,0,0);
+	chunk = new Chunk(size,0,0,0);
 }
 
 void ChunkGenerator::generateChunk() {

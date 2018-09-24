@@ -127,7 +127,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\Jelle Booij\Desktop\C++ Projecten\OpenGL\OpenGL\OpenGL\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Wessel\Desktop\Github School\Kernmodule_v3\OpenGL\lib;C:\Users\Jelle Booij\Desktop\C++ Projecten\OpenGL\OpenGL\OpenGL\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
