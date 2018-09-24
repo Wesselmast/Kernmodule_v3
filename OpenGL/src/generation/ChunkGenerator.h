@@ -1,7 +1,5 @@
 #pragma once
-#include <iostream>
 #include <vector>
-#include "BlockRenderer.h"
 #include "WesselPerlinNoise.h"
 #include "Chunk.h"
 #include "glm/gtc/matrix_transform.hpp"
@@ -14,12 +12,15 @@ private:
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;
 	glm::vec3* stonePos;
-	std::vector<glm::vec3*> gPositions, dPositions, sPositions;
+	glm::vec3* logPos;
+	glm::vec3* leafPos;
+	std::vector<glm::vec3*> gPositions, dPositions, sPositions, logPositions, leafPositions;
 	WesselPerlinNoise pn;
 	Chunk* chunk;
 private:
 	float heights(int a, int b);
 	double calculateHeights(int a, int b);
+	void generateTree();
 public:
 	ChunkGenerator(int size, int height);
 	Chunk* displayChunk();

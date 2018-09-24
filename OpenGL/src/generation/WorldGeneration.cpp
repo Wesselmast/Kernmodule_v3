@@ -8,13 +8,15 @@ WorldGeneration::WorldGeneration(int size, int height)
 		for (int j = 0; j < 3; ++j) {
 			c.setChunkOffset(i * size, j * size);
 			c.generateChunk();
-			chunks.push_back(c);
 		}
 	}
+	chunks.emplace_back(c);
 }
 
 Chunk* WorldGeneration::displayWorld() {
-	return chunks[0].displayChunk();
+	for (auto chunk : chunks) {
+		chunk.displayChunk();
+	}
 }
 WorldGeneration::~WorldGeneration()
 {
