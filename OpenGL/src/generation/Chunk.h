@@ -14,5 +14,6 @@ public:
 	Chunk(int size, int xPos, int yPos, int zPos);
 	void AddBlock(int x, int y, int z, blockType t);
 	int GetSize() const { return size; }
-	Block GetBlock(int x, int y, int z) const  { return blocks[x][y][z]; } 
+	Block GetBlock(int x, int y, int z) const;
+	Block GetNeighbour(int x, int y, int z, side s) const;
 };

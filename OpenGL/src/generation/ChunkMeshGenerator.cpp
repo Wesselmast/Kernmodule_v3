@@ -118,10 +118,16 @@ ChunkMesh* ChunkMeshGenerator::generateMesh(const Chunk& chunk)
 		for (int y = 0; y < chunk.GetSize(); y++) {
 			for (int z = 0; z < chunk.GetSize(); z++) {
 				Block b = chunk.GetBlock(x,y,z);
+					if (b.getType() != blockType::Air) {
 
-				if (b.getType() != blockType::Air) {
-					AddBlock(vec, b);
-				}
+						for (int i = 0; i < 6; i++) {
+							Block temp = chunk.GetNeighbour(x, y, z, (side)i);
+							if ((temp.getType() == blockType::Air) || ((temp.getXPos() == b.getXPos()) && (temp.getYPos() == b.getYPos()) && (temp.getZPos() == b.getZPos()))) {
+								Addplane(vec, (side)i, x, y, z, b.Planes[(side)i].xTex, b.Planes[(side)i].yTex);
+							}
+						}
+					
+					}
 			}
 		}
 	}
