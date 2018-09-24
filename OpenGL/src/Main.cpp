@@ -135,7 +135,7 @@ int main(void)
 			Renderer renderer(proj, &view);
 			BlockRenderer r(renderer);
 			Camera cam(window);
-			ChunkGenerator c(10,10);
+			ChunkGenerator c(64, 25);
 			ChunkMeshGenerator mg;
 			//WorldGeneration world(3,30,30,10);
 			Shader s("res/shaders/Sprite.shader");
@@ -159,7 +159,6 @@ int main(void)
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
 			
-<<<<<<< Updated upstream
 			Chunk* chunk = new Chunk(15, 0, 0, 0);
 
 			for (size_t x = 0; x < 15; x++)
@@ -175,12 +174,8 @@ int main(void)
 					}
 				}
 			}
-			
-			ChunkMesh* mesh = mg.generateMesh(*chunk);
-=======
 			c.generateChunk();
 			ChunkMesh* mesh = mg.generateMesh(*c.displayChunk());
->>>>>>> Stashed changes
 
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{
