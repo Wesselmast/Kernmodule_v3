@@ -3,6 +3,8 @@
 ChunkGenerator::ChunkGenerator(int size, int height) : size(size), height(height) {
 	perlinOffsetX = rand() % 9999;
 	perlinOffsetY = rand() % 9999;
+
+	chunk = new Chunk(10,0,0,0);
 }
 
 void ChunkGenerator::generateChunk() {
@@ -23,13 +25,14 @@ void ChunkGenerator::setChunkOffset(int oX, int oY) {
 	chunkOffset.y = oY;
 }
 
-void ChunkGenerator::displayChunk(BlockRenderer* r) {
+Chunk* ChunkGenerator::displayChunk() {
 	for (auto pos : gPositions) {
-		r->drawBlock(pos.x, pos.y, pos.z);
+		chunk->AddBlock(pos.x, pos.y, pos.z, blockType::Grass);
 	}
 	for (auto pos : dPositions) {
-		r->drawBlock(pos.x, pos.y, pos.z);
+		chunk->AddBlock(pos.x, pos.y, pos.z, blockType::Dirt);
 	}
+	return chunk;
 }
 
 float ChunkGenerator::heights(int a, int b) {
