@@ -7,7 +7,7 @@ class WorldGeneration
 private:
 	std::vector<ChunkGenerator> chunks;
 public:
-	WorldGeneration(int amountOfChunks, int width, int length, int height);
+	WorldGeneration(int chunk, int height);
 	void displayWorld(BlockRenderer* r);
 	~WorldGeneration();
 };

@@ -1,12 +1,12 @@
 #include "WorldGeneration.h"
 
-WorldGeneration::WorldGeneration(int amountOfChunks, int width, int length, int height)
+WorldGeneration::WorldGeneration(int size, int height)
 {
-	ChunkGenerator c(width,length,height);
+	ChunkGenerator c(size,height);
 
-	for (int i = 0; i < amountOfChunks; ++i) {
-		for (int j = 0; j < amountOfChunks; ++j) {
-			c.setChunkOffset(i * width, j * length);
+	for (int i = 0; i < 3; ++i) {
+		for (int j = 0; j < 3; ++j) {
+			c.setChunkOffset(i * size, j * size);
 			c.generateChunk();
 		}
 	}
