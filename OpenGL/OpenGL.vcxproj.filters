@@ -63,6 +63,9 @@
     <ClCompile Include="src\generation\WorldGeneration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\generation\Chunk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Sprite.shader" />
@@ -1221,6 +1224,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\generation\WorldGeneration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generation\Chunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

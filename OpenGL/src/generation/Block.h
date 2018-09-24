@@ -3,7 +3,7 @@
 
 
 enum side { Front, Back, Right, Left, Top, Bottom };
-enum blockType { Grass, Dirt, Log, Leaf, Stone, Sand };
+enum blockType { Grass, Dirt, Log, Leaf, Stone, Sand, Air};
 
 class BlockPlane {
 
@@ -19,6 +19,7 @@ public:
 class Block {
 private:
 	int x, y, z;
+	blockType type;
 	
 
 public:
@@ -27,5 +28,6 @@ public:
 	int getXPos() { return x; }
 	int getYPos() { return y; }
 	int getZPos() { return z; }
+	blockType getType() { return type; }
 
 };

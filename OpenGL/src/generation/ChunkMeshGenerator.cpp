@@ -5,6 +5,7 @@
 
 
 
+
 const float t = 1.0f / 16.0f;
 
 void Addplane(std::vector<float>* vertexBuffer, side s, int x, int y, int z, int texX, int texY) {
@@ -102,11 +103,8 @@ void AddBlock(std::vector<float>* vertexBuffer, Block b) {
 	}
 }
 
-ChunkMesh* ChunkMeshGenerator::generateMesh(int x, int y, int z)
+ChunkMesh* ChunkMeshGenerator::generateMesh(const Chunk& chunk)
 {
-	float ux = x;
-	float uy = y;
-	float uz = z;
 
 	ChunkMesh* mesh = new ChunkMesh;
 
@@ -114,30 +112,31 @@ ChunkMesh* ChunkMeshGenerator::generateMesh(int x, int y, int z)
 
 	VertexBufferLayout* layout = new VertexBufferLayout;
 	std::vector<float>* vec = new std::vector<float>;
-	//vec->assign(cube_vertices, cube_vertices + 36 * 5);
-	
-	for (int x = 0; x < 50; x++) {
-		for (int y = 0; y < 15; y++) {
-			for (int z = 0; z < 50; z++) {
-				Block b(x, -y, z, blockType::Grass);
-				AddBlock(vec, b);
+
+
+	for (int x = 0; x < chunk.GetSize(); x++) {
+		for (int y = 0; y < chunk.GetSize(); y++) {
+			for (int z = 0; z < chunk.GetSize(); z++) {
+				Block b = chunk.GetBlock(x,y,z);
+
+				if (b.getType() != blockType::Air) {
+					AddBlock(vec, b);
+				}
 			}
 		}
 	}
-
-
 
 	mesh->buffer = vec;
 
 	std::vector<float>* v = mesh->buffer;
 
+	if (v->size() > 0) {
+		VertexBuffer* vb = new VertexBuffer(&((*v)[0]), v->size() * sizeof(float));
 
-
-	VertexBuffer* vb = new VertexBuffer(&((*v)[0]), v->size() * sizeof(float));
-
-	layout->Push<float>(3);
-	layout->Push<float>(2);
-	mesh->va->AddBuffer(*vb, *layout);
+		layout->Push<float>(3);
+		layout->Push<float>(2);
+		mesh->va->AddBuffer(*vb, *layout);
+	}
 
 	return mesh;
 }

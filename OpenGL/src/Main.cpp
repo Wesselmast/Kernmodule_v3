@@ -22,6 +22,10 @@
 #include "ChunkMeshGenerator.h"
 #include "Renderable.h"
 #include "ChunkMesh.h"
+#include "WorldGeneration.h"
+#include <ctime>
+
+#include "Chunk.h"
 
 
 
@@ -66,6 +70,7 @@ int main(void)
 {
 		glm::mat4 view(1.0f);
 
+		std::srand(time(0));
 
 		GLFWwindow* window;
 
@@ -114,6 +119,7 @@ int main(void)
 			Camera cam(window);
 			ChunkGenerator c(1,1,50);
 			ChunkMeshGenerator mg;
+			//WorldGeneration world(3,30,30,10);
 			Shader s("res/shaders/Sprite.shader");
 			
 			
@@ -135,8 +141,9 @@ int main(void)
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
 			
-			
-			ChunkMesh* mesh = mg.generateMesh(0,0,0);
+			Chunk* chunk = new Chunk(15, 15, 0, 0);
+			//chunk->AddBlock(0, 0, 0, blockType::Dirt);
+			ChunkMesh* mesh = mg.generateMesh(*chunk);
 
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{
@@ -159,7 +166,7 @@ int main(void)
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-
+				//world.displayWorld(&r);
 				renderer.Draw(*(mesh->va), s, glm::mat4(1),mesh->buffer->size());
 				//c.displayChunk(&r);
 

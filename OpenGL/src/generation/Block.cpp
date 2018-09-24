@@ -48,7 +48,7 @@ glm::vec2 typeToTex(side s, blockType t) {
 
 }
 
-Block::Block(int x, int y, int z, blockType type) : x(x), y(y), z(z)
+Block::Block(int x, int y, int z, blockType type) : x(x), y(y), z(z), type(type)
 {
 	for (int i = 0; i < 6; i++) {
 		glm::vec2 t = typeToTex((side)i, type);
