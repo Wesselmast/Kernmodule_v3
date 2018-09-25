@@ -51,6 +51,11 @@ void Renderer::Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTrans
 	glDrawArrays(GL_TRIANGLES, 0, amountOfVerts);
 }
 
+void Renderer::Draw(ChunkMesh* mesh, Shader& s)
+{
+	Draw(*(mesh->va), s, glm::mat4(1), mesh->buffer->size());
+}
+
 void Renderer::Draw(const Renderable & rend, Shader & shader, glm::mat4 modelTransform)
 {
 	shader.Bind();
