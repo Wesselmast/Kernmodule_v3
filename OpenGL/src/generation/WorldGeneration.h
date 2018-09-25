@@ -8,7 +8,7 @@ private:
 	std::vector<ChunkGenerator> chunks;
 public:
 	WorldGeneration(int chunk, int height);
-	Chunk* displayWorld();
+	Chunk* displayWorld(int index);
 	~WorldGeneration();
 };
 

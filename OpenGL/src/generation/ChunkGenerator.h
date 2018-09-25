@@ -21,10 +21,10 @@ private:
 	float heights(int a, int b);
 	double calculateHeights(int a, int b);
 	void generateTree();
+	void generateChunk();
 public:
 	ChunkGenerator(int size, int height);
 	Chunk* displayChunk();
-	void generateChunk();
 	void setChunkOffset(int oX, int oY);
 	~ChunkGenerator();
 };

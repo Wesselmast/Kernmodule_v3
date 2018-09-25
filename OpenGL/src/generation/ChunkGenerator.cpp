@@ -7,6 +7,32 @@ ChunkGenerator::ChunkGenerator(int size, int height) : size(size), height(height
 	chunk = new Chunk(size, 0, 0, 0);
 }
 
+void ChunkGenerator::setChunkOffset(int oX, int oY) {
+	chunkOffset.x = oX;
+	chunkOffset.y = oY;
+}
+
+Chunk* ChunkGenerator::displayChunk() {
+	generateChunk();
+
+	for (auto pos : gPositions) {
+		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Grass);
+	}
+	for (auto pos : dPositions) {
+		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Dirt);
+	}
+	for (auto pos : sPositions) {
+		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Stone);
+	}
+	for (auto pos : logPositions) {
+		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Log);
+	}
+	for (auto pos : leafPositions) {
+		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Leaf);
+	}
+	return chunk;
+}
+
 void ChunkGenerator::generateChunk() {
 	for (int x = chunkOffset.x; x < size + chunkOffset.x; ++x) {
 		for (int z = chunkOffset.y; z < size + chunkOffset.y; ++z) {
@@ -25,30 +51,6 @@ void ChunkGenerator::generateChunk() {
 			}
 		}
 	}
-}
-
-void ChunkGenerator::setChunkOffset(int oX, int oY) {
-	chunkOffset.x = oX;
-	chunkOffset.y = oY;
-}
-
-Chunk* ChunkGenerator::displayChunk() {
-	for (auto pos : gPositions) {
-		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Grass);
-	}
-	for (auto pos : dPositions) {
-		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Dirt);
-	}
-	for (auto pos : sPositions) {
-		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Stone);
-	}
-	for (auto pos : logPositions) {
-		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Log);
-	}
-	for (auto pos : leafPositions) {
-		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Leaf);
-	}
-	return chunk;
 }
 
 void ChunkGenerator::generateTree() {
