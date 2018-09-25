@@ -16,7 +16,7 @@ bool firstMouse = false;
 void processInput(GLFWwindow *window, float deltaTime)
 {
 
-	float cameraSpeed = 3.0f * deltaTime; // adjust accordingly
+	float cameraSpeed = 10.0f * deltaTime; // adjust accordingly
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		cameraPos += cameraSpeed * cameraFront;
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
