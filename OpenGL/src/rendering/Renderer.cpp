@@ -13,11 +13,12 @@ bool GLLogCall(const char* function, const char* file, int line) {
 	return true;
 }
 
-Renderer::Renderer(const glm::mat4& proj, glm::mat4* view)
+Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader")
 {
 	this->proj = proj;
 	this->view = view;
 }
+
 
 void Renderer::Draw(const VertexArray & va, const IndexBuffer & ib, Shader & shader, glm::mat4 modelTransform)
 {
@@ -51,9 +52,9 @@ void Renderer::Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTrans
 	glDrawArrays(GL_TRIANGLES, 0, amountOfVerts);
 }
 
-void Renderer::Draw(ChunkMesh* mesh, Shader& s)
+void Renderer::Draw(ChunkMesh* mesh)
 {
-	Draw(*(mesh->va), s, glm::mat4(1), mesh->buffer->size());
+	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size());
 }
 
 void Renderer::Draw(const Renderable & rend, Shader & shader, glm::mat4 modelTransform)

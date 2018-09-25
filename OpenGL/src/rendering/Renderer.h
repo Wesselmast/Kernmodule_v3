@@ -23,14 +23,14 @@ class Renderer {
 private:
 	glm::mat4 proj;
 	glm::mat4* view;
+	Shader sh;
 
 
 public:
 	Renderer(const glm::mat4& proj, glm::mat4* view);
-
 	void Draw(const VertexArray& va, const IndexBuffer& ib, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const Renderable& rend, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
-	void Draw(ChunkMesh* chunk, Shader& s);
+	void Draw(ChunkMesh* chunk);
 };
