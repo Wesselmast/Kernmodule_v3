@@ -15,8 +15,14 @@ bool GLLogCall(const char* function, const char* file, int line) {
 
 Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader")
 {
+	sh.Bind();
 	this->proj = proj;
 	this->view = view;
+}
+
+Renderer::~Renderer()
+{
+	sh.Bind();
 }
 
 

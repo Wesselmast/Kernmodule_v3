@@ -28,6 +28,7 @@ private:
 
 public:
 	Renderer(const glm::mat4& proj, glm::mat4* view);
+	~Renderer();
 	void Draw(const VertexArray& va, const IndexBuffer& ib, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const Renderable& rend, Shader& shader, glm::mat4 modelTransform);
