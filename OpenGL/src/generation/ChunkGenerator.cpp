@@ -46,7 +46,7 @@ void ChunkGenerator::generateChunk() {
 				stonePos = new glm::vec3(dirtPos->x, dirtPos->y - i, dirtPos->z);
 				sPositions.emplace_back(stonePos);
 			}
-			if (z == rand() % size && x == rand() % size) {
+			if (rand() % 100 == 5) {
 				generateTree();
 			}
 		}
