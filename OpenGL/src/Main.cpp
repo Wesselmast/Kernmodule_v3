@@ -135,7 +135,7 @@ int main(void)
 			Renderer renderer(proj, &view);
 			BlockRenderer r(renderer);
 			Camera cam(window);
-			ChunkGenerator c(10, 10);
+			ChunkGenerator c(64, 64);
 			ChunkMeshGenerator mg;
 			Shader s("res/shaders/Sprite.shader");
 			
@@ -158,7 +158,6 @@ int main(void)
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
 			
-			c.generateChunk();
 			ChunkMesh* mesh = mg.generateMesh(*c.displayChunk());
 
 			while (!glfwWindowShouldClose(window) && !endApp)
