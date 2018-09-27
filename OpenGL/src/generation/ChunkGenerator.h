@@ -7,25 +7,24 @@
 class ChunkGenerator
 {
 private:
-	int size, height;
 	int treeDensity = 100;
-	glm::vec2 chunkOffset, perlinOffset;
+	int startX, startY;
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;
 	glm::vec3* stonePos;
 	glm::vec3* logPos;
 	glm::vec3* leafPos;
-	std::vector<glm::vec3*> gPositions, dPositions, sPositions, logPositions, leafPositions;
 	WesselPerlinNoise pn;
 	Chunk* chunk;
 private:
-	float heights(int a, int b);
-	double calculateHeights(int a, int b);
+	float heights(int a, int b, int xPos, int yPos);
+	double calculateHeights(int a, int b, int xPos, int yPos);
 	void generateTree();
-	void generateChunk();
 public:
-	ChunkGenerator(int size, int height, int oX, int oY);
-	Chunk* displayChunk();
+	int size, height;
+public:
+	ChunkGenerator(int size, int height);
+	Chunk* generateChunk(int oX, int oY);
 	~ChunkGenerator();
 };
 

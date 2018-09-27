@@ -59,19 +59,14 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void processInput(GLFWwindow *window)
 {
-
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 			endApp = true;
 	}
-		
-		
-
 }
 
 int main(void)
 {
 		glm::mat4 view(1.0f);
-
 		std::srand(time(0));
 
 		GLFWwindow* window;
@@ -135,7 +130,7 @@ int main(void)
 			Renderer renderer(proj, &view);
 			BlockRenderer r(renderer);
 			Camera cam(window);
-			ChunkGenerator c(64, 64);
+			WorldGeneration w(20, 20, 25);
 			ChunkMeshGenerator mg;
 			Shader s("res/shaders/Sprite.shader");
 			
@@ -157,8 +152,11 @@ int main(void)
 
 			IndexBuffer b = IndexBuffer(indices, 6);
 			/* Loop until the user closes the window */
-			
-			ChunkMesh* mesh = mg.generateMesh(*c.displayChunk());
+
+			std::vector<ChunkMesh*> chunkMesh;
+			for (size_t i = 0; i < w.getAmount(); i++) {
+				chunkMesh.emplace_back(mg.generateMesh(*w.generateWorld()[i]));
+			}
 
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{
@@ -182,7 +180,10 @@ int main(void)
 
 
 				//world.displayWorld(&r);
-				renderer.Draw(*(mesh->va), s, glm::mat4(1),mesh->buffer->size());
+				for (auto& mesh : chunkMesh)
+				{
+					renderer.Draw(mesh);
+				}
 				//c.displayChunk(&r);
 
 				/* Swap front and back buffers */
@@ -192,7 +193,6 @@ int main(void)
 				glfwPollEvents();
 			}
 
-			delete mesh;
 		}
 	
 	glfwTerminate();

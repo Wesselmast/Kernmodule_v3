@@ -1,13 +1,13 @@
 #include "Chunk.h"
 
-Chunk::Chunk(int size, int xPos, int yPos, int zPos) :
-	size(size), xPos(xPos), yPos(yPos), zPos(zPos), blocks(size, std::vector<std::vector<blockType>>(size, std::vector<blockType>(size,blockType::Air)))
+Chunk::Chunk(int size, int height, int xPos, int yPos, int zPos) :
+	size(size),height(height), xPos(xPos), yPos(yPos), zPos(zPos), blocks(size, std::vector<std::vector<blockType>>(height, std::vector<blockType>(size,blockType::Air)))
 {	
 }
 
 void Chunk::AddBlock(int x, int y, int z, blockType t)
 {
-	if (size == 0)
+	if (size == 0 || height == 0)
 		return;
 
 	if (x < 0)
@@ -19,8 +19,8 @@ void Chunk::AddBlock(int x, int y, int z, blockType t)
 	
 	if (x > size - 1)
 		x = size - 1;
-	if (y > size - 1)
-		y = size - 1;
+	if (y > height - 1)
+		y = height - 1;
 	if (z > size - 1)
 		z = size - 1;
 
@@ -29,7 +29,7 @@ void Chunk::AddBlock(int x, int y, int z, blockType t)
 
 Block Chunk::GetBlock(int x, int y, int z) const
 {
-	if (size == 0)
+	if (size == 0 || height == 0)
 		return Block(0,0,0,blockType::Air);
 
 	if (x < 0)
@@ -38,10 +38,9 @@ Block Chunk::GetBlock(int x, int y, int z) const
 		return Block(0, 0, 0, blockType::Air);
 	if (z < 0)
 		return Block(0, 0, 0, blockType::Air);
-
 	if (x > size - 1)
 		return Block(0, 0, 0, blockType::Air);
-	if (y > size - 1)
+	if (y > height - 1)
 		return Block(0, 0, 0, blockType::Air);
 	if (z > size - 1)
 		return Block(0, 0, 0, blockType::Air);
