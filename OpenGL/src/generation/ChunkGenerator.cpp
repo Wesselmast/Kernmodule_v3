@@ -1,33 +1,29 @@
 #include "ChunkGenerator.h"
 
-ChunkGenerator::ChunkGenerator(int size, int height) : size(size), height(height) {
+ChunkGenerator::ChunkGenerator(int size, int height, int oX, int oY) : size(size), height(height) {
+	chunkOffset.x = oX;
+	chunkOffset.y = oY;
 	perlinOffset.x = rand() % 9999;
 	perlinOffset.y = rand() % 9999;
 
 	chunk = new Chunk(size, 0, 0, 0);
 }
 
-void ChunkGenerator::setChunkOffset(int oX, int oY) {
-	chunkOffset.x = oX;
-	chunkOffset.y = oY;
-}
-
 Chunk* ChunkGenerator::displayChunk() {
 	generateChunk();
-
-	for (auto pos : gPositions) {
+	for (auto& pos : gPositions) {
 		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Grass);
 	}
-	for (auto pos : dPositions) {
+	for (auto& pos : dPositions) {
 		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Dirt);
 	}
-	for (auto pos : sPositions) {
+	for (auto& pos : sPositions) {
 		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Stone);
 	}
-	for (auto pos : logPositions) {
+	for (auto& pos : logPositions) {
 		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Log);
 	}
-	for (auto pos : leafPositions) {
+	for (auto& pos : leafPositions) {
 		chunk->AddBlock(pos->x, pos->y, pos->z, blockType::Leaf);
 	}
 	return chunk;
@@ -46,7 +42,7 @@ void ChunkGenerator::generateChunk() {
 				stonePos = new glm::vec3(dirtPos->x, dirtPos->y - i, dirtPos->z);
 				sPositions.emplace_back(stonePos);
 			}
-			if (z == rand() % size && x == rand() % size) {
+			if (rand() % treeDensity == 1) {
 				generateTree();
 			}
 		}

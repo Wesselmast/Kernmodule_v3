@@ -8,6 +8,7 @@ class ChunkGenerator
 {
 private:
 	int size, height;
+	int treeDensity = 100;
 	glm::vec2 chunkOffset, perlinOffset;
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;
@@ -23,9 +24,8 @@ private:
 	void generateTree();
 	void generateChunk();
 public:
-	ChunkGenerator(int size, int height);
+	ChunkGenerator(int size, int height, int oX, int oY);
 	Chunk* displayChunk();
-	void setChunkOffset(int oX, int oY);
 	~ChunkGenerator();
 };
 
