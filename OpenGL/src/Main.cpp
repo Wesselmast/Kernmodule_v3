@@ -117,7 +117,7 @@ int main(void)
 		{
 			Renderer renderer(proj, &view);
 			Camera cam(window);
-			WorldGeneration w(10, 10, 80);
+			WorldGeneration w(10, 10, 49);
 			ChunkMeshGenerator mg;
 
 			std::vector<ChunkMesh*> chunkMesh;
