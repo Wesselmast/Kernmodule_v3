@@ -4,18 +4,18 @@
 
 class WorldGeneration
 {
-private:
+private: //section for private variables
 	ChunkGenerator* chunkGen;
 	int size, height, amtOfChunks;
 	int incr = 0;
 	int index;
-private:
+private: //section for private functions
 	void deleteChunk();
 	void addChunk(int x, int z);
 	bool chunkExists(int x, int z);
-public:
+public: //section for public variables
 	std::vector<Chunk*> chunks;
-public:
+public: //section for public functions
 	WorldGeneration(int size, int height, int amtOfChunks);
 	std::vector<Chunk*> generateWorld();
 	void updateChunk(int xIndex, int zIndex);

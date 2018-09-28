@@ -1,6 +1,15 @@
 #include "WesselPerlinNoise.h"
 
+/*
+*DISCLAIMER*
+This perlin noise is based on the "improved perlin noise" made by Ken Perlin himself:
+https://mrl.nyu.edu/~perlin/noise/
+
+I just obliterated the z axis, because 2d perlin noise was good enough for our project.
+*/
+
 WesselPerlinNoise::WesselPerlinNoise() {
+	//permutation
 	perm.insert(perm.end(), {
 		151,160,137,91,90,15,
 		131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -29,6 +38,7 @@ double WesselPerlinNoise::noise(float x, float y) {
 	int A = (perm[X] + Y) & 255;
 	int B = (perm[X + 1] + Y) & 255;
 	double res = lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
+	//lower the resolution because the original had hard edges in 2d
 	return (res + 1.0) / 2.0;
 }
 
@@ -41,6 +51,7 @@ float WesselPerlinNoise::lerp(float t, float a, float b) {
 }
 
 float WesselPerlinNoise::grad(int hash, float x, float y) {
+	//for 2d you can just convert x and y straight up instead of calculating gradient directions
 	return ((hash & 1) == 0 ? x : -x) + ((hash & 2) == 0 ? y : -y);
 }
 

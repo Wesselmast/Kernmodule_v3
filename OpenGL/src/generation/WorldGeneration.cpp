@@ -1,9 +1,11 @@
 #include "WorldGeneration.h"
 
+
 WorldGeneration::WorldGeneration(int size, int height, int amtOfChunks) : size(size), height(height), amtOfChunks(amtOfChunks) {
 	chunkGen = new ChunkGenerator(size, height);
 }
 
+//make all the chunks in a grid pattern and add them to a list, making sure 0,0 is in the middle of the grid
 std::vector<Chunk*> WorldGeneration::generateWorld() {
 	int num = std::floor(std::sqrt(amtOfChunks));
 	for (int i = -num/2; i < num - (num/2); i++) {
@@ -27,6 +29,7 @@ bool WorldGeneration::chunkExists(int x, int z) {
 void WorldGeneration::deleteChunk() {
 	chunks.erase(chunks.begin() + index);
 	std::cout << "Deleted Chunk!" << std::endl;
+	incr--;
 }
 
 void WorldGeneration::updateChunk(int xIndex, int zIndex) {

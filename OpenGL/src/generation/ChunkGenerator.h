@@ -6,9 +6,12 @@
 
 class ChunkGenerator
 {
-private:
+private: //section of world customisation
+	int treeLength = rand() % 3 + 4;
 	int treeDensity = 80;
-	int startX, startY;
+	int dirtLayer = 4;
+private: //section for private variables
+	int startX, startZ, size, height, xPos, zPos;
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;
 	glm::vec3* stonePos;
@@ -16,12 +19,11 @@ private:
 	glm::vec3* leafPos;
 	WesselPerlinNoise pn;
 	Chunk* chunk;
-	int size, height;
-private:
-	float heights(int a, int b, int xPos, int yPos);
-	double calculateHeights(int a, int b, int xPos, int yPos);
+private: //section for private functions
+	float heights(int a, int b);
+	double calculateHeights(int a, int b);
 	void generateTree();
-public:
+public: //section for public functions
 	ChunkGenerator(int size, int height);
 	Chunk* generateChunk(int oX, int oY);
 	~ChunkGenerator();
