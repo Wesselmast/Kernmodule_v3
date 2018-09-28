@@ -7,8 +7,8 @@
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include "Renderable.h"
 #include "ChunkMesh.h"
+#include "Texture.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError(); x; ASSERT(GLLogCall(#x, __FILE__, __LINE__))
@@ -23,6 +23,7 @@ class Renderer {
 private:
 	glm::mat4 proj;
 	glm::mat4* view;
+	Texture terrain;
 	Shader sh;
 
 
@@ -31,7 +32,6 @@ public:
 	~Renderer();
 	void Draw(const VertexArray& va, const IndexBuffer& ib, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
-	void Draw(const Renderable& rend, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
 	void Draw(ChunkMesh* chunk);
 };

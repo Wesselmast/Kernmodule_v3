@@ -16,28 +16,16 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
-#include "BlockRenderer.h"
 #include "Camera.h"
 #include "ChunkGenerator.h"
 #include "ChunkMeshGenerator.h"
-#include "Renderable.h"
 #include "ChunkMesh.h"
 #include "WorldGeneration.h"
 #include <ctime>
 
 #include "Chunk.h"
 
-const bool FULLSCREEN = false;
-
-float pos[] = {
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, 0.5f,  0.5f,  1.0f, 0.0f,
-	0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	0.5f,  -0.5f,  0.5f,  0.0f, 1.0f,
-};
-
-
-
+const bool FULLSCREEN = true;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -128,36 +116,19 @@ int main(void)
 		//RENDERINGSCOPE------------------------------------------------------------------------------------------------------
 		{
 			Renderer renderer(proj, &view);
-			BlockRenderer r(renderer);
 			Camera cam(window);
-			WorldGeneration w(20, 20, 25);
+			WorldGeneration w(32, 20, 9);
 			ChunkMeshGenerator mg;
-			Shader s("res/shaders/Sprite.shader");
+
+
 			
-			
-			VertexBufferLayout l;
-			l.Push<float>(3);
-			l.Push<float>(2);
-
-			VertexBuffer vb(pos, 6 * 5 * sizeof(float));
-
-			VertexArray v;
-			v.AddBuffer(vb, l);
-
-
-			unsigned int indices[] = {
-				0,1,2,
-				0,2,3
-			};
-
-			IndexBuffer b = IndexBuffer(indices, 6);
-			/* Loop until the user closes the window */
 
 			std::vector<ChunkMesh*> chunkMesh;
 			for (size_t i = 0; i < w.getAmount(); i++) {
 				chunkMesh.emplace_back(mg.generateMesh(*w.generateWorld()[i]));
 			}
-
+			
+			/* Loop until the user closes the window */
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{
 				processInput(window);
