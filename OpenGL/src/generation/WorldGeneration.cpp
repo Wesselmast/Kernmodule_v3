@@ -25,11 +25,8 @@ bool WorldGeneration::chunkExists(int x, int z) {
 }
 
 void WorldGeneration::deleteChunk() {
-	if (canDelete) {
-		chunks.erase(chunks.begin() + deleteIndex);
-		std::cout << "Deleted Chunk" << std::endl;
-		canDelete = false;
-	}
+	chunks.erase(chunks.begin() + deleteIndex);
+	std::cout << "Deleted Chunk" << std::endl;
 }
 
 void WorldGeneration::updateChunk(int xPos, int zPos) {
@@ -37,18 +34,14 @@ void WorldGeneration::updateChunk(int xPos, int zPos) {
 		deleteChunk();
 	}
 	else {
-		canDelete = false;
 		addChunk(xPos, zPos);
 	}
 }
 
 void WorldGeneration::addChunk(int x, int z) {
-	if (canAdd) {
-		chunks.emplace_back(chunkGen->generateChunk(x, z));
-		std::cout << "Added Chunk" << std::endl;
-		incr++;
-		canAdd = false;
-	}
+	chunks.emplace_back(chunkGen->generateChunk(x, z));
+	std::cout << "Added Chunk" << std::endl;
+	incr++;
 }
 
 int WorldGeneration::getAmount() {

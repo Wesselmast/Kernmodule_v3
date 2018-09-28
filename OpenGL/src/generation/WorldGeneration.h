@@ -8,8 +8,6 @@ private:
 	ChunkGenerator* chunkGen;
 	int size, height, amtOfChunks;
 	int incr = 0;
-	bool canDelete = true;
-	bool canAdd = true;
 	int deleteIndex;
 public:
 	std::vector<Chunk*> chunks;
