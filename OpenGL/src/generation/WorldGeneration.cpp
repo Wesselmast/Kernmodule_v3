@@ -5,9 +5,9 @@ WorldGeneration::WorldGeneration(int size, int height, int amtOfChunks) : size(s
 }
 
 std::vector<Chunk*> WorldGeneration::generateWorld() {
-	int num = std::sqrt(amtOfChunks);
-	for (int i = -num/2; i < num/2; i++) {
-		for (int j = -num/2; j < num/2; j++) {
+	int num = std::floor(std::sqrt(amtOfChunks));
+	for (int i = -num/2; i < num - (num/2); i++) {
+		for (int j = -num/2; j < num - (num/2); j++) {
 			chunks.emplace_back(chunkGen->generateChunk(j * size, i * size));
 		}
 	}
@@ -17,34 +17,42 @@ std::vector<Chunk*> WorldGeneration::generateWorld() {
 bool WorldGeneration::chunkExists(int x, int z) {
 	for (int i = 0; i < chunks.size(); i++) {
 		if (chunks[i]->GetXPos() == x && chunks[i]->GetYPos() == z) {
+			deleteIndex = i;
 			return true;
 		}
 	}
 	return false;
 }
 
-void WorldGeneration::deleteChunk(int x, int z) {	
-	chunks.erase(chunks.begin() + 9);
-	std::cout << "Deleted Chunk" << std::endl;
+void WorldGeneration::deleteChunk() {
+	if (canDelete) {
+		chunks.erase(chunks.begin() + deleteIndex);
+		std::cout << "Deleted Chunk" << std::endl;
+		canDelete = false;
+	}
 }
 
 void WorldGeneration::updateChunk(int xPos, int zPos) {
 	if (chunkExists(xPos, zPos)) {
-		deleteChunk(xPos, zPos);
+		deleteChunk();
 	}
 	else {
+		canDelete = false;
 		addChunk(xPos, zPos);
 	}
 }
 
-
 void WorldGeneration::addChunk(int x, int z) {
-	chunks.emplace_back(chunkGen->generateChunk(x, z));
-	std::cout << "Added Chunk" << std::endl;
+	if (canAdd) {
+		chunks.emplace_back(chunkGen->generateChunk(x, z));
+		std::cout << "Added Chunk" << std::endl;
+		incr++;
+		canAdd = false;
+	}
 }
 
 int WorldGeneration::getAmount() {
-	return amtOfChunks;
+	return amtOfChunks + incr;
 }
 
 WorldGeneration::~WorldGeneration() {

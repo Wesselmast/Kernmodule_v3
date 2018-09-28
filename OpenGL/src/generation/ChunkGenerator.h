@@ -7,7 +7,7 @@
 class ChunkGenerator
 {
 private:
-	int treeDensity = 100;
+	int treeDensity = 80;
 	int startX, startY;
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;

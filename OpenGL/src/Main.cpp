@@ -25,7 +25,7 @@
 
 #include "Chunk.h"
 
-const bool FULLSCREEN = true;
+const bool FULLSCREEN = false;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -102,7 +102,7 @@ int main(void)
 		glClearColor(0.5f, 0.75f, 0.94f, 1.0f);
 		glViewport(0, 0, SCREENWIDTH, SCREENHEIGHT);
 
-		std::cout << glGetString(GL_VERSION);
+		std::cout << glGetString(GL_VERSION) << std::endl;
 
 		
 			
@@ -117,15 +117,14 @@ int main(void)
 		{
 			Renderer renderer(proj, &view);
 			Camera cam(window);
-			WorldGeneration w(32, 20, 9);
+			WorldGeneration w(10, 20, 9);
 			ChunkMeshGenerator mg;
 
-
-			
-
 			std::vector<ChunkMesh*> chunkMesh;
+			w.generateWorld();
+			w.updateChunk(-20,0);
 			for (size_t i = 0; i < w.getAmount(); i++) {
-				chunkMesh.emplace_back(mg.generateMesh(*w.generateWorld()[i]));
+				chunkMesh.emplace_back(mg.generateMesh(*w.chunks[i]));
 			}
 			
 			/* Loop until the user closes the window */
