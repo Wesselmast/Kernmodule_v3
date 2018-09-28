@@ -117,12 +117,12 @@ int main(void)
 		{
 			Renderer renderer(proj, &view);
 			Camera cam(window);
-			WorldGeneration w(10, 20, 49);
+			WorldGeneration w(20, 20, 49);
 			ChunkMeshGenerator mg;
 
 			std::vector<ChunkMesh*> chunkMesh;
 			w.generateWorld();
-			w.updateChunk(-20,0);
+			w.updateChunk(-5,0);	//enter an index on the grid. ex: (-1, 2)
 			for (size_t i = 0; i < w.getAmount(); i++) {
 				chunkMesh.emplace_back(mg.generateMesh(*w.chunks[i]));
 			}

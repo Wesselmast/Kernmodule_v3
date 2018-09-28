@@ -17,7 +17,7 @@ std::vector<Chunk*> WorldGeneration::generateWorld() {
 bool WorldGeneration::chunkExists(int x, int z) {
 	for (int i = 0; i < chunks.size(); i++) {
 		if (chunks[i]->GetXPos() == x && chunks[i]->GetYPos() == z) {
-			deleteIndex = i;
+			index = i;
 			return true;
 		}
 	}
@@ -25,22 +25,22 @@ bool WorldGeneration::chunkExists(int x, int z) {
 }
 
 void WorldGeneration::deleteChunk() {
-	chunks.erase(chunks.begin() + deleteIndex);
-	std::cout << "Deleted Chunk" << std::endl;
+	chunks.erase(chunks.begin() + index);
+	std::cout << "Deleted Chunk!" << std::endl;
 }
 
-void WorldGeneration::updateChunk(int xPos, int zPos) {
-	if (chunkExists(xPos, zPos)) {
+void WorldGeneration::updateChunk(int xIndex, int zIndex) {
+	if (chunkExists(xIndex * size, zIndex * size)) {
 		deleteChunk();
 	}
 	else {
-		addChunk(xPos, zPos);
+		addChunk(xIndex * size, zIndex * size);
 	}
 }
 
 void WorldGeneration::addChunk(int x, int z) {
 	chunks.emplace_back(chunkGen->generateChunk(x, z));
-	std::cout << "Added Chunk" << std::endl;
+	std::cout << "Added Chunk!" << std::endl;
 	incr++;
 }
 

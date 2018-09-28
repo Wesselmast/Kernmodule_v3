@@ -16,12 +16,11 @@ private:
 	glm::vec3* leafPos;
 	WesselPerlinNoise pn;
 	Chunk* chunk;
+	int size, height;
 private:
 	float heights(int a, int b, int xPos, int yPos);
 	double calculateHeights(int a, int b, int xPos, int yPos);
 	void generateTree();
-public:
-	int size, height;
 public:
 	ChunkGenerator(int size, int height);
 	Chunk* generateChunk(int oX, int oY);
