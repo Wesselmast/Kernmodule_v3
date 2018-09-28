@@ -39,9 +39,6 @@
     <ClCompile Include="src\rendering\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\generation\PerlinNoise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\generation\ChunkMeshGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1197,9 +1194,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\generation\ChunkGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\generation\PerlinNoise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\generation\ChunkMeshGenerator.h">

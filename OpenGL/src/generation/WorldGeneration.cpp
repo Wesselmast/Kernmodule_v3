@@ -5,8 +5,9 @@ WorldGeneration::WorldGeneration(int size, int height, int amtOfChunks) : size(s
 }
 
 std::vector<Chunk*> WorldGeneration::generateWorld() {
-	for (int i = 0; i < std::sqrt(amtOfChunks); i++) {
-		for (int j = 0; j < std::sqrt(amtOfChunks); j++) {
+	int num = std::sqrt(amtOfChunks);
+	for (int i = -num/2; i < num/2; i++) {
+		for (int j = -num/2; j < num/2; j++) {
 			chunks.emplace_back(chunkGen->generateChunk(j * size, i * size));
 		}
 	}
