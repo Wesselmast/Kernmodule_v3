@@ -14,6 +14,7 @@
 class ChunkManager{
 
 private:
+	int ChunkSize;
 	std::unordered_map <glm::vec2, Chunk, std::hash<glm::vec2>> chunks;
 	std::unordered_map <glm::vec2, ChunkMesh*, std::hash<glm::vec2>> meshes;
 

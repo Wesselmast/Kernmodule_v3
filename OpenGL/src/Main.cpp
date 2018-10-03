@@ -25,12 +25,13 @@
 
 #include "Chunk.h"
 
-const bool FULLSCREEN = false;
+const bool FULLSCREEN = true;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
 bool endApp = false;
+bool firstFrame = true;
 
 
 int SCREENWIDTH = FULLSCREEN ? 1920 : 800;
@@ -117,12 +118,15 @@ int main(void)
 		{
 			Renderer renderer(proj, &view);
 			Camera cam(window);
-			WorldGeneration w(10, 10, 49);
+			
+			WorldGeneration w(100, 30, 1);
 			ChunkMeshGenerator mg;
 
 			std::vector<ChunkMesh*> chunkMesh;
 			w.generateWorld();
-			w.updateChunk(-1,0);	//enter an index on the grid. for example: (-1, 2)
+			cam.SetChunk(w.chunks[0]);
+			//w.updateChunk(-1,0);	//enter an index on the grid. for example: (-1, 2)
+			
 			for (size_t i = 0; i < w.getAmount(); i++) {
 				chunkMesh.emplace_back(mg.generateMesh(*w.chunks[i]));
 			}
@@ -137,7 +141,14 @@ int main(void)
 				std::cout << 1/deltaTime << std::endl;
 
 				float currentFrame = glfwGetTime();
-				deltaTime = currentFrame - lastFrame;
+				
+				if (!firstFrame) {
+					deltaTime = currentFrame - lastFrame;
+				}
+				else {
+					firstFrame = false;
+				}
+				
 				lastFrame = currentFrame;
 
 				if(endApp)
