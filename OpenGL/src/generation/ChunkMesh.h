@@ -11,10 +11,9 @@ private:
 
 public:
 	ChunkMesh(){}
-	~ChunkMesh() { delete vb; delete va; delete layout; }
+	~ChunkMesh() { delete va; delete layout; delete buffer; }
 
 	std::vector<float>* buffer;
-	VertexBuffer* vb;
 	VertexArray* va;
 	VertexBufferLayout* layout;
 

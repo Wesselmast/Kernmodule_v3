@@ -1,5 +1,9 @@
 #include "Chunk.h"
 
+Chunk::Chunk() : size(0), height(0), xPos(0), yPos(0), zPos(0)
+{
+}
+
 Chunk::Chunk(int size, int height, int xPos, int yPos, int zPos) :
 	size(size),height(height), xPos(xPos), yPos(yPos), zPos(zPos), blocks(size, std::vector<std::vector<blockType>>(height, std::vector<blockType>(size,blockType::Air)))
 {	

@@ -11,6 +11,7 @@ private:
 	std::vector<std::vector<std::vector<blockType>>> blocks;
 
 public:
+	Chunk();
 	Chunk(int size,int height, int xPos, int yPos, int zPos);
 	void AddBlock(int x, int y, int z, blockType t);
 	int GetSize() const { return size; }
