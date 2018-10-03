@@ -24,8 +24,9 @@
 #include <ctime>
 
 #include "Chunk.h"
+#include "ChunkManager.h"
 
-const bool FULLSCREEN = true;
+const bool FULLSCREEN = false;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -94,7 +95,7 @@ int main(void)
 
 		/* Make the window's context current */
 		glfwMakeContextCurrent(window);
-		glfwSwapInterval(0);
+		glfwSwapInterval(1);
 
 		if (glewInit() != GLEW_OK) {
 			std::cout << "Error!" << std::endl;
@@ -119,16 +120,16 @@ int main(void)
 			Renderer renderer(proj, &view);
 			Camera cam(window);
 			
-			WorldGeneration w(100, 30, 1);
-			ChunkMeshGenerator mg;
-
-			std::vector<ChunkMesh*> chunkMesh;
-			w.generateWorld();
-			cam.SetChunk(w.chunks[0]);
-			//w.updateChunk(-1,0);	//enter an index on the grid. for example: (-1, 2)
 			
-			for (size_t i = 0; i < w.getAmount(); i++) {
-				chunkMesh.emplace_back(mg.generateMesh(*w.chunks[i]));
+			WorldGeneration w(25, 20, 150);
+			ChunkMeshGenerator mg;
+			ChunkManager manager(renderer);
+
+			std::vector<Chunk*> chnkss = w.generateWorld();
+			cam.SetManager(&manager);
+			
+			for (size_t i = 0; i < chnkss.size(); i++) {
+				manager.AddChunk(*chnkss[i]);
 			}
 			
 			/* Loop until the user closes the window */
@@ -138,7 +139,10 @@ int main(void)
 				view = cam.getView(deltaTime);
 
 
-				std::cout << 1/deltaTime << std::endl;
+				//std::cout << 1/deltaTime << std::endl;
+				//std::cout << manager.GetChunk(cam.getXPos(),cam.getZPos())->GetXPos();
+				std::cout << "    " << cam.getXPos() << "   " << cam.getZPos() << std::endl;
+			
 
 				float currentFrame = glfwGetTime();
 				
@@ -161,10 +165,7 @@ int main(void)
 
 
 				//world.displayWorld(&r);
-				for (auto& mesh : chunkMesh)
-				{
-					renderer.Draw(mesh);
-				}
+				manager.DisplayAllChunks();
 				//c.displayChunk(&r);
 
 				/* Swap front and back buffers */

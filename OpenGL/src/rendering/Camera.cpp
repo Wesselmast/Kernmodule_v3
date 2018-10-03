@@ -88,15 +88,15 @@ Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f, 55.0f, 0.0f
 
 
 
-	hitbox[0] = glm::vec3(-0.3f, 0.1f, -0.3f);
-	hitbox[1] = glm::vec3(0.3f, 0.1f, -0.3f);
-	hitbox[2] = glm::vec3(0.3f, 0.1f, 0.3f);
-	hitbox[3] = glm::vec3(-0.3f, 0.1f, 0.3f);
+	hitbox[0] = glm::vec3(-0.3f, 0.05f, -0.3f);
+	hitbox[1] = glm::vec3(0.3f, 0.05f, -0.3f);
+	hitbox[2] = glm::vec3(0.3f, 0.05f, 0.3f);
+	hitbox[3] = glm::vec3(-0.3f, 0.05f, 0.3f);
 
-	hitbox[4] = glm::vec3(-0.3f, -1.8f, -0.3f);
-	hitbox[5] = glm::vec3(0.3f, -1.8f, -0.3f);
-	hitbox[6] = glm::vec3(0.3f, -1.8f, 0.3f);
-	hitbox[7] = glm::vec3(-0.3f, -1.8f, 0.3f);
+	hitbox[4] = glm::vec3(-0.3f, -1.9f, -0.3f);
+	hitbox[5] = glm::vec3(0.3f, -1.9f, -0.3f);
+	hitbox[6] = glm::vec3(0.3f, -1.9f, 0.3f);
+	hitbox[7] = glm::vec3(-0.3f, -1.9f, 0.3f);
 
 
 
@@ -106,8 +106,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 {
 
 	processInput(window, deltaTime);
-	glm::vec3 cc = getCurrentChunkPos();
-	relativeCamPos = glm::vec3(cameraPos.x - (currentChunk->GetSize() * cc.x), cameraPos.y - (currentChunk->GetSize() * cc.y), cameraPos.z - (currentChunk->GetSize() * cc.z));
+
 
 	glm::vec3 direction(1.0f);
 	direction.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
@@ -117,9 +116,8 @@ glm::mat4 Camera::getView(const float & deltaTime)
 	cameraFront = camFront;
 
 
-	if (yVelocity > -10.0f) {
-		yVelocity -= deltaTime * 22;
-	}
+	yVelocity -= deltaTime * 25;
+	
 
 
 	glm::vec3 velocity = (input.z * (deltaTime * 7.0f) * glm::normalize(glm::vec3(camFront.x, 0, cameraFront.z)));
@@ -128,34 +126,39 @@ glm::mat4 Camera::getView(const float & deltaTime)
 
 
 	//X
-	if(!CheckAll(glm::vec3(relativeCamPos.x + nextPos.x,cameraPos.y, relativeCamPos.z)))
+	if(!CheckAll(glm::vec3(cameraPos.x + nextPos.x,cameraPos.y, cameraPos.z)))
 		cameraPos.x += velocity.x;
 
 	//Y
-	if (!CheckAll(glm::vec3(relativeCamPos.x, cameraPos.y + nextPos.y, relativeCamPos.z))) {
+	if (!CheckAll(glm::vec3(cameraPos.x, cameraPos.y + nextPos.y, cameraPos.z))) {
 
 		cameraPos.y += yVelocity * deltaTime;
 	}
 	else {
 
-		if (yVelocity < 0) {
+		if (yVelocity <= 0) {
 			if (jump) {
 				yVelocity = 8.0f;
+			}
+			else {
+				yVelocity = 0;
 			}
 		}
 		else {
 			yVelocity = 0;
 		}
 
+		
+		
 	}
 
 	//Z
-	if (!CheckAll(glm::vec3(relativeCamPos.x,cameraPos.y, relativeCamPos.z + nextPos.z)))
+	if (!CheckAll(glm::vec3(cameraPos.x,cameraPos.y, cameraPos.z + nextPos.z)))
 		cameraPos.z += velocity.z;
 
 	
 
-	std::cout << relativeCamPos.x << "  " << relativeCamPos.y << "  " << relativeCamPos.z << std::endl;
+	//std::cout << relativeCamPos.x << "  " << relativeCamPos.y << "  " << relativeCamPos.z << std::endl;
 	//std::cout << cameraPos.x << "  " << cameraPos.y << "  " << cameraPos.z << std::endl;
 
 
@@ -173,36 +176,23 @@ bool Camera::CheckAll(glm::vec3 pos) {
 			break;
 		}
 	}
-
+	
 	return temp;
 
 }
 
-glm::vec3 Camera::getCurrentChunkPos()
-{
-
-	glm::vec3 curChunk = glm::vec3((int)(getXGridPos() / currentChunk->GetSize()), (int)(getYGridPos() / currentChunk->GetSize()), (int)(getZGridPos() / currentChunk->GetSize()));
-	if (getXGridPos() < 0) {
-		curChunk.x -= 1;
-	}
-	if (getYGridPos() < 0) {
-		curChunk.y -= 1;
-	}
-	if (getZGridPos() < 0) {
-		curChunk.z -= 1;
-	}
-
-	return curChunk;
-}
 
 bool Camera::CheckCollision(glm::vec3 pos)
-{
+{   
+	
 	glm::vec3 gridPos(std::round(pos.x), std::round(pos.y), std::round(pos.z));
-	Block b = (*currentChunk).GetBlock(gridPos.x, gridPos.y, gridPos.z);
+	Block b = m->GetBlock(gridPos.x, gridPos.y, gridPos.z);
 	int type = b.getType();
 
 	if (b.getType() == blockType::Air) {
+			
 			return false;	
+			
 	}
 
 	return true;

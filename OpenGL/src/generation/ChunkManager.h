@@ -20,19 +20,19 @@ private:
 
 	ChunkMeshGenerator generator;
 
-	Renderer renderer;
+	Renderer& renderer;
 
 public:
 
 	//===== ALL COORDINATES ARE WORLD SPACE ======
-	ChunkManager(const glm::mat4 & proj, glm::mat4 * view);
+	ChunkManager(Renderer& renderer);
 
 	void AddChunk(const Chunk& chunk);
 	void RemoveChunk(int x, int z);
 
-	Chunk& GetChunk(int x, int z);
-	Block GetBlock(int x, int y, int z);
-	bool ChunkExist(int x, int z);
+	Chunk* GetChunk(float x, float z);
+	Block GetBlock(float x, float y, float z);
+	bool ChunkExist(float x, float z);
 
 
 	void DisplayAllChunks();

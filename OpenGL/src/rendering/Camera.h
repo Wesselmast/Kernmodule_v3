@@ -1,4 +1,5 @@
 #pragma once
+#include "ChunkManager.h"
 #include <GLFW\glfw3.h>
 #include <glm\geometric.hpp>
 #include <glm/glm.hpp>
@@ -6,6 +7,7 @@
 #include <math.h>
 #include "Chunk.h"
 #include <array>
+
 
 class Camera {
 
@@ -16,13 +18,14 @@ private:
 	Chunk* currentChunk;
 	float yVelocity;
 	std::array<glm::vec3, 8> hitbox;
+	ChunkManager* m;
 
 public:
 	Camera(GLFWwindow* window);
 	glm::mat4 getView(const float& deltaTime);
 	bool CheckCollision(glm::vec3 pos);
 	bool CheckAll(glm::vec3 pos);
-	void SetChunk(Chunk* currentChunk) { this->currentChunk = currentChunk; }
+	void SetManager(ChunkManager* manager) { m = manager; }
 	
 	float getXPos() { return cameraPos.x; }
 	float getYPos() { return cameraPos.y; }
