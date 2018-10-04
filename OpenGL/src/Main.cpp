@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <thread>
 
 #include "Renderer.h"
 #include "VertexBuffer.h"
@@ -53,6 +54,11 @@ void processInput(GLFWwindow *window)
 			endApp = true;
 	}
 }
+
+//void LoadChunks(WorldGeneration* w) {
+//	w->updateChunks();
+//}
+
 
 int main(void)
 {
@@ -121,9 +127,9 @@ int main(void)
 			Camera cam(window);
 			
 			
-			WorldGeneration w(25, 20, 150);
 			ChunkMeshGenerator mg;
 			ChunkManager manager(renderer);
+			WorldGeneration w(12, 12, 25, 2, &manager, &cam);
 
 			std::vector<Chunk*> chnkss = w.generateWorld();
 			cam.SetManager(&manager);
@@ -138,11 +144,13 @@ int main(void)
 				processInput(window);
 				view = cam.getView(deltaTime);
 
-
 				//std::cout << 1/deltaTime << std::endl;
 				//std::cout << manager.GetChunk(cam.getXPos(),cam.getZPos())->GetXPos();
-				std::cout << "    " << cam.getXPos() << "   " << cam.getZPos() << std::endl;
-			
+				//std::cout << "    " << cam.getXPos() << "   " << cam.getZPos() << std::endl;
+				/*std::thread chunker(LoadChunks, &w);
+				chunker.join();*/
+
+				w.updateChunks();
 
 				float currentFrame = glfwGetTime();
 				

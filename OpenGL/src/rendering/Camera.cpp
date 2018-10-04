@@ -115,7 +115,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 	glm::vec3 camFront = glm::normalize(direction);
 	cameraFront = camFront;
 
-
+	if(yVelocity > -10)
 	yVelocity -= deltaTime * 25;
 	
 
