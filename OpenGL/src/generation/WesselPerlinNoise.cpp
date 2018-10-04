@@ -52,7 +52,7 @@ double WesselPerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
 	}
 
 	//lower the resolution because the original had hard edges in 2d 
-	return (res * 0.5) + 0.5;
+	return (res * (1.0 / 3.0)) + 0.5;
 }
 
 float WesselPerlinNoise::fade(float t) {
