@@ -29,17 +29,30 @@ WesselPerlinNoise::WesselPerlinNoise() {
 }
 
 double WesselPerlinNoise::noise(float x, float y) {
-	int X = (int)floor(x) & 255;
-	int Y = (int)floor(y) & 255;
-	x -= floor(x);
-	y -= floor(y);
+	int X = (int)std::floor(x) & 255;
+	int Y = (int)std::floor(y) & 255;
+	x -= std::floor(x);
+	y -= std::floor(y);
 	float u = fade(x);
 	float v = fade(y);
 	int A = (perm[X] + Y) & 255;
 	int B = (perm[X + 1] + Y) & 255;
-	double res = lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
-	//lower the resolution because the original had hard edges in 2d
-	return (res + 1.0) / 2.0;
+	return lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
+}
+
+double WesselPerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
+	double amp = 1.0;
+	double res = 0.0;
+
+	for (int i = 0; i < amtOfOctaves; i++) {
+		res += noise(x, y) * amp;
+		x *= 2.0;
+		y *= 2.0;
+		amp *= 0.5;
+	}
+
+	//lower the resolution because the original had hard edges in 2d 
+	return (res * 0.5) + 0.5;
 }
 
 float WesselPerlinNoise::fade(float t) {

@@ -75,7 +75,7 @@ double ChunkGenerator::calculateHeights(int a, int b) {
 	//calculate the appropriate coordinates for the perlin noise;
 	float xCoord = (float)a / size + (startX + (xPos/size));
 	float zCoord = (float)b / size + (startZ + (zPos/size));
-	return pn.noise(xCoord, zCoord) * height;
+	return pn.octaveNoise(xCoord, zCoord, 8) * height;
 }
 
 ChunkGenerator::~ChunkGenerator() {

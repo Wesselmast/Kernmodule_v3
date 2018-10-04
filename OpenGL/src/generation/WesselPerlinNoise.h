@@ -12,6 +12,7 @@ private: //section for private functions
 public: //section for public functions
 	WesselPerlinNoise();
 	double noise(float x, float y);
+	double octaveNoise(float x, float y, int amtOfOctaves);
 	~WesselPerlinNoise();
 };
 
