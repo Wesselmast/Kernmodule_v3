@@ -129,13 +129,13 @@ int main(void)
 			
 			ChunkMeshGenerator mg;
 			ChunkManager manager(renderer);
-			WorldGeneration w(12, 12, 25, 2, &manager, &cam);
+			WorldGeneration w(&manager, &cam);
 
-			std::vector<Chunk*> chnkss = w.generateWorld();
+			std::vector<Chunk*> chunks = w.generateWorld(12, 12, 25, 2);
 			cam.SetManager(&manager);
 			
-			for (size_t i = 0; i < chnkss.size(); i++) {
-				manager.AddChunk(*chnkss[i]);
+			for (size_t i = 0; i < chunks.size(); i++) {
+				manager.AddChunk(*chunks[i]);
 			}
 			
 			/* Loop until the user closes the window */

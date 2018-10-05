@@ -1,15 +1,19 @@
 #include "WorldGeneration.h"
 
 
-WorldGeneration::WorldGeneration(int size, int height, int amtOfChunks, int amtOfOctaves, ChunkManager* man, Camera* player) :
-	size(size), height(height), amtOfChunks(amtOfChunks), man(man), player(player) {
-
-	chunkGen = new ChunkGenerator(size, height, amtOfOctaves);
-	num = std::floor(std::sqrt(amtOfChunks));
+WorldGeneration::WorldGeneration(ChunkManager* man, Camera* player) : man(man), player(player) {
 }
 
 //make all the chunks in a grid pattern and add them to a list, making sure 0,0 is in the middle of the grid
-std::vector<Chunk*> WorldGeneration::generateWorld() {
+std::vector<Chunk*> WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves) {
+	this->size = size;
+	this->height = height;
+	this->amtOfChunks = amtOfChunks;
+	this->amtOfOctaves = amtOfOctaves;
+
+	chunkGen = new ChunkGenerator(size, height, amtOfOctaves);
+	num = std::floor(std::sqrt(amtOfChunks));
+
 	for (int i = -num/2; i < num - (num/2); i++) {
 		for (int j = -num/2; j < num - (num/2); j++) {
 			chunks.emplace_back(chunkGen->generateChunk(j * size, i * size));

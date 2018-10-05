@@ -7,14 +7,14 @@
 class WorldGeneration
 {
 private: //section for private variables
-	int size, height, amtOfChunks, num;
+	int size, height, amtOfChunks, amtOfOctaves, num;
 	ChunkGenerator* chunkGen;
 	std::vector<Chunk*> chunks;
 	ChunkManager* man;
 	Camera* player;
 public: //section for public functions
-	WorldGeneration(int size, int height, int amtOfChunks, int amtOfOctaves, ChunkManager* man, Camera* player);
-	std::vector<Chunk*> generateWorld();
+	WorldGeneration(ChunkManager* man, Camera* player);
+	std::vector<Chunk*> generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves);
 	void updateChunks();
 	std::vector<glm::vec2> getNeighbours();
 	~WorldGeneration();
