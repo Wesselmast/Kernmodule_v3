@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-
+#include <algorithm>
 
 class WesselPerlinNoise {
 private: //section for private variables

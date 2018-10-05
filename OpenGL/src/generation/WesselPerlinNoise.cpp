@@ -9,7 +9,7 @@ I just obliterated the z axis, because 2d perlin noise was good enough for our p
 */
 
 WesselPerlinNoise::WesselPerlinNoise() {
-	//permutation
+	//permutation	
 	perm.insert(perm.end(), {
 		151,160,137,91,90,15,
 		131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -29,14 +29,14 @@ WesselPerlinNoise::WesselPerlinNoise() {
 }
 
 double WesselPerlinNoise::noise(float x, float y) {
-	int X = (int)std::floor(x) & 255;
-	int Y = (int)std::floor(y) & 255;
+	int X = (int)std::floor(x) % 255;
+	int Y = (int)std::floor(y) % 255;
 	x -= std::floor(x);
 	y -= std::floor(y);
 	float u = fade(x);
 	float v = fade(y);
-	int A = (perm[X] + Y) & 255;
-	int B = (perm[X + 1] + Y) & 255;
+	int A = (perm[X] + Y) % 255;
+	int B = (perm[X + 1] + Y) % 255;
 	return lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
 }
 
@@ -46,14 +46,11 @@ double WesselPerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
 	double res = 0.0;
 
 	for (int i = 0; i < amtOfOctaves; i++) {
-		res += noise(x, y) * amp;
-		x *= 2.0;
-		y *= 2.0;
+		res += noise(x * freq, y * freq) * amp;
+		freq *= 2.0;
 		amp *= 0.5;
 	}
-
-	//lower the resolution because the original had hard edges in 2d 
-	return (res * 0.33334) + 0.5;
+	return std::min(1.0, std::max((res + 1) * 0.5, 0.0));
 }
 
 float WesselPerlinNoise::fade(float t) {
