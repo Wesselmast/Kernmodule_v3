@@ -61,5 +61,5 @@ void Renderer::Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTrans
 
 void Renderer::Draw(ChunkMesh* mesh)
 {
-	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size());
+	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size() / 8);
 }
