@@ -7,7 +7,7 @@
 class WorldGeneration
 {
 private: //section for private variables
-	int size, height, amtOfChunks, amtOfOctaves, num;
+	int size, height, amtOfChunks, amtOfOctaves;
 	ChunkGenerator* chunkGen;
 	ChunkManager* man;
 	Camera* player;

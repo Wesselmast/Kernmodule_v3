@@ -131,7 +131,7 @@ int main(void)
 			ChunkManager manager(renderer);
 			WorldGeneration w(&manager, &cam);
 
-			w.generateWorld(5, 10, 9, 2);
+			w.generateWorld(12, 12, 9, 2);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
@@ -167,10 +167,7 @@ int main(void)
 				/* Render here */
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-				//world.displayWorld(&r);
 				manager.DisplayAllChunks();
-				//c.displayChunk(&r);
 
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);
