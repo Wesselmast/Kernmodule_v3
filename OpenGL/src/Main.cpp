@@ -131,13 +131,9 @@ int main(void)
 			ChunkManager manager(renderer);
 			WorldGeneration w(&manager, &cam);
 
-			std::vector<Chunk*> chunks = w.generateWorld(12, 12, 25, 2);
+			w.generateWorld(5, 10, 9, 2);
 			cam.SetManager(&manager);
-			
-			for (size_t i = 0; i < chunks.size(); i++) {
-				manager.AddChunk(*chunks[i]);
-			}
-			
+		
 			/* Loop until the user closes the window */
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{
