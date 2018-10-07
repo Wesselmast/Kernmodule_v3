@@ -21,7 +21,7 @@ private: //section for private variables
 	WesselPerlinNoise pn;
 	Chunk* chunk;
 private: //section for private functions
-	float heights(int a, int b);
+	int heights(int a, int b);
 	double calculateHeights(int a, int b);
 	void generateTree();
 public: //section for public functions

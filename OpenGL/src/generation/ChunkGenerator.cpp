@@ -59,20 +59,18 @@ void ChunkGenerator::generateTree() {
 	}
 }
 
-float ChunkGenerator::heights(int a, int b) {
-	std::vector<std::vector<float>> heightMap;
-	heightMap.resize(size);
-	for (int x = 0; x < heightMap.size(); ++x) {
-		heightMap[x].resize(size);
-		for (int z = 0; z < heightMap[x].size(); ++z) {
-			heightMap[x][z] = (int)calculateHeights(x, z);
+int ChunkGenerator::heights(int a, int b) {
+	int* heightMap = new int[size * size];
+	for (int x = 0; x < size; ++x) {
+		for (int z = 0; z < size; ++z) {
+			heightMap[x + z * size] = (int)calculateHeights(x, z);
 		}
 	}
-	return heightMap[a][b];
+	return heightMap[a + b * size];
 }	
 
 double ChunkGenerator::calculateHeights(int a, int b) {
-	//calculate the appropriate coordinates for the perlin noise;
+	//calculate the appropriate coordinates for the perlin noise;	
 	float xCoord = ((float)a / size) + (startX + (xPos / size));
 	float zCoord = ((float)b / size) + (startZ + (zPos / size));
 	return pn.octaveNoise(xCoord,zCoord, amtOfOctaves) * height;
