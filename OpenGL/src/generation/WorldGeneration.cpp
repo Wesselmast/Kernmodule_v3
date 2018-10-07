@@ -5,7 +5,7 @@ WorldGeneration::WorldGeneration(ChunkManager* man, Camera* player) : man(man), 
 }
 
 //make all the chunks in a grid pattern and add them to a list, making sure 0,0 is in the middle of the grid
-std::vector<Chunk*> WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves) {
+void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves) {
 	this->size = size;
 	this->height = height;
 	this->amtOfChunks = amtOfChunks;
@@ -14,12 +14,11 @@ std::vector<Chunk*> WorldGeneration::generateWorld(int size, int height, int amt
 	chunkGen = new ChunkGenerator(size, height, amtOfOctaves);
 	num = std::floor(std::sqrt(amtOfChunks));
 
-	for (int i = -num/2; i < num - (num/2); i++) {
-		for (int j = -num/2; j < num - (num/2); j++) {
-			chunks.emplace_back(chunkGen->generateChunk(j * size, i * size));
+	for (int i = -num / 2; i < num - (num / 2); i++) {
+		for (int j = -num / 2; j < num - (num / 2); j++) {
+			man->AddChunk(*(chunkGen->generateChunk(j * size, i * size)));
 		}
 	}
-	return chunks;
 }
 
 void WorldGeneration::updateChunks() {
