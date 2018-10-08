@@ -1,6 +1,6 @@
 #include "ChunkGenerator.h"
 
-ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(size), height(height), amtOfOctaves(amtOfOctaves) {
+ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves, float heightScale) : size(size), height(height), amtOfOctaves(amtOfOctaves), heightScale(heightScale) {
 	//get a random starting position for the perlin noise
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
@@ -71,8 +71,8 @@ int ChunkGenerator::heights(int a, int b) {
 
 double ChunkGenerator::calculateHeights(int a, int b) {
 	//calculate the appropriate coordinates for the perlin noise;	
-	float xCoord = ((float)a / size) + (startX + (xPos / size));
-	float zCoord = ((float)b / size) + (startZ + (zPos / size));
+	float xCoord = (((float)a / size) + (startX + (xPos / size))) / (height / heightScale);
+	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / (height / heightScale);
 	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * height;
 }
 

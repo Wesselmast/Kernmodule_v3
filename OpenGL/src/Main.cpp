@@ -27,7 +27,7 @@
 #include "Chunk.h"
 #include "ChunkManager.h"
 
-const bool FULLSCREEN = true;
+const bool FULLSCREEN = false;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -131,7 +131,8 @@ int main(void)
 			ChunkManager manager(renderer);
 			WorldGeneration w(&manager, &cam);
 
-			w.generateWorld(10, 10, 25, 2);
+			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
+			w.generateWorld(10, 10, 25, 3, 3.5f);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */

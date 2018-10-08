@@ -11,6 +11,7 @@ private: //section of world customisation
 	int treeDensity = 80;
 	int dirtLayer = 3;
 	int amtOfOctaves;
+	int heightScale;
 private: //section for private variables
 	int startX, startZ, size, height, xPos, zPos;
 	glm::vec3* grassPos;
@@ -25,7 +26,7 @@ private: //section for private functions
 	double calculateHeights(int a, int b);
 	void generateTree();
 public: //section for public functions
-	ChunkGenerator(int size, int height, int amtOfOctaves);
+	ChunkGenerator(int size, int height, int amtOfOctaves, float heightScale);
 	Chunk* generateChunk(int oX, int oY);
 	~ChunkGenerator();
 };

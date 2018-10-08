@@ -4,12 +4,10 @@
 WorldGeneration::WorldGeneration(ChunkManager* man, Camera* player) : man(man), player(player) {
 }
 
-void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves) {
+void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves, float heightScale) {
 	this->size = size;
-	this->height = height;
 	this->amtOfChunks = amtOfChunks;
-	this->amtOfOctaves = amtOfOctaves;
-	chunkGen = new ChunkGenerator(size, height, amtOfOctaves);
+	chunkGen = new ChunkGenerator(size, height, amtOfOctaves, heightScale);
 
 	//start off with one chunk at 0,0
 	man->AddChunk(*(chunkGen->generateChunk(0, 0)));
