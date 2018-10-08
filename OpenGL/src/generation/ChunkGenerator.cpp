@@ -70,7 +70,11 @@ int ChunkGenerator::heights(int a, int b) {
 }	
 
 double ChunkGenerator::calculateHeights(int a, int b) {
-	//calculate the appropriate coordinates for the perlin noise;	
+	//calculate the appropriate coordinates for the perlin noise;
+	if (heightScale < 1.0f) {
+		std::cout << "Error: Height scale lower than zero, you fool!" << std::endl;
+		return 0;
+	}
 	float xCoord = (((float)a / size) + (startX + (xPos / size))) / (height / heightScale);
 	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / (height / heightScale);
 	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * height;
