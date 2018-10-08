@@ -9,7 +9,7 @@ void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int a
 	this->amtOfChunks = amtOfChunks;
 	chunkGen = new ChunkGenerator(size, height, amtOfOctaves, heightScale);
 
-	//start off with one chunk at 0,0
+	//start off with one chunk at origin
 	man->AddChunk(*(chunkGen->generateChunk(0, 0)));
 }
 
@@ -24,7 +24,7 @@ std::vector<glm::vec2> WorldGeneration::getNeighbours() {
 	std::vector<glm::vec2> temp;
 	glm::vec2 thisChunk = glm::vec2(man->GetChunk(player->getXPos(), player->getZPos())->GetXPos(), man->GetChunk(player->getXPos(), player->getZPos())->GetYPos());
 
-	//spawn chunks around the 0,0 point that don't exist yet
+	//spawn chunks around the origin that don't exist yet
 	int num = std::floor(std::sqrt(amtOfChunks));
 	for (int i = -num / 2; i < num - (num / 2); i++) {
 		for (int j = -num / 2; j < num - (num / 2); j++) {

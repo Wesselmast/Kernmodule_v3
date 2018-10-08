@@ -132,7 +132,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
-			w.generateWorld(10, 10, 25, 3, 3.5f);
+			w.generateWorld(5, 25, 100, 1, 0.5f);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */

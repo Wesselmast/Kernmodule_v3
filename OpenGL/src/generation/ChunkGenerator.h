@@ -2,13 +2,13 @@
 #include <vector>
 #include "WesselPerlinNoise.h"
 #include "Chunk.h"
+#include "Tree.h"
 #include "glm/gtc/matrix_transform.hpp"
 
 class ChunkGenerator
 {
 private: //section of world customisation
-	int treeLength = rand() % 3 + 4;
-	int treeDensity = 80;
+	int treeDensity = 65;
 	int dirtLayer = 3;
 	int amtOfOctaves;
 	int heightScale;
@@ -17,14 +17,11 @@ private: //section for private variables
 	glm::vec3* grassPos;
 	glm::vec3* dirtPos;
 	glm::vec3* stonePos;
-	glm::vec3* logPos;
-	glm::vec3* leafPos;
-	WesselPerlinNoise pn;
 	Chunk* chunk;
+	WesselPerlinNoise pn;
 private: //section for private functions
 	int heights(int a, int b);
 	double calculateHeights(int a, int b);
-	void generateTree();
 public: //section for public functions
 	ChunkGenerator(int size, int height, int amtOfOctaves, float heightScale);
 	Chunk* generateChunk(int oX, int oY);
