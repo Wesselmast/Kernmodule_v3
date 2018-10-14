@@ -132,7 +132,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
-			w.generateWorld(5, 25, 100, 1, 0.5f);
+			w.generateWorld(4, 25, 81, 3, 3.5f);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
@@ -141,13 +141,8 @@ int main(void)
 				processInput(window);
 				view = cam.getView(deltaTime);
 
-				//std::cout << 1/deltaTime << std::endl;
-				//std::cout << manager.GetChunk(cam.getXPos(),cam.getZPos())->GetXPos();
-				//std::cout << "    " << cam.getXPos() << "   " << cam.getZPos() << std::endl;
-				/*std::thread chunker(LoadChunks, &w);
-				chunker.join();*/
-
-				w.updateChunks();
+				//chance at biome switch!
+				w.updateChunks(650);
 
 				float currentFrame = glfwGetTime();
 				

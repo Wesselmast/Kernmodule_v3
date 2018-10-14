@@ -66,6 +66,9 @@
     <ClCompile Include="src\generation\Tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\generation\Plant.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Sprite.shader" />
@@ -1227,6 +1230,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\generation\Tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generation\Plant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

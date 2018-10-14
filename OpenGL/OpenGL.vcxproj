@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\generation\Plant.cpp" />
     <ClCompile Include="src\generation\Block.cpp" />
     <ClCompile Include="src\generation\Chunk.cpp" />
     <ClCompile Include="src\generation\ChunkGenerator.cpp" />
@@ -301,6 +302,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\generation\Plant.h" />
     <ClInclude Include="src\generation\Block.h" />
     <ClInclude Include="src\generation\Chunk.h" />
     <ClInclude Include="src\generation\ChunkGenerator.h" />
