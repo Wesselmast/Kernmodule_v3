@@ -37,8 +37,11 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			}
 			if (rand() % density == 1) {
 				if (type == Desert) plant->generatePlant(topLayer, chunk, blockType::Cactus);
-				if (type == Forest) tree->generateTree(topLayer, chunk, treeType::Oak);
 				if (type == Tundra) tree->generateTree(topLayer, chunk, treeType::Spruce);
+				if (type == Forest) {
+					if (rand() % 2 == 1) tree->generateTree(topLayer, chunk, treeType::Oak);
+					else tree->generateTree(topLayer, chunk, treeType::Birch);
+				}
 			}
 		}
 	}

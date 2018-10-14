@@ -67,6 +67,19 @@ glm::vec2 typeToTex(side s, blockType t) {
 		return glm::vec2(5, 8);
 	}
 
+	if (t == blockType::BirchLog) {
+		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
+			return glm::vec2(5, 7);
+		}
+		if (s == side::Top || s == side::Bottom) {
+			return glm::vec2(5, 1);
+		}
+	}
+
+	if (t == blockType::BirchLeaf) {
+		return glm::vec2(5, 3);
+	}
+
 #pragma endregion
 
 #pragma region Plants
