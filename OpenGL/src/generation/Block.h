@@ -4,7 +4,10 @@
 
 enum side { Front, Back, Right, Left, Top, Bottom };
 enum blockType { 
-	Grass, Dirt, OakLog, OakLeaf, Cactus, Stone, Sand, Air
+	Grass, Dirt, Stone, Sand, Snow,
+	OakLog, OakLeaf, SpruceLog,  SpruceLeaf,
+	Cactus,   
+	Air
 };
 
 class BlockPlane {

@@ -5,9 +5,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
 
-	if (heightScale < 1.0f) {
-		heightScale = 1.0f;
-	}
+	if (heightScale < 1.0f) heightScale = 1.0f;
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
@@ -19,17 +17,17 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 	this->xPos = xPos;
 	this->zPos = zPos;
 
-	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Sand;
+	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Sand; 
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
+	if (type == Tundra) topType = Snow, middleType = Dirt, bottomType = Stone;
 
 	for (int x = 0; x < size; ++x) {
 		for (int z = 0; z < size; ++z) {
-			//make a vector3 containing the grass positions (with pnoise heightmap)
-			//the other blocks are spawned below/above the grass layer
-
+			//make a vector3 containing the top layer positions (with pnoise heightmap)
+			//the other blocks are spawned below/above the top layer
 			topLayer = new glm::vec3(x, heights(x, z), z);
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
-			for (int i = 1; i < middleDepth; ++i) {
+			for (int i = 1; i < middleDepth + 1; ++i) {
 				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
 				chunk->AddBlock(middleLayer->x, middleLayer->y, middleLayer->z, middleType);
 			}
@@ -37,17 +35,16 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
 				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
 			}
-
 			if (rand() % density == 1) {
 				if (type == Desert) plant->generatePlant(topLayer, chunk, blockType::Cactus);
 				if (type == Forest) tree->generateTree(topLayer, chunk, treeType::Oak);
+				if (type == Tundra) tree->generateTree(topLayer, chunk, treeType::Spruce);
 			}
 		}
 	}
 	delete tree;
 	delete plant;
 	return chunk;
-
 }
 
 int ChunkGenerator::heights(int a, int b) {
