@@ -7,27 +7,27 @@
 #include "glm/gtc/matrix_transform.hpp"
 
 enum biome {
-	Forest, Desert
+	Forest, Desert, Tundra
 };
 
 class ChunkGenerator {
 private: //section of world customisation
-	int density = 65;
-	int middleDepth = 3;
+	const int density = 65;
+	const int middleDepth = 3;
+	int waterPlane;
 	int amtOfOctaves;
 	int heightScale;
 private: //section for private variables
 	int startX, startZ, size, height, xPos, zPos;
 	glm::vec3* topLayer;
-	glm::vec3* middleLayer;
+	glm::vec3* middleLayer; 
 	glm::vec3* bottomLayer;
+	blockType topType, middleType, bottomType;
 	Chunk* chunk;
 	WesselPerlinNoise pn;
 private: //section for private functions
 	int heights(int a, int b);
 	double calculateHeights(int a, int b);
-	Chunk* generateDesert();
-	Chunk* generateForest();
 public: //section for public functions
 	ChunkGenerator(int size, int height, int amtOfOctaves);
 	Chunk* generateChunk(int oX, int oY, float heightScale, biome type);

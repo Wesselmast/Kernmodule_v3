@@ -8,6 +8,8 @@ class WorldGeneration
 {
 private: //section for private variables
 	int size, amtOfChunks;
+	int startBiomeInterval, biomeInterval;
+	int biomePool = 3;
 	float heightScale;
 	biome type;
 	ChunkGenerator* chunkGen;
@@ -15,10 +17,10 @@ private: //section for private variables
 	Camera* player;
 private: //section for private functions
 	std::vector<glm::vec2> getNeighbours();
-	biome changeBiome();
+	void pickNextBiome();
 public: //section for public functions
 	WorldGeneration(ChunkManager* man, Camera* player);
-	void generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves, float heightScale);
-	void updateChunks(int chanceAtBiome);
+	void generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves, float heightScale, int chanceAtBiome);
+	void updateChunks();
 	~WorldGeneration();
 };

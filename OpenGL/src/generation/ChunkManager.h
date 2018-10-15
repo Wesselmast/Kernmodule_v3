@@ -6,7 +6,7 @@
 #include "Chunk.h"
 #include "ChunkMeshGenerator.h"
 #include <map>
-#include <glm\glm.hpp>
+#include <glm/glm.hpp>
 #include <glm/gtx/hash.hpp>
 
 

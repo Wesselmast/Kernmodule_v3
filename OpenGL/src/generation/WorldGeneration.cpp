@@ -4,24 +4,31 @@
 WorldGeneration::WorldGeneration(ChunkManager* man, Camera* player) : man(man), player(player) {
 }
 
-void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves, float heightScale) {
+void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int amtOfOctaves, float heightScale, int chanceAtBiome) {
 	chunkGen = new ChunkGenerator(size, height, amtOfOctaves);
 	this->size = size;
 	this->amtOfChunks = amtOfChunks;
 	this->heightScale = heightScale;
+	startBiomeInterval = chanceAtBiome;
+	biomeInterval = startBiomeInterval;
 
-	if (rand() % 2 == 1) type = Desert;
-	else type = Forest;
+	//pick a starter biome
+	pickNextBiome();
 
 	//start off with one chunk at origin
 	man->AddChunk(*(chunkGen->generateChunk(0, 0, heightScale, type)));
 }
 
-void WorldGeneration::updateChunks(int chanceAtBiome) {
+void WorldGeneration::updateChunks() {
 	std::vector <glm:: vec2> temp = getNeighbours();
-	if (rand() % chanceAtBiome == 1) {
-		type = changeBiome();
+	if (temp.size() != 0) {
+		if (biomeInterval <= 0) {
+			pickNextBiome();
+			biomeInterval = startBiomeInterval;
+		}
+		else biomeInterval -= 1;
 	}
+
 	for (int i = 0; i < temp.size(); i++) {
 		man->AddChunk(*(chunkGen->generateChunk(temp[i].x, temp[i].y, heightScale, type)));
 	}
@@ -46,10 +53,10 @@ std::vector<glm::vec2> WorldGeneration::getNeighbours() {
 	return temp;
 }
 
-biome WorldGeneration::changeBiome() {
-	int randomBiome = rand() % 2;
-	if (randomBiome == 0)  return Desert;
-	if (randomBiome == 1)  return Forest;
+void WorldGeneration::pickNextBiome() {
+	if (rand() % biomePool == 0) type = Desert;
+	if (rand() % biomePool == 1) type = Forest;
+	if (rand() % biomePool == 2) type = Tundra;
 }
 
 WorldGeneration::~WorldGeneration() {
