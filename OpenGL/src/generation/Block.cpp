@@ -15,17 +15,6 @@ glm::vec2 typeToTex(side s, blockType t) {
 			return glm::vec2(2, 0);
 		}
 	}
-	if (t == blockType::Snow) {
-		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
-			return glm::vec2(4, 4);
-		}
-		if (s == side::Top) {
-			return glm::vec2(8, 2);
-		}
-		if (s == side::Bottom) {
-			return glm::vec2(2, 0);
-		}
-	}
 
 	if (t == blockType::Sand) {
 		return glm::vec2(2, 1);
@@ -37,10 +26,6 @@ glm::vec2 typeToTex(side s, blockType t) {
 
 	if (t == blockType::Stone) {
 		return glm::vec2(1, 0);
-	}
-
-	if (t == blockType::Ice) {
-		return glm::vec2(2, 4);
 	}
 #pragma endregion
 
@@ -56,19 +41,6 @@ glm::vec2 typeToTex(side s, blockType t) {
 
 	if (t == blockType::OakLeaf) {
 		return glm::vec2(5, 3);
-	}
-
-	if (t == blockType::SpruceLog) {
-		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
-			return glm::vec2(4, 7);
-		}
-		if (s == side::Top || s == side::Bottom) {
-			return glm::vec2(5, 1);
-		}
-	}
-
-	if (t == blockType::SpruceLeaf) {
-		return glm::vec2(5, 8);
 	}
 
 	if (t == blockType::BirchLog) {

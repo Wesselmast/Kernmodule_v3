@@ -9,7 +9,7 @@ class WorldGeneration
 private: //section for private variables
 	int size, amtOfChunks;
 	int startBiomeInterval, biomeInterval;
-	int biomePool = 3;
+	const int biomePool = 2;
 	float heightScale;
 	biome type;
 	ChunkGenerator* chunkGen;
