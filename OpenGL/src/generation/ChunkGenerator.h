@@ -12,14 +12,15 @@ enum biome {
 
 class ChunkGenerator {
 private: //section of world customisation
-	int density = 65;
-	int middleDepth = 3;
+	const int density = 65;
+	const int middleDepth = 3;
+	int waterPlane;
 	int amtOfOctaves;
 	int heightScale;
 private: //section for private variables
 	int startX, startZ, size, height, xPos, zPos;
 	glm::vec3* topLayer;
-	glm::vec3* middleLayer;
+	glm::vec3* middleLayer; 
 	glm::vec3* bottomLayer;
 	blockType topType, middleType, bottomType;
 	Chunk* chunk;

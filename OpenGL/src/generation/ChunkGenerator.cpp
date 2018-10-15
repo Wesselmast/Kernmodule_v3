@@ -6,6 +6,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	startZ = rand() % 9999;
 
 	if (heightScale < 1.0f) heightScale = 1.0f;
+	waterPlane = height / 5;
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
@@ -35,7 +36,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
 				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
 			}
-			if (rand() % density == 1) {
+			if (rand() % density == 1 && topLayer->y > waterPlane) {
 				if (type == Desert) plant->generatePlant(topLayer, chunk, blockType::Cactus);
 				if (type == Tundra) tree->generateTree(topLayer, chunk, treeType::Spruce);
 				if (type == Forest) {
@@ -43,6 +44,8 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 					else tree->generateTree(topLayer, chunk, treeType::Birch);
 				}
 			}
+			if(type == Tundra) chunk->AddBlock(x, waterPlane, z, blockType::Ice);
+			else chunk->AddBlock(x, waterPlane, z, blockType::Water);
 		}
 	}
 	delete tree;
@@ -54,7 +57,7 @@ int ChunkGenerator::heights(int a, int b) {
 	int* heightMap = new int[size * size];
 	for (int x = 0; x < size; ++x) {
 		for (int z = 0; z < size; ++z) {
-			heightMap[x + z * size] = (int)calculateHeights(x, z);
+			heightMap[x + z * size] = std::round(calculateHeights(x, z));
 		}
 	}
 	return heightMap[a + b * size];

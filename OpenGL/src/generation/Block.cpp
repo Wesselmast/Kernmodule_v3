@@ -38,6 +38,10 @@ glm::vec2 typeToTex(side s, blockType t) {
 	if (t == blockType::Stone) {
 		return glm::vec2(1, 0);
 	}
+
+	if (t == blockType::Ice) {
+		return glm::vec2(2, 4);
+	}
 #pragma endregion
 
 #pragma region Trees
@@ -93,6 +97,12 @@ glm::vec2 typeToTex(side s, blockType t) {
 		if (s == side::Bottom) {
 			return glm::vec2(7, 4);
 		}
+	}
+#pragma endregion
+
+#pragma region Liquids
+	if (t == blockType::Water) {
+		return glm::vec2(3, 4);
 	}
 #pragma endregion
 
