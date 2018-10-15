@@ -158,11 +158,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
-<<<<<<< Updated upstream
-			w.generateWorld(10, 30, 15*15, 3, 3, 1);
-=======
 			w.generateWorld(4, 30, 15*15, 3, 3.5f, 30);
->>>>>>> Stashed changes
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
