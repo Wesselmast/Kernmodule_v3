@@ -1,5 +1,5 @@
 #include "Block.h"
-#include <glm\glm.hpp>
+#include <glm/glm.hpp>
 
 glm::vec2 typeToTex(side s, blockType t) {
 
