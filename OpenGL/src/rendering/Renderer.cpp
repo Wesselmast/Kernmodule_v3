@@ -14,7 +14,7 @@ bool GLLogCall(const char* function, const char* file, int line) {
 }
 
 
-Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader"), terrain("res/textures/terrain.png"), ui("res/shaders/Ui.shader")
+Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader"), terrain("res/textures/CANDEMAN.png"), ui("res/shaders/Ui.shader")
 {
 	sh.Bind();
 	terrain.Bind();
