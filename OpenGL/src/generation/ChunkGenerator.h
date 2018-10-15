@@ -7,7 +7,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 
 enum biome {
-	Forest, Desert, Tundra
+	Forest, Desert
 };
 
 class ChunkGenerator {

@@ -20,13 +20,14 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 
 	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Sand; 
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
-	if (type == Tundra) topType = Snow, middleType = Dirt, bottomType = Stone;
 
 	for (int x = 0; x < size; ++x) {
 		for (int z = 0; z < size; ++z) {
 			//make a vector3 containing the top layer positions (with pnoise heightmap)
 			//the other blocks are spawned below/above the top layer
 			topLayer = new glm::vec3(x, heights(x, z), z);
+			if (topLayer->y >= height) chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, blockType::Air);
+			topLayer->y--;
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
 			for (int i = 1; i < middleDepth + 1; ++i) {
 				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
@@ -38,14 +39,13 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			}
 			if (rand() % density == 1 && topLayer->y > waterPlane) {
 				if (type == Desert) plant->generatePlant(topLayer, chunk, blockType::Cactus);
-				if (type == Tundra) tree->generateTree(topLayer, chunk, treeType::Spruce);
-				if (type == Forest) {
+				if (type == Forest && topType == Grass) {
 					if (rand() % 2 == 1) tree->generateTree(topLayer, chunk, treeType::Oak);
 					else tree->generateTree(topLayer, chunk, treeType::Birch);
 				}
 			}
-			if(type == Tundra) chunk->AddBlock(x, waterPlane, z, blockType::Ice);
-			else chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			topLayer->y++;
 		}
 	}
 	delete tree;

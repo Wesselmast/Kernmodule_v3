@@ -56,7 +56,6 @@ std::vector<glm::vec2> WorldGeneration::getNeighbours() {
 void WorldGeneration::pickNextBiome() {
 	if (rand() % biomePool == 0) type = Desert;
 	if (rand() % biomePool == 1) type = Forest;
-	if (rand() % biomePool == 2) type = Tundra;
 }
 
 WorldGeneration::~WorldGeneration() {
