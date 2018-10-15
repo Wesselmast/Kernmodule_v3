@@ -13,7 +13,7 @@ bool GLLogCall(const char* function, const char* file, int line) {
 	return true;
 }
 
-Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader"), terrain("res/textures/terrain.png")
+Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader"), terrain("res/textures/terrain.png"), ui("res/shaders/Ui.shader")
 {
 	sh.Bind();
 	terrain.Bind();
@@ -62,4 +62,11 @@ void Renderer::Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTrans
 void Renderer::Draw(ChunkMesh* mesh)
 {
 	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size() / 8);
+}
+
+void Renderer::DrawUi(const VertexArray & va)
+{
+	ui.Bind();
+	va.Bind();
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 }

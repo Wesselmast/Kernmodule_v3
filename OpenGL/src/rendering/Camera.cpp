@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include <algorithm>
 #include <iostream>
 
 
@@ -22,6 +23,8 @@ glm::vec3 p2(0, -4, 0);
 
 
 bool kak = false;
+bool righButton = false;
+bool leftButton = false;
 
 
 
@@ -74,6 +77,23 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
 	if (pitch < -89.0f)
 		pitch = -89.0f;
 }
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+		righButton = true;
+	}
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE) {
+		righButton = false;
+	}
+
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+		leftButton = true;
+	}
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
+		leftButton = false;
+	}
+}
+
 
 
 
@@ -83,6 +103,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
 Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f, 55.0f, 0.0f), currentChunk(nullptr)
 {
 	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	yVelocity = 0;
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -104,7 +125,7 @@ Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f, 55.0f, 0.0f
 
 glm::mat4 Camera::getView(const float & deltaTime)
 {
-
+	//righButton = false;
 	processInput(window, deltaTime);
 
 
@@ -117,6 +138,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 
 
 	yVelocity -= deltaTime * 25;
+
 	
 
 
@@ -160,8 +182,26 @@ glm::mat4 Camera::getView(const float & deltaTime)
 
 	//std::cout << relativeCamPos.x << "  " << relativeCamPos.y << "  " << relativeCamPos.z << std::endl;
 	//std::cout << cameraPos.x << "  " << cameraPos.y << "  " << cameraPos.z << std::endl;
+	if (righButton) {
+
+		glm::vec3 lookBlock = getLookAtBlock();
+
+		if (lookBlock.y != 10000) {
+			m->RemoveBlock(lookBlock.x, lookBlock.y, lookBlock.z);
+		}
+		righButton = false;
+	}
 
 
+	if (leftButton) {
+
+		glm::vec3 lookBlock = getPlaceBlock();
+
+		if (lookBlock.y != 10000) {
+			m->AddBlock(lookBlock.x, lookBlock.y, lookBlock.z, blockType :: Stone);
+		}
+		leftButton = false;
+	}
 
 	return glm::lookAt(cameraPos, cameraPos + camFront, cameraUp);
 }
@@ -179,6 +219,131 @@ bool Camera::CheckAll(glm::vec3 pos) {
 	
 	return temp;
 
+}
+
+glm::vec3 Camera::getLookAtBlock()
+{
+	int it = 0;
+	
+	glm::vec3 rayStart = cameraPos;	
+	glm::vec3 rayEnd = cameraPos + (cameraFront * 50.0f);
+	glm::vec3 rayDir = cameraFront;
+
+	glm::vec3 currentVoxel = glm::vec3(std::round(rayStart.x), std::round(rayStart.y), std::round(rayStart.z));
+	glm::vec3 endVoxel = glm::vec3(std::round(rayEnd.x), std::round(rayEnd.y), std::round(rayEnd.z));
+
+	//----------------------------------------------------------------------------------------------------------
+	
+	float xStep = (rayDir.x >= 0) ? 1 : -1;
+	float yStep = (rayDir.y >= 0) ? 1 : -1;
+	float zStep = (rayDir.z >= 0) ? 1 : -1;
+
+	float tMaxX = (currentVoxel.x + (xStep/2) - rayStart.x) / rayDir.x;
+	float tMaxY = (currentVoxel.y + (yStep/2) - rayStart.y) / rayDir.y;
+	float tMaxZ = (currentVoxel.z + (zStep/2) - rayStart.z) / rayDir.z;
+
+	float tDeltaX = 1 / rayDir.x * xStep;
+	float tDeltaY = 1 / rayDir.y * yStep;
+	float tDeltaZ = 1 / rayDir.z * zStep;
+
+	//-----------------------------------------------------------------------------------------------------------
+
+	while (endVoxel != currentVoxel) {
+		if (tMaxX < tMaxY) {
+			if (tMaxX < tMaxZ) {
+				currentVoxel.x += xStep;
+				tMaxX += tDeltaX;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+		else {
+			if (tMaxY < tMaxZ) {
+				currentVoxel.y += yStep;
+				tMaxY += tDeltaY;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+		
+		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+			return glm::vec3(currentVoxel.x, currentVoxel.y, currentVoxel.z);
+		}
+
+		it++;
+	}
+
+
+
+	return glm::vec3(0, 10000, 0);
+}
+
+glm::vec3 Camera::getPlaceBlock()
+{
+	int it = 0;
+
+	glm::vec3 rayStart = cameraPos;
+	glm::vec3 rayEnd = cameraPos + (cameraFront * 50.0f);
+	glm::vec3 rayDir = cameraFront;
+
+	glm::vec3 currentVoxel = glm::vec3(std::round(rayStart.x), std::round(rayStart.y), std::round(rayStart.z));
+	glm::vec3 prevVoxel = glm::vec3(0);
+	glm::vec3 endVoxel = glm::vec3(std::round(rayEnd.x), std::round(rayEnd.y), std::round(rayEnd.z));
+
+	//----------------------------------------------------------------------------------------------------------
+
+	float xStep = (rayDir.x >= 0) ? 1 : -1;
+	float yStep = (rayDir.y >= 0) ? 1 : -1;
+	float zStep = (rayDir.z >= 0) ? 1 : -1;
+
+	float tMaxX = (currentVoxel.x + (xStep / 2) - rayStart.x) / rayDir.x;
+	float tMaxY = (currentVoxel.y + (yStep / 2) - rayStart.y) / rayDir.y;
+	float tMaxZ = (currentVoxel.z + (zStep / 2) - rayStart.z) / rayDir.z;
+
+	float tDeltaX = 1 / rayDir.x * xStep;
+	float tDeltaY = 1 / rayDir.y * yStep;
+	float tDeltaZ = 1 / rayDir.z * zStep;
+
+	//-----------------------------------------------------------------------------------------------------------
+
+	while (endVoxel != currentVoxel) {
+		prevVoxel = currentVoxel;
+
+		if (tMaxX < tMaxY) {
+			if (tMaxX < tMaxZ) {
+				currentVoxel.x += xStep;
+				tMaxX += tDeltaX;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+		else {
+			if (tMaxY < tMaxZ) {
+				currentVoxel.y += yStep;
+				tMaxY += tDeltaY;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+
+		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+			return prevVoxel;
+		}
+
+		it++;
+	}
+
+
+
+	return glm::vec3(0, 10000, 0);
 }
 
 

@@ -117,12 +117,38 @@ int main(void)
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 		GLCall(glEnable(GL_BLEND));
 		glEnable(GL_DEPTH_TEST);
+		
+		
+	
 
-		
-		
-		
+
+
+
+
+
+
 		//RENDERINGSCOPE------------------------------------------------------------------------------------------------------
 		{
+
+			float quad[] = {
+				-0.01f, -0.01f, 0, 0,
+				-0.01f,  0.01f, 1, 0,
+				 0.01f,  0.01f, 1, 1,
+				 0.01f,  0.01f, 1, 1,
+				 0.01f, -0.01f, 0, 1,
+				-0.01f, -0.01f, 0, 0,
+			};
+
+			VertexBuffer vb(quad, 6 * 4 * sizeof(float));
+			VertexBufferLayout layout;
+			layout.Push<float>(2);
+			layout.Push<float>(2);
+			VertexArray va;
+			va.AddBuffer(vb, layout);
+
+
+			//--------------------------------------------------------------------------------------------------------------------
+
 			Renderer renderer(proj, &view);
 			Camera cam(window);
 			
@@ -132,7 +158,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
-			w.generateWorld(4, 25, 81, 3, 3.5f);
+			w.generateWorld(10, 40, 15*15, 3, 3);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
@@ -164,6 +190,7 @@ int main(void)
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 				manager.DisplayAllChunks();
+				renderer.DrawUi(va);
 
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);

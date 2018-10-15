@@ -32,6 +32,9 @@ public:
 
 	Chunk* GetChunk(float x, float z);
 	Block GetBlock(float x, float y, float z);
+
+	void RemoveBlock(float x, float y, float z);
+	void AddBlock(float x, float y, float z,blockType type);
 	bool ChunkExist(float x, float z);
 
 
