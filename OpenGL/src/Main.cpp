@@ -1,5 +1,5 @@
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <GL\glew.h>
+#include <GLFW\glfw3.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -117,12 +117,38 @@ int main(void)
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 		GLCall(glEnable(GL_BLEND));
 		glEnable(GL_DEPTH_TEST);
+		
+		
+	
 
-		
-		
-		
+
+
+
+
+
+
 		//RENDERINGSCOPE------------------------------------------------------------------------------------------------------
 		{
+
+			float quad[] = {
+				-0.01f, -0.01f, 0, 0,
+				-0.01f,  0.01f, 1, 0,
+				 0.01f,  0.01f, 1, 1,
+				 0.01f,  0.01f, 1, 1,
+				 0.01f, -0.01f, 0, 1,
+				-0.01f, -0.01f, 0, 0,
+			};
+
+			VertexBuffer vb(quad, 6 * 4 * sizeof(float));
+			VertexBufferLayout layout;
+			layout.Push<float>(2);
+			layout.Push<float>(2);
+			VertexArray va;
+			va.AddBuffer(vb, layout);
+
+
+			//--------------------------------------------------------------------------------------------------------------------
+
 			Renderer renderer(proj, &view);
 			Camera cam(window);
 			
@@ -131,8 +157,8 @@ int main(void)
 			ChunkManager manager(renderer);
 			WorldGeneration w(&manager, &cam);
 
-			/*size | height | amount of chunks | amount of perlin octaves | height scale | biome update interval*/
-			w.generateWorld(12, 25, 9, 3, 3.0f, 20);
+			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
+			w.generateWorld(10, 40, 15*15, 3, 3);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
@@ -141,7 +167,8 @@ int main(void)
 				processInput(window);
 				view = cam.getView(deltaTime);
 
-				w.updateChunks();
+				//chance at biome switch!
+				w.updateChunks(650);
 
 				float currentFrame = glfwGetTime();
 				
@@ -163,6 +190,7 @@ int main(void)
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 				manager.DisplayAllChunks();
+				renderer.DrawUi(va);
 
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);

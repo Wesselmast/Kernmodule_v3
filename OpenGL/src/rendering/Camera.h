@@ -35,6 +35,7 @@ public:
 	int getYGridPos() { return (int)std::round(cameraPos.y); }
 	int getZGridPos() { return (int)std::round(cameraPos.z); }
 
-	glm::vec3 getCurrentChunkPos();
+	glm::vec3 getLookAtBlock();
+	glm::vec3 getPlaceBlock();
 
 };

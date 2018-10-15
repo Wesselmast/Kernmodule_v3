@@ -14,6 +14,7 @@ public:
 	Chunk();
 	Chunk(int size,int height, int xPos, int yPos, int zPos);
 	void AddBlock(int x, int y, int z, blockType t);
+	void RemoveBlock(int x, int y, int z);
 	int GetSize() const { return size; }
 	int GetHeight() const { return height; }
 	int GetXPos() const { return xPos; }

@@ -31,6 +31,11 @@ void Chunk::AddBlock(int x, int y, int z, blockType t)
 	blocks[x][y][z] = t;
 }
 
+void Chunk::RemoveBlock(int x, int y, int z)
+{
+	blocks[x][y][z] = blockType::Air;
+}
+
 Block Chunk::GetBlock(int x, int y, int z) const
 {
 	if (size == 0 || height == 0)

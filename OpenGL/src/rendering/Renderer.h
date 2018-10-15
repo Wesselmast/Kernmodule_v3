@@ -25,6 +25,7 @@ private:
 	glm::mat4* view;
 	Texture terrain;
 	Shader sh;
+	Shader ui;
 
 
 public:
@@ -34,4 +35,5 @@ public:
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
 	void Draw(ChunkMesh* chunk);
+	void DrawUi(const VertexArray& va);
 };

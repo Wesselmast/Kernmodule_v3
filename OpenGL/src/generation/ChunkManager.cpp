@@ -45,19 +45,41 @@ Block ChunkManager::GetBlock(float x, float y, float z)
 	}	
 	
 	x -= c->GetXPos();
-
-	//if (x < 0)
-	//	x = x - ChunkSize;
-	
-	//std::cout << x <<  " " << c->GetXPos() <<  "   ";
-
 	z -= c->GetYPos();
 
-	//if (z >= ChunkSize)
-	//	z = z - ChunkSize;
 	
 	return c->GetBlock(x,y,z);
 }
+
+void ChunkManager::RemoveBlock(float x, float y, float z)
+{
+	Chunk* chunk = GetChunk(x, z);
+	
+	float xChunkSpace = x - chunk->GetXPos();
+	float zChunkSpace = z - chunk->GetYPos();
+
+
+	chunk->RemoveBlock(xChunkSpace, y, zChunkSpace);
+	ChunkMesh* mesh = meshes[glm::vec2(chunk->GetXPos(), chunk->GetYPos())];
+	delete mesh;
+	meshes[glm::vec2(chunk->GetXPos(), chunk->GetYPos())] = generator.generateMesh(*chunk);
+
+}
+
+void ChunkManager::AddBlock(float x, float y, float z, blockType type)
+{
+	Chunk* chunk = GetChunk(x, z);
+
+	float xChunkSpace = x - chunk->GetXPos();
+	float zChunkSpace = z - chunk->GetYPos();
+
+
+	chunk->AddBlock(xChunkSpace, y, zChunkSpace, type);
+	ChunkMesh* mesh = meshes[glm::vec2(chunk->GetXPos(), chunk->GetYPos())];
+	delete mesh;
+	meshes[glm::vec2(chunk->GetXPos(), chunk->GetYPos())] = generator.generateMesh(*chunk);
+}
+
 
 bool ChunkManager::ChunkExist(float x, float z)
 {
