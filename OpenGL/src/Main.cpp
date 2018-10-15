@@ -158,7 +158,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
-			w.generateWorld(10, 40, 15*15, 3, 3);
+			w.generateWorld(10, 30, 15*15, 3, 3, 1);
 			cam.SetManager(&manager);
 		
 			/* Loop until the user closes the window */
@@ -168,7 +168,7 @@ int main(void)
 				view = cam.getView(deltaTime);
 
 				//chance at biome switch!
-				w.updateChunks(650);
+				w.updateChunks();
 
 				float currentFrame = glfwGetTime();
 				
