@@ -4,7 +4,7 @@
 
 enum side { Front, Back, Right, Left, Top, Bottom };
 enum blockType { 
-	Grass, Dirt, Stone, Sand,
+	Grass, Dirt, Stone, Sand, Bedrock,
 	OakLog, OakLeaf, BirchLog, BirchLeaf,
 	Cactus,
 	Water,

@@ -18,7 +18,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 	this->xPos = xPos;
 	this->zPos = zPos;
 
-	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Sand; 
+	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
 
 	for (int x = 0; x < size; ++x) {
@@ -27,6 +27,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			//the other blocks are spawned below/above the top layer
 			topLayer = new glm::vec3(x, heights(x, z), z);
 			if (topLayer->y >= height) chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, blockType::Air);
+
 			topLayer->y--;
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
 			for (int i = 1; i < middleDepth + 1; ++i) {
@@ -44,7 +45,8 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 					else tree->generateTree(topLayer, chunk, treeType::Birch);
 				}
 			}
-			chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			if(chunk->GetBlock(x,waterPlane,z).getType() == Air) chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			chunk->AddBlock(x, -1, z, blockType::Bedrock);
 			topLayer->y++;
 		}
 	}

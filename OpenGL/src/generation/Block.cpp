@@ -27,6 +27,10 @@ glm::vec2 typeToTex(side s, blockType t) {
 	if (t == blockType::Stone) {
 		return glm::vec2(1, 0);
 	}
+
+	if (t == blockType::Bedrock) {
+		return glm::vec2(1, 1);
+	}
 #pragma endregion
 
 #pragma region Trees
