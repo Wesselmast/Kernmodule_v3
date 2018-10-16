@@ -9,7 +9,6 @@ I just obliterated the z axis, because 2d perlin noise was good enough for our p
 */
 
 WesselPerlinNoise::WesselPerlinNoise() {
-	//permutation	
 	const int permutation[] = {
 	151,160,137,91,90,15,
 	131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -26,7 +25,7 @@ WesselPerlinNoise::WesselPerlinNoise() {
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
 
-	//double permutation to avoid overflow
+	//double permutation to avoid buffer overflowing
 	perm = new int[512];
 	for (int i = 0; i < 512; ++i) {
 		perm[i] = permutation[i % 256];

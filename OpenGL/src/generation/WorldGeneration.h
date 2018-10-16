@@ -4,12 +4,12 @@
 #include "Camera.h"
 #include "ChunkManager.h"
 
-class WorldGeneration
-{
-private: //section for private variables
-	int size, amtOfChunks;
-	int startBiomeInterval, biomeInterval;
+class WorldGeneration {
+private: //section for constants
 	const int biomePool = 2;
+private: //section for private variables
+	int startBiomeInterval, biomeInterval;
+	int size, amtOfChunks;
 	float heightScale;
 	biome type;
 	ChunkGenerator* chunkGen;

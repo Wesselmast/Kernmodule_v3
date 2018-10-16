@@ -8,8 +8,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
-	std::unique_ptr<Plant> plant = std::make_unique<Plant>();
-	std::unique_ptr<Tree> tree = std::make_unique<Tree>();
+	std::unique_ptr<Entity> entity = std::make_unique<Entity>();
 
 	if (heightScale < 1.0f) heightScale = 1.0f;
 
@@ -38,11 +37,12 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
 				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
 			}
-			if (rand() % density == 1 && topLayer->y > waterPlane) {
-				if (type == Desert) plant->generatePlant(topLayer, chunk, blockType::Cactus);
+			//have a chance at an entity when it's not under water and next to another entity
+			if (rand() % density == 1 && topLayer->y > waterPlane && !isNextToEntity(chunk, topLayer)) {
+				if (type == Desert) entity->generateEntity(topLayer, chunk, entityType::Cactus_Plant);
 				if (type == Forest && topType == Grass) {
-					if (rand() % 2 == 1) tree->generateTree(topLayer, chunk, treeType::Oak);
-					else tree->generateTree(topLayer, chunk, treeType::Birch);
+					if (rand() % 2 == 1) entity->generateEntity(topLayer, chunk, entityType::Oak_Tree);
+					else entity->generateEntity(topLayer, chunk, entityType::Birch_Tree);
 				}
 			}
 			chunk->AddBlock(x, -1, z, blockType::Bedrock);
@@ -65,10 +65,26 @@ int ChunkGenerator::heights(int a, int b) {
 }	
 
 double ChunkGenerator::calculateHeights(int a, int b) {
-	//calculate the appropriate coordinates for the perlin noise
 	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)(height - airLayer) / heightScale);
 	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)(height - airLayer) / heightScale);
 	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer);
+}
+
+bool ChunkGenerator::isNextToEntity(Chunk* chunk, glm::vec3* topLayer) {
+	for (int x = -1; x < 2; ++x) {
+		for (int y = -1; y < 2; ++y) {
+			for (int z = -1; z < 2; ++z) {
+				if (x == 0 && y == 0 && z == 0) continue;
+				//hard-coded at the moment, fine for this project but could be done better
+				if (chunk->GetBlock(topLayer->x + x, topLayer->y + y, topLayer->z + z).getType() == Cactus ||
+					chunk->GetBlock(topLayer->x + x, topLayer->y + y, topLayer->z + z).getType() == BirchLog ||
+					chunk->GetBlock(topLayer->x + x, topLayer->y + y, topLayer->z + z).getType() == OakLog) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 ChunkGenerator::~ChunkGenerator() {

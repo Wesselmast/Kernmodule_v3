@@ -1,20 +1,21 @@
-#include "Tree.h"
+#include "Entity.h"
 
 
 
-Tree::Tree() {
+Entity::Entity() {
 }
 
-void Tree::generateTree(glm::vec3* topLayer, Chunk* chunk, treeType type) {
+void Entity::generateEntity(glm::vec3* topLayer, Chunk* chunk, entityType type) {
 	xPos = topLayer->x;
 	yPos = topLayer->y;
 	zPos = topLayer->z;
 
-	if (type == Oak) spawnOak(chunk);
-	if (type == Birch) spawnBirch(chunk);
+	if (type == Oak_Tree) spawnOak(chunk);
+	else if (type == Birch_Tree) spawnBirch(chunk);
+	else if (type == Cactus_Plant) spawnCactus(chunk);
 }
 
-void Tree::spawnOak(Chunk* chunk) {
+void Entity::spawnOak(Chunk* chunk) {
 	treeLength = rand() % 3 + 4;
 	for (int i = 1; i < treeLength + 1; i++) {
 		logPos = new glm::vec3(xPos, yPos + i, zPos);
@@ -38,7 +39,7 @@ void Tree::spawnOak(Chunk* chunk) {
 	}
 }
 
-void Tree::spawnBirch(Chunk* chunk) {
+void Entity::spawnBirch(Chunk* chunk) {
 	treeLength = rand() % 3 + 4;
 	for (int i = 1; i < treeLength + 1; i++) {
 		logPos = new glm::vec3(xPos, yPos + i, zPos);
@@ -64,7 +65,13 @@ void Tree::spawnBirch(Chunk* chunk) {
 	}
 }
 
-bool Tree::ifCorner(int a, int b, int t) {
+void Entity::spawnCactus(Chunk * chunk) {
+	for (int i = 0; i < cactusLength; i++) {
+		chunk->AddBlock(xPos, yPos + i, zPos, blockType::Cactus);
+	}
+}
+
+bool Entity::ifCorner(int a, int b, int t) {
 	if (a == -t && b == -t ||
 		a ==  t && b == -t ||
 		a == -t && b ==  t ||
@@ -72,7 +79,7 @@ bool Tree::ifCorner(int a, int b, int t) {
 	return false;
 }
 
-Tree::~Tree() {
+Entity::~Entity() {
 	delete logPos;
 	delete leafPos;
 }
