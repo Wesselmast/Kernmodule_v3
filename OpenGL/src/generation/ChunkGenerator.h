@@ -27,6 +27,7 @@ private: //section for private variables
 private: //section for private functions
 	int heights(int a, int b);
 	double calculateHeights(int a, int b);
+	bool isNextToEntity(Chunk* chunk, glm::vec3* topLayer);
 public: //section for public functions
 	ChunkGenerator(int size, int height, int amtOfOctaves);
 	Chunk* generateChunk(int oX, int oY, float heightScale, biome type);
