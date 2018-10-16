@@ -27,16 +27,14 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			topLayer = new glm::vec3(x, heights(x, z), z);
 			for (int i = -airLayer; i < 1; ++i) {
 				chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Air);
-				if (i == -3) {
-					chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Stone);
-				}
 			}
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
+
 			for (int i = 1; i < middleDepth + 1; ++i) {
 				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
 				chunk->AddBlock(middleLayer->x, middleLayer->y, middleLayer->z, middleType);
 			}
-			for (int i = 1; i < middleLayer->y + 6; ++i) {
+			for (int i = 1; i < middleLayer->y + 1; ++i) {
 				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
 				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
 			}
