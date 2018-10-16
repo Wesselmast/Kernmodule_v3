@@ -29,7 +29,6 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 				chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Air);
 			}
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
-
 			for (int i = 1; i < middleDepth + 1; ++i) {
 				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
 				chunk->AddBlock(middleLayer->x, middleLayer->y, middleLayer->z, middleType);
@@ -46,7 +45,9 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 				}
 			}
 			chunk->AddBlock(x, -1, z, blockType::Bedrock);
-			if (chunk->GetBlock(x, waterPlane, z).getType() == Air) chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			if (chunk->GetBlock(x, waterPlane, z).getType() == Air) {
+				chunk->AddBlock(x, waterPlane, z, blockType::Water);
+			}
 		}
 	}
 	return chunk;
@@ -70,7 +71,7 @@ double ChunkGenerator::calculateHeights(int a, int b) {
 }
 
 ChunkGenerator::~ChunkGenerator() {
-	delete topLayer;
+	delete topLayer;	
 	delete middleLayer;
 	delete bottomLayer;
 }
