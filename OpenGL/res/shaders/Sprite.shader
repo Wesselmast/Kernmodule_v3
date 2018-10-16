@@ -37,11 +37,14 @@ uniform sampler2D u_Texture;
 
 void main()
 {
+	float lightInfluence = 0.5f;
+	float lightIntensity = 1.5f;
+
 	vec4 texColor = texture(u_Texture, v_TexCoord);
 	
-	vec3 lightDir = normalize(vec3(0.0f, 0.4f, 0.3f));
+	vec3 lightDir = normalize(vec3(0.2f, 0.6f, 0.2f));
 	float diff = max(dot(Normal, lightDir), 0.0);
-	vec3 dif = diff * vec3(1.15f,1.0f,1.0f);
+	vec3 dif = ((diff * vec3(lightInfluence)) +  (1 - lightInfluence)) * lightIntensity;
 	
-	color = texColor * (vec4(dif.x,dif.y,dif.z, 1.0f) + vec4(0.4f, 0.4f, 0.4f, 1.0f));
+	color = texColor * vec4(dif.x, dif.y, dif.z, 1.0f);
 };

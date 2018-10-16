@@ -152,7 +152,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 		cameraPos.x += velocity.x;
 
 	//Y
-	if (!CheckAll(glm::vec3(cameraPos.x, cameraPos.y + nextPos.y, cameraPos.z))) {
+	if (!CheckAll(glm::vec3(cameraPos.x, cameraPos.y + nextPos.y, cameraPos.z)) && blockRay(cameraPos, cameraPos + nextPos.y).getType() == blockType::Air) {
 
 		cameraPos.y += yVelocity * deltaTime;
 	}
@@ -280,6 +280,66 @@ glm::vec3 Camera::getLookAtBlock()
 
 
 	return glm::vec3(0, 10000, 0);
+}
+
+Block Camera::blockRay(glm::vec3 startPos, glm::vec3 endPos) {
+	int it = 0;
+
+	glm::vec3 rayStart = startPos;
+	glm::vec3 rayEnd = endPos;
+	glm::vec3 rayDir = endPos - startPos;
+
+	glm::vec3 currentVoxel = glm::vec3(std::round(rayStart.x), std::round(rayStart.y), std::round(rayStart.z));
+	glm::vec3 endVoxel = glm::vec3(std::round(rayEnd.x), std::round(rayEnd.y), std::round(rayEnd.z));
+
+	//----------------------------------------------------------------------------------------------------------
+
+	float xStep = (rayDir.x >= 0) ? 1 : -1;
+	float yStep = (rayDir.y >= 0) ? 1 : -1;
+	float zStep = (rayDir.z >= 0) ? 1 : -1;
+
+	float tMaxX = (currentVoxel.x + (xStep / 2) - rayStart.x) / rayDir.x;
+	float tMaxY = (currentVoxel.y + (yStep / 2) - rayStart.y) / rayDir.y;
+	float tMaxZ = (currentVoxel.z + (zStep / 2) - rayStart.z) / rayDir.z;
+
+	float tDeltaX = 1 / rayDir.x * xStep;
+	float tDeltaY = 1 / rayDir.y * yStep;
+	float tDeltaZ = 1 / rayDir.z * zStep;
+
+	//-----------------------------------------------------------------------------------------------------------
+
+	while (endVoxel != currentVoxel) {
+		if (tMaxX < tMaxY) {
+			if (tMaxX < tMaxZ) {
+				currentVoxel.x += xStep;
+				tMaxX += tDeltaX;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+		else {
+			if (tMaxY < tMaxZ) {
+				currentVoxel.y += yStep;
+				tMaxY += tDeltaY;
+			}
+			else {
+				currentVoxel.z += zStep;
+				tMaxZ += tDeltaZ;
+			}
+		}
+
+		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+			return m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z);
+		}
+
+		it++;
+	}
+
+
+
+	return Block(0,0,0,blockType::Air);
 }
 
 glm::vec3 Camera::getPlaceBlock()
