@@ -20,7 +20,7 @@ void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int a
 }
 
 void WorldGeneration::updateChunks() {
-	std::vector <glm:: vec2> temp = getNeighbours();
+	std::vector<glm::vec2> temp = getNeighbours();
 	if (temp.size() != 0) {
 		if (biomeInterval <= 0) {
 			pickNextBiome();

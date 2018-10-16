@@ -4,7 +4,7 @@ Plant::Plant()
 {
 }
 
-void Plant::generatePlant(glm::vec3 * grassPos, Chunk * chunk, blockType type) {
+void Plant::generatePlant(glm::vec3* grassPos, Chunk* chunk, blockType type) {
 	xPos = grassPos->x;
 	yPos = grassPos->y;
 	zPos = grassPos->z;
