@@ -4,13 +4,14 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	//get a random starting position for the perlin noise
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
-	if (heightScale < 1.0f) heightScale = 1.0f;
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
 	std::unique_ptr<Plant> plant = std::make_unique<Plant>();
 	std::unique_ptr<Tree> tree = std::make_unique<Tree>();
+
+	if (heightScale < 1.0f) heightScale = 1.0f;
 
 	this->heightScale = heightScale;
 	this->xPos = xPos;
