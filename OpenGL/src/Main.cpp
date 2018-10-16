@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <thread>
+#include <future>
 
 #include "Renderer.h"
 #include "VertexBuffer.h"
@@ -160,7 +160,8 @@ int main(void)
 			/*size | height | amount of chunks | amount of perlin octaves | height scale*/
 			w.generateWorld(4, 30, 49, 3, 3.5f, 30);
 			cam.SetManager(&manager);
-		
+
+
 			/* Loop until the user closes the window */
 			while (!glfwWindowShouldClose(window) && !endApp)
 			{

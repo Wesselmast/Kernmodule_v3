@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include <memory>
 #include "WesselPerlinNoise.h"
 #include "Chunk.h"
 #include "Tree.h"
@@ -14,6 +14,7 @@ class ChunkGenerator {
 private: //section of world customisation
 	const int density = 65;
 	const int middleDepth = 3;
+	const int airLayer = 20;
 	int waterPlane;
 	int amtOfOctaves;
 	int heightScale;
@@ -23,7 +24,6 @@ private: //section for private variables
 	glm::vec3* middleLayer; 
 	glm::vec3* bottomLayer;
 	blockType topType, middleType, bottomType;
-	Chunk* chunk;
 	WesselPerlinNoise pn;
 private: //section for private functions
 	int heights(int a, int b);

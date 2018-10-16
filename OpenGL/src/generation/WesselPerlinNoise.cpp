@@ -31,7 +31,6 @@ WesselPerlinNoise::WesselPerlinNoise() {
 	for (int i = 0; i < 512; ++i) {
 		perm[i] = permutation[i % 256];
 	}
-
 }
 
 double WesselPerlinNoise::noise(float x, float y) {

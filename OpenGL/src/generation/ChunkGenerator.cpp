@@ -1,22 +1,21 @@
 #include "ChunkGenerator.h"
 
-ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(size), height(height), amtOfOctaves(amtOfOctaves) {
+ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(size), height(height + airLayer), amtOfOctaves(amtOfOctaves) {
 	//get a random starting position for the perlin noise
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
-
 	if (heightScale < 1.0f) heightScale = 1.0f;
-	waterPlane = height / 5;
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
-	chunk = new Chunk(size, height, xPos, 0, zPos);
-	Plant* plant = new Plant();
-	Tree* tree = new Tree();
+	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
+	std::unique_ptr<Plant> plant = std::make_unique<Plant>();
+	std::unique_ptr<Tree> tree = std::make_unique<Tree>();
 
 	this->heightScale = heightScale;
 	this->xPos = xPos;
 	this->zPos = zPos;
+	waterPlane = height / 5;
 
 	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
@@ -26,15 +25,18 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			//make a vector3 containing the top layer positions (with pnoise heightmap)
 			//the other blocks are spawned below/above the top layer
 			topLayer = new glm::vec3(x, heights(x, z), z);
-			if (topLayer->y >= height) chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, blockType::Air);
-
-			topLayer->y--;
+			for (int i = -airLayer; i < 1; ++i) {
+				chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Air);
+				if (i == -3) {
+					chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Stone);
+				}
+			}
 			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
 			for (int i = 1; i < middleDepth + 1; ++i) {
 				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
 				chunk->AddBlock(middleLayer->x, middleLayer->y, middleLayer->z, middleType);
 			}
-			for (int i = 1; i < middleLayer->y + 1; ++i) {
+			for (int i = 1; i < middleLayer->y + 6; ++i) {
 				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
 				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
 			}
@@ -45,13 +47,10 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 					else tree->generateTree(topLayer, chunk, treeType::Birch);
 				}
 			}
-			if(chunk->GetBlock(x,waterPlane,z).getType() == Air) chunk->AddBlock(x, waterPlane, z, blockType::Water);
 			chunk->AddBlock(x, -1, z, blockType::Bedrock);
-			topLayer->y++;
+			if (chunk->GetBlock(x, waterPlane, z).getType() == Air) chunk->AddBlock(x, waterPlane, z, blockType::Water);
 		}
 	}
-	delete tree;
-	delete plant;
 	return chunk;
 }
 
@@ -67,13 +66,12 @@ int ChunkGenerator::heights(int a, int b) {
 
 double ChunkGenerator::calculateHeights(int a, int b) {
 	//calculate the appropriate coordinates for the perlin noise
-	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)height / heightScale);
-	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)height / heightScale);
-	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * height;
+	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)(height - airLayer) / heightScale);
+	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)(height - airLayer) / heightScale);
+	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer);
 }
 
 ChunkGenerator::~ChunkGenerator() {
-	delete chunk;
 	delete topLayer;
 	delete middleLayer;
 	delete bottomLayer;
