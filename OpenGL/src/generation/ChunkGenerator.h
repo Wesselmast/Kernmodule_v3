@@ -20,7 +20,7 @@ private: //section for private variables
 	int amtOfOctaves;
 	int heightScale;
 	glm::vec3* topLayer;
-	glm::vec3* middleLayer; 
+	glm::vec3* middleLayer;
 	glm::vec3* bottomLayer;
 	blockType topType, middleType, bottomType;
 	WesselPerlinNoise pn;
