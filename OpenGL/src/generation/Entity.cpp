@@ -15,6 +15,9 @@ void Entity::generateEntity(glm::vec3* topLayer, Chunk* chunk, entityType type) 
 	else if (type == Cactus_Plant) spawnCactus(chunk);
 }
 
+//macro for self checking in nested for loops
+#define IS_SELF x == 0 && y == 0 && z == 0
+
 void Entity::spawnOak(Chunk* chunk) {
 	treeLength = rand() % 3 + 4;
 	for (int i = 1; i < treeLength + 1; i++) {
@@ -24,6 +27,7 @@ void Entity::spawnOak(Chunk* chunk) {
 	for (int x = -2; x < 3; ++x) {
 		for (int y = 0; y < 2; y++) {
 			for (int z = -2; z < 3; z++) {
+				if (IS_SELF) continue;
 				leafPos = new glm::vec3(logPos->x + x, treeLength + yPos + y, logPos->z + z);
 				chunk->AddBlock(leafPos->x, leafPos->y, leafPos->z, blockType::OakLeaf);
 			}
@@ -32,6 +36,7 @@ void Entity::spawnOak(Chunk* chunk) {
 	for (int x = -1; x < 2; ++x) {
 		for (int y = 0; y < 1; y++) {
 			for (int z = -1; z < 2; z++) {
+				if (IS_SELF) continue;
 				leafPos = new glm::vec3(logPos->x + x, treeLength + yPos + y + 2, logPos->z + z);
 				chunk->AddBlock(leafPos->x, leafPos->y, leafPos->z, blockType::OakLeaf);
 			}
@@ -48,7 +53,7 @@ void Entity::spawnBirch(Chunk* chunk) {
 	for (int x = -2; x < 3; ++x) {
 		for (int y = 0; y < 2; y++) {
 			for (int z = -2; z < 3; z++) {
-				if (ifCorner(x, z, 2)) continue;
+				if (ifCorner(x, z, 2) || IS_SELF) continue;
 				leafPos = new glm::vec3(logPos->x + x, treeLength + yPos + y, logPos->z + z);
 				chunk->AddBlock(leafPos->x, leafPos->y, leafPos->z, blockType::BirchLeaf);
 			}
@@ -57,7 +62,7 @@ void Entity::spawnBirch(Chunk* chunk) {
 	for (int x = -1; x < 2; ++x) {
 		for (int y = 0; y < 1; y++) {
 			for (int z = -1; z < 2; z++) {
-				if (ifCorner(x, z, 1)) continue;
+				if (ifCorner(x, z, 1) || IS_SELF) continue;
 				leafPos = new glm::vec3(logPos->x + x, treeLength + yPos + y + 2, logPos->z + z);
 				chunk->AddBlock(leafPos->x, leafPos->y, leafPos->z, blockType::BirchLeaf);
 			}

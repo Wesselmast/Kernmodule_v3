@@ -37,8 +37,8 @@ uniform sampler2D u_Texture;
 
 void main()
 {
-	float lightInfluence = 0.5f;
-	float lightIntensity = 1.5f;
+	float lightInfluence = 0.6f;
+	float lightIntensity = 1.2f;
 
 	vec4 texColor = texture(u_Texture, v_TexCoord);
 	

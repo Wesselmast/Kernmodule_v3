@@ -4,6 +4,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	//get a random starting position for the perlin noise
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
+	pn = std::make_unique<PerlinNoise>();
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
@@ -67,7 +68,7 @@ int ChunkGenerator::heights(int a, int b) {
 double ChunkGenerator::calculateHeights(int a, int b) {
 	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)(height - airLayer) / heightScale);
 	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)(height - airLayer) / heightScale);
-	return pn.octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer);
+	return pn->octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer);
 }
 
 bool ChunkGenerator::isNextToEntity(Chunk* chunk, glm::vec3* topLayer) {

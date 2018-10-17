@@ -155,7 +155,7 @@
     <ClCompile Include="src\generation\ChunkGenerator.cpp" />
     <ClCompile Include="src\generation\ChunkManager.cpp" />
     <ClCompile Include="src\generation\ChunkMeshGenerator.cpp" />
-    <ClCompile Include="src\generation\WesselPerlinNoise.cpp" />
+    <ClCompile Include="src\generation\PerlinNoise.cpp" />
     <ClCompile Include="src\rendering\Camera.cpp" />
     <ClCompile Include="src\rendering\IndexBuffer.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -308,7 +308,7 @@
     <ClInclude Include="src\generation\ChunkManager.h" />
     <ClInclude Include="src\generation\ChunkMesh.h" />
     <ClInclude Include="src\generation\ChunkMeshGenerator.h" />
-    <ClInclude Include="src\generation\WesselPerlinNoise.h" />
+    <ClInclude Include="src\generation\PerlinNoise.h" />
     <ClInclude Include="src\rendering\Camera.h" />
     <ClInclude Include="src\rendering\ErrorHandling.h" />
     <ClInclude Include="src\rendering\IndexBuffer.h" />

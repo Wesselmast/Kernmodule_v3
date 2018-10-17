@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "WesselPerlinNoise.h"
+#include "PerlinNoise.h"
 #include "Chunk.h"
 #include "Entity.h"
 #include "glm/gtc/matrix_transform.hpp"
@@ -23,7 +23,7 @@ private: //section for private variables
 	glm::vec3* middleLayer;
 	glm::vec3* bottomLayer;
 	blockType topType, middleType, bottomType;
-	WesselPerlinNoise pn;
+	std::unique_ptr<PerlinNoise> pn;
 private: //section for private functions
 	int heights(int a, int b);
 	double calculateHeights(int a, int b);
