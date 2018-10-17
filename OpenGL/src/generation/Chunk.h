@@ -8,7 +8,7 @@ class Chunk {
 private:
 	int size, height;
 	int xPos, yPos, zPos;
-	std::vector<std::vector<std::vector<blockType>>> blocks;
+	std::vector<std::vector<std::vector<char>>> blocks;
 
 public:
 	Chunk();

@@ -5,7 +5,7 @@ Chunk::Chunk() : size(0), height(0), xPos(0), yPos(0), zPos(0)
 }
 
 Chunk::Chunk(int size, int height, int xPos, int yPos, int zPos) :
-	size(size),height(height), xPos(xPos), yPos(yPos), zPos(zPos), blocks(size, std::vector<std::vector<blockType>>(height, std::vector<blockType>(size,blockType::Air)))
+	size(size),height(height), xPos(xPos), yPos(yPos), zPos(zPos), blocks(size, std::vector<std::vector<char>>(height, std::vector<char>(size,0)))
 {	
 }
 
@@ -33,7 +33,7 @@ void Chunk::AddBlock(int x, int y, int z, blockType t)
 
 void Chunk::RemoveBlock(int x, int y, int z)
 {
-	blocks[x][y][z] = blockType::Air;
+	blocks[x][y][z] = (char)blockType::Air;
 }
 
 Block Chunk::GetBlock(int x, int y, int z) const
@@ -55,7 +55,7 @@ Block Chunk::GetBlock(int x, int y, int z) const
 		return Block(0, 0, 0, blockType::Air);
 
 
-	return Block(x,y,z,blocks[x][y][z]);
+	return Block(x,y,z,(blockType)blocks[x][y][z]);
 }
 
 Block Chunk::GetNeighbour(int x, int y, int z, side s) const
