@@ -48,9 +48,6 @@
     <ClCompile Include="src\generation\Block.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\generation\WesselPerlinNoise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\generation\Chunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,10 +60,10 @@
     <ClCompile Include="src\generation\ChunkManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\generation\Tree.cpp">
+    <ClCompile Include="src\generation\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\generation\Plant.cpp">
+    <ClCompile Include="src\generation\PerlinNoise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1215,9 +1212,6 @@
     <ClInclude Include="src\generation\ChunkMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\generation\WesselPerlinNoise.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\generation\Chunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1230,10 +1224,10 @@
     <ClInclude Include="src\generation\ChunkManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\generation\Tree.h">
+    <ClInclude Include="src\generation\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\generation\Plant.h">
+    <ClInclude Include="src\generation\PerlinNoise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -67,10 +67,7 @@ glm::vec2 typeToTex(side s, blockType t) {
 		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
 			return glm::vec2(6, 4);
 		}
-		if (s == side::Top) {
-			return glm::vec2(5, 4);
-		}
-		if (s == side::Bottom) {
+		if (s == side::Top || s == side::Bottom) {
 			return glm::vec2(7, 4);
 		}
 	}

@@ -1,4 +1,4 @@
-#include "WesselPerlinNoise.h"
+#include "PerlinNoise.h"
 
 /*
 *DISCLAIMER*
@@ -8,8 +8,7 @@ https://mrl.nyu.edu/~perlin/noise/
 I just obliterated the z axis, because 2d perlin noise was good enough for our project.
 */
 
-WesselPerlinNoise::WesselPerlinNoise() {
-	//permutation	
+PerlinNoise::PerlinNoise() {
 	const int permutation[] = {
 	151,160,137,91,90,15,
 	131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -26,14 +25,14 @@ WesselPerlinNoise::WesselPerlinNoise() {
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
 
-	//double permutation to avoid overflow
+	//double permutation to avoid buffer overflowing
 	perm = new int[512];
 	for (int i = 0; i < 512; ++i) {
 		perm[i] = permutation[i % 256];
 	}
 }
 
-double WesselPerlinNoise::noise(float x, float y) {
+double PerlinNoise::noise(float x, float y) {
 	int X = (int)std::floor(x) % 256;
 	int Y = (int)std::floor(y) % 256;
 	x -= std::floor(x);
@@ -45,7 +44,7 @@ double WesselPerlinNoise::noise(float x, float y) {
 	return lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
 }
 
-double WesselPerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
+double PerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
 	double amp = 1.0;
 	double freq = 1.0;
 	double res = 0.0;
@@ -58,19 +57,19 @@ double WesselPerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
 	return std::min(1.0, std::max((res + 1.0) * 0.5, 0.0));
 }
 
-float WesselPerlinNoise::fade(float t) {
+float PerlinNoise::fade(float t) {
 	return t * t * t * (t * (t * 6 - 15) + 10);
 }
 
-float WesselPerlinNoise::lerp(float t, float a, float b) {
+float PerlinNoise::lerp(float t, float a, float b) {
 	return a + t * (b - a);
 }
 
-float WesselPerlinNoise::grad(int hash, float x, float y) {
+float PerlinNoise::grad(int hash, float x, float y) {
 	//for 2d you can just convert x and y straight up instead of calculating gradient directions
 	return ((hash & 1) == 0 ? x : -x) + ((hash & 2) == 0 ? y : -y);
 }
 
-WesselPerlinNoise::~WesselPerlinNoise() {
+PerlinNoise::~PerlinNoise() {
 	delete perm;
 }

@@ -150,13 +150,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\generation\Plant.cpp" />
     <ClCompile Include="src\generation\Block.cpp" />
     <ClCompile Include="src\generation\Chunk.cpp" />
     <ClCompile Include="src\generation\ChunkGenerator.cpp" />
     <ClCompile Include="src\generation\ChunkManager.cpp" />
     <ClCompile Include="src\generation\ChunkMeshGenerator.cpp" />
-    <ClCompile Include="src\generation\WesselPerlinNoise.cpp" />
+    <ClCompile Include="src\generation\PerlinNoise.cpp" />
     <ClCompile Include="src\rendering\Camera.cpp" />
     <ClCompile Include="src\rendering\IndexBuffer.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -167,7 +166,7 @@
     <ClCompile Include="src\rendering\VertexArray.cpp" />
     <ClCompile Include="src\rendering\VertexBuffer.cpp" />
     <ClCompile Include="src\generation\WorldGeneration.cpp" />
-    <ClCompile Include="src\generation\Tree.cpp" />
+    <ClCompile Include="src\generation\Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Sprite.shader" />
@@ -303,14 +302,13 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\generation\Plant.h" />
     <ClInclude Include="src\generation\Block.h" />
     <ClInclude Include="src\generation\Chunk.h" />
     <ClInclude Include="src\generation\ChunkGenerator.h" />
     <ClInclude Include="src\generation\ChunkManager.h" />
     <ClInclude Include="src\generation\ChunkMesh.h" />
     <ClInclude Include="src\generation\ChunkMeshGenerator.h" />
-    <ClInclude Include="src\generation\WesselPerlinNoise.h" />
+    <ClInclude Include="src\generation\PerlinNoise.h" />
     <ClInclude Include="src\rendering\Camera.h" />
     <ClInclude Include="src\rendering\ErrorHandling.h" />
     <ClInclude Include="src\rendering\IndexBuffer.h" />
@@ -560,7 +558,7 @@
     <ClInclude Include="src\rendering\VertexBuffer.h" />
     <ClInclude Include="src\rendering\VertexBufferLayout.h" />
     <ClInclude Include="src\generation\WorldGeneration.h" />
-    <ClInclude Include="src\generation\Tree.h" />
+    <ClInclude Include="src\generation\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\p.png" />
