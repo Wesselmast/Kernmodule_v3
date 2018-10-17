@@ -152,7 +152,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 		cameraPos.x += velocity.x;
 
 	//Y
-	if (!CheckAll(glm::vec3(cameraPos.x, cameraPos.y + nextPos.y, cameraPos.z)) && (blockRay(cameraPos, cameraPos + nextPos.y).getType() == blockType::Air || blockRay(cameraPos, cameraPos + nextPos.y).getType() == blockType::Water)) {
+	if (!CheckAll(glm::vec3(cameraPos.x, cameraPos.y + nextPos.y, cameraPos.z)) && (blockRay(cameraPos, cameraPos + nextPos.y).getType() == blockType::Air)) {
 
 		cameraPos.y += yVelocity * deltaTime;
 	}
@@ -414,7 +414,7 @@ bool Camera::CheckCollision(glm::vec3 pos)
 	Block b = m->GetBlock(gridPos.x, gridPos.y, gridPos.z);
 	int type = b.getType();
 
-	if (b.getType() == blockType::Air || b.getType() == blockType::Water) {
+	if (b.getType() == blockType::Air) {
 			
 			return false;	
 			
