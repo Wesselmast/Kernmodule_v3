@@ -30,7 +30,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			}
 
 			//top layer section
-			int y = heights(x, z);
+			int y = calculateHeights(x, z);
 			chunk->AddBlock(x, y, z, topType);
 
 			//middle layer section
@@ -64,20 +64,10 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 	return chunk;
 }
 
-int ChunkGenerator::heights(int a, int b) {
-	int* heightMap = new int[size * size];
-	for (int x = 0; x < size; ++x) {
-		for (int z = 0; z < size; ++z) {
-			heightMap[x + z * size] = std::round(calculateHeights(x, z));
-		}
-	}
-	return heightMap[a + b * size];
-}	
-
-double ChunkGenerator::calculateHeights(int a, int b) {
+int ChunkGenerator::calculateHeights(int a, int b) {
 	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)(height - airLayer) / heightScale);
 	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)(height - airLayer) / heightScale);
-	return pn->octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer);
+	return std::round(pn->octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer));
 }
 
 bool ChunkGenerator::isNextToEntity(Chunk* chunk, int xPos, int yPos, int zPos) {

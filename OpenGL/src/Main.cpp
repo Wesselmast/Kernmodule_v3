@@ -145,7 +145,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale | biome interval*/
-			w.generateWorld(5, 30, 100, 3, 3.5f, 25);
+			w.generateWorld(5, 30, 200, 3, 3.5f, 25);
 			cam.SetManager(&manager);
 
 
