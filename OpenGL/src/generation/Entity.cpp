@@ -2,28 +2,25 @@
 
 
 
-Entity::Entity() {
+Entity::Entity(Chunk* chunk) : chunk(chunk) {
 }
 
-void Entity::generateEntity(int x, int y, int z, Chunk* chunk, entityType type) {
+void Entity::generateEntity(int x, int y, int z, entityType type) {
 	xPos = x;
 	yPos = y;
 	zPos = z;
 
-	if (type == Oak_Tree) spawnOak(chunk);
-	else if (type == Birch_Tree) spawnBirch(chunk);
-	else if (type == Cactus_Plant) spawnCactus(chunk);
+	if (type == Oak_Tree) spawnOak();
+	else if (type == Birch_Tree) spawnBirch();
+	else if (type == Cactus_Plant) spawnCactus();
 }
 
 //macro for self checking in nested for loops
 #define IS_SELF x == 0 && y == 0 && z == 0
 
-void Entity::spawnOak(Chunk* chunk) {
-	int logPos = 0;
-	int treeLength = rand() % 3 + 4;
+void Entity::spawnOak() {
 	for (int i = 1; i < treeLength + 1; i++) {
-		chunk->AddBlock(xPos, logPos, zPos, blockType::OakLog);
-		logPos = yPos + i;
+		chunk->AddBlock(xPos, yPos + i, zPos, blockType::OakLog);
 	}
 	for (int x = -2; x < 3; ++x) {
 		for (int y = 0; y < 2; y++) {
@@ -42,12 +39,9 @@ void Entity::spawnOak(Chunk* chunk) {
 	}
 }
 
-void Entity::spawnBirch(Chunk* chunk) {
-	int logPos = 0;
-	int treeLength = rand() % 3 + 4;
+void Entity::spawnBirch() {
 	for (int i = 1; i < treeLength + 1; i++) {
-		chunk->AddBlock(xPos, logPos, zPos, blockType::BirchLog);
-		logPos = yPos + i;
+		chunk->AddBlock(xPos, yPos + i, zPos, blockType::BirchLog);
 	}
 	for (int x = -2; x < 3; ++x) {
 		for (int y = 0; y < 2; y++) {
@@ -66,7 +60,7 @@ void Entity::spawnBirch(Chunk* chunk) {
 		}
 	}
 }
-void Entity::spawnCactus(Chunk * chunk) {
+void Entity::spawnCactus() {
 	for (int i = 0; i < cactusLength; i++) {
 		chunk->AddBlock(xPos, yPos + i, zPos, blockType::Cactus);
 	}

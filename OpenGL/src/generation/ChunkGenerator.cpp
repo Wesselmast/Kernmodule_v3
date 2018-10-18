@@ -9,7 +9,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
-	std::unique_ptr<Entity> entity = std::make_unique<Entity>();
+	std::unique_ptr<Entity> entity = std::make_unique<Entity>(chunk);
 
 	if (heightScale < 1.0f) heightScale = 1.0f;
 
@@ -30,7 +30,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			}
 
 			//top layer section
-			int y = calculateHeights(x, z);
+			const int y = calculateHeights(x, z);
 			chunk->AddBlock(x, y, z, topType);
 
 			//middle layer section
@@ -47,10 +47,10 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 
 			//entity spawning section
 			if (rand() % density == 1 && y > waterPlane && !isNextToEntity(chunk, x, y ,z)) {
-				if (type == Desert) entity->generateEntity(x, y, z, chunk, entityType::Cactus_Plant);
+				if (type == Desert) entity->generateEntity(x, y, z, entityType::Cactus_Plant);
 				if (type == Forest && topType == Grass) {
-					if (rand() % 2 == 1) entity->generateEntity(x, y, z, chunk, entityType::Oak_Tree);
-					else entity->generateEntity(x, y, z, chunk, entityType::Birch_Tree);
+					if (rand() % 2 == 1) entity->generateEntity(x, y, z, entityType::Oak_Tree);
+					else entity->generateEntity(x, y, z, entityType::Birch_Tree);
 				}
 			}
 

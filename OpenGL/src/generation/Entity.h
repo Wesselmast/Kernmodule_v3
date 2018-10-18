@@ -10,16 +10,18 @@ enum entityType {
 class Entity {
 private: //section for constants
 	const int cactusLength = 3;
+	const int treeLength = rand() % 3 + 4;
 private: //section for private variables
 	int xPos, yPos, zPos;
+	Chunk* chunk;
 private: //section for private functions
-	void spawnOak(Chunk* chunk);
-	void spawnBirch(Chunk* chunk);
-	void spawnCactus(Chunk* chunk);
+	void spawnOak();
+	void spawnBirch();
+	void spawnCactus();
 	bool ifCorner(int a, int b, int t);
 public: //section for public functions
-	Entity();
-	void generateEntity(int x, int y, int z, Chunk* chunk, entityType type);
+	Entity(Chunk* chunk);
+	void generateEntity(int x, int y, int z, entityType type);
 	~Entity();
 };
 
