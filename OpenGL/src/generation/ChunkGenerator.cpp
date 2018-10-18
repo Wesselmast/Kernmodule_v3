@@ -10,12 +10,14 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
 	std::unique_ptr<Entity> entity = std::make_unique<Entity>();
+	glm::vec3* middleLayer = nullptr;
 
 	if (heightScale < 1.0f) heightScale = 1.0f;
 
 	this->heightScale = heightScale;
 	this->xPos = xPos;
 	this->zPos = zPos;
+
 	waterPlane = height / 5;
 
 	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
@@ -25,31 +27,31 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 		for (int z = 0; z < size; ++z) {
 			//make a vector3 containing the top layer positions (with pnoise heightmap)
 			//the other blocks are spawned below/above the top layer
-			topLayer = new glm::vec3(x, heights(x, z), z);
+			glm::vec3 topLayer(x, heights(x, z), z);
 			for (int i = -airLayer; i < 1; ++i) {
-				chunk->AddBlock(topLayer->x, height + i, topLayer->z, blockType::Air);
+				chunk->AddBlock(topLayer.x, height + i, topLayer.z, blockType::Air);
 			}
-			chunk->AddBlock(topLayer->x, topLayer->y, topLayer->z, topType);
+			chunk->AddBlock(topLayer.x, topLayer.y, topLayer.z, topType);
 			for (int i = 1; i < middleDepth + 1; ++i) {
-				middleLayer = new glm::vec3(topLayer->x, topLayer->y - i, topLayer->z);
+				middleLayer = new glm::vec3(topLayer.x, topLayer.y - i, topLayer.z);
 				chunk->AddBlock(middleLayer->x, middleLayer->y, middleLayer->z, middleType);
 			}
 			for (int i = 1; i < middleLayer->y + 1; ++i) {
-				bottomLayer = new glm::vec3(middleLayer->x, middleLayer->y - i, middleLayer->z);
-				chunk->AddBlock(bottomLayer->x, bottomLayer->y, bottomLayer->z, bottomType);
+				chunk->AddBlock(middleLayer->x, middleLayer->y - i, middleLayer->z, bottomType);
 			}
 			//have a chance at an entity when it's not under water and next to another entity
-			if (rand() % density == 1 && topLayer->y > waterPlane && !isNextToEntity(chunk, topLayer)) {
-				if (type == Desert) entity->generateEntity(topLayer, chunk, entityType::Cactus_Plant);
+			if (rand() % density == 1 && topLayer.y > waterPlane && !isNextToEntity(chunk, &topLayer)) {
+				if (type == Desert) entity->generateEntity(&topLayer, chunk, entityType::Cactus_Plant);
 				if (type == Forest && topType == Grass) {
-					if (rand() % 2 == 1) entity->generateEntity(topLayer, chunk, entityType::Oak_Tree);
-					else entity->generateEntity(topLayer, chunk, entityType::Birch_Tree);
+					if (rand() % 2 == 1) entity->generateEntity(&topLayer, chunk, entityType::Oak_Tree);
+					else entity->generateEntity(&topLayer, chunk, entityType::Birch_Tree);
 				}
 			}
 			chunk->AddBlock(x, -1, z, blockType::Bedrock);
 			if (chunk->GetBlock(x, waterPlane, z).getType() == Air) {
 				chunk->AddBlock(x, waterPlane, z, blockType::Water);
 			}
+			delete middleLayer;
 		}
 	}
 	return chunk;
@@ -89,7 +91,4 @@ bool ChunkGenerator::isNextToEntity(Chunk* chunk, glm::vec3* topLayer) {
 }
 
 ChunkGenerator::~ChunkGenerator() {
-	delete topLayer;	
-	delete middleLayer;
-	delete bottomLayer;
 }

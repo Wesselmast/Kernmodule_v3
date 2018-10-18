@@ -12,9 +12,6 @@ private: //section for constants
 	const int cactusLength = 3;
 private: //section for private variables
 	int xPos, yPos, zPos;
-	int treeLength;
-	glm::vec3* logPos;
-	glm::vec3* leafPos;
 private: //section for private functions
 	void spawnOak(Chunk* chunk);
 	void spawnBirch(Chunk* chunk);
