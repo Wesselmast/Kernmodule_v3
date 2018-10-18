@@ -46,7 +46,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			}
 
 			//entity spawning section
-			if (rand() % density == 1 && y > waterPlane && !isNextToEntity(chunk, x, y ,z)) {
+			if (rand() % density == 1 && y > waterPlane && !isNextToEntity(chunk, x, y, z)) {
 				if (type == Desert) entity->generateEntity(x, y, z, entityType::Cactus_Plant);
 				if (type == Forest && topType == Grass) {
 					if (rand() % 2 == 1) entity->generateEntity(x, y, z, entityType::Oak_Tree);

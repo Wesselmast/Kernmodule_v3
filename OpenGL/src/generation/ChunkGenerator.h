@@ -3,7 +3,6 @@
 #include "PerlinNoise.h"
 #include "Chunk.h"
 #include "Entity.h"
-#include "glm/gtc/matrix_transform.hpp"
 
 enum biome {
 	Forest, Desert
