@@ -19,7 +19,7 @@ private: //section for private functions
 	bool ifCorner(int a, int b, int t);
 public: //section for public functions
 	Entity();
-	void generateEntity(glm::vec3* topLayer, Chunk* chunk, entityType type);
+	void generateEntity(int x, int y, int z, Chunk* chunk, entityType type);
 	~Entity();
 };
 
