@@ -27,7 +27,7 @@
 #include "Chunk.h"
 #include "ChunkManager.h"
 
-const bool FULLSCREEN = false;
+const bool FULLSCREEN = true;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -36,16 +36,18 @@ bool endApp = false;
 bool firstFrame = true;
 
 
-int SCREENWIDTH = FULLSCREEN ? 1920 : 800;
-int SCREENHEIGHT = FULLSCREEN ? 1080 : 800; 
+int SCREENWIDTH = FULLSCREEN ? 1920 : 854;
+int SCREENHEIGHT = FULLSCREEN ? 1080 : 480; 
 
-const glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / SCREENHEIGHT, 0.1f, 100.0f);
+glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / (float)SCREENHEIGHT, 0.1f, 100.0f);
+glm::mat4 uiProj = glm::ortho(0.0f, 854.0f, 0.0f, 480.0f);
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 	SCREENWIDTH = width;
 	SCREENHEIGHT = height;
+	proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / SCREENHEIGHT, 0.1f, 100.0f);
 }
 
 void processInput(GLFWwindow *window)
@@ -54,6 +56,8 @@ void processInput(GLFWwindow *window)
 			endApp = true;
 	}
 }
+
+
 
 //void LoadChunks(WorldGeneration* w) {
 //	w->updateChunks();
@@ -130,26 +134,9 @@ int main(void)
 		//RENDERINGSCOPE------------------------------------------------------------------------------------------------------
 		{
 
-			float quad[] = {
-				-0.01f, -0.01f, 0, 0,
-				-0.01f,  0.01f, 1, 0,
-				 0.01f,  0.01f, 1, 1,
-				 0.01f,  0.01f, 1, 1,
-				 0.01f, -0.01f, 0, 1,
-				-0.01f, -0.01f, 0, 0,
-			};
-
-			VertexBuffer vb(quad, 6 * 4 * sizeof(float));
-			VertexBufferLayout layout;
-			layout.Push<float>(2);
-			layout.Push<float>(2);
-			VertexArray va;
-			va.AddBuffer(vb, layout);
-
-
 			//--------------------------------------------------------------------------------------------------------------------
 
-			Renderer renderer(proj, &view);
+			Renderer renderer(proj, &view, uiProj, SCREENHEIGHT, SCREENWIDTH);
 			Camera cam(window);
 			
 			
@@ -191,7 +178,8 @@ int main(void)
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 				manager.DisplayAllChunks();
-				renderer.DrawUi(va);
+				renderer.DrawUi(glm::vec2(427,240),glm::vec2(5,5));
+				renderer.DrawUi(glm::vec2(247, 0), glm::vec2(360,40));
 
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);

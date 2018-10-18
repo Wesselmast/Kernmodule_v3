@@ -1,5 +1,17 @@
 #include "Renderer.h"
 #include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
+
+
+
+float quad[] = {
+	 0,	0,	0, 0,
+	 0,	1,	1, 0,
+	 1,	1,	1, 1,
+	 1,	1,	1, 1,
+	 1,	0,	0, 1,
+	 0,	0,	0, 0,
+	};
 
 void GLClearError() {
 	while (glGetError() != GL_NO_ERROR);
@@ -14,12 +26,19 @@ bool GLLogCall(const char* function, const char* file, int line) {
 }
 
 
-Renderer::Renderer(const glm::mat4& proj, glm::mat4* view) : sh("res/shaders/Sprite.shader"), terrain("res/textures/CANDEMAN.png"), ui("res/shaders/Ui.shader")
+Renderer::Renderer(glm::mat4& proj, glm::mat4* view, glm::mat4& uiProj, int& screenHeight, int& screenWith) : sh("res/shaders/Sprite.shader"), terrain("res/textures/CANDEMAN.png"), ui("res/shaders/Ui.shader"), proj(proj), uiProj(uiProj), screenHeight(screenHeight),screenWith(screenWith)
 {
 	sh.Bind();
 	terrain.Bind();
 	this->proj = proj;
 	this->view = view;
+
+	static VertexBuffer vb(quad, 6 * 4 * sizeof(float));
+	static VertexBufferLayout lay;
+	lay.Push<float>(2);
+	lay.Push<float>(2);
+	
+	quadMesh.AddBuffer(vb, lay);
 }
 
 Renderer::~Renderer()
@@ -65,9 +84,18 @@ void Renderer::Draw(ChunkMesh* mesh)
 	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size() / 8);
 }
 
-void Renderer::DrawUi(const VertexArray & va)
+void Renderer::DrawUi(glm::vec2 Pos, glm::vec2 Size)
 {
+
+	glm::mat4 transform(1.0f);
+	transform = glm::translate(glm::mat4(1.0f), glm::vec3(Pos.x, Pos.y, 0.0f));
+	transform *= glm::scale(glm::mat4(1.0f), glm::vec3(Size.x, Size.y, 0.0f));
+	
+	
+
+	glm::mat4 mvp = glm::scale(glm::mat4(1.0f), glm::vec3(((float)screenHeight * 854)/((float)screenWith * 480), 1.0f, 1.0f)) * uiProj * transform;
 	ui.Bind();
-	va.Bind();
+	ui.SetUniformMat4f("u_MP", mvp);
+	quadMesh.Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }

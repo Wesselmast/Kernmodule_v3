@@ -2,6 +2,8 @@
 
 #include <GL/glew.h>
 #include "VertexArray.h"
+#include "VertexBuffer.h"
+#include "VertexBufferLayout.h"
 #include "IndexBuffer.h"
 #include "Shader.h"
 
@@ -21,19 +23,23 @@ bool GLLogCall(const char* function, const char* file, int line);
 class Renderer {
 	
 private:
-	glm::mat4 proj;
+	glm::mat4& proj;
 	glm::mat4* view;
+	glm::mat4& uiProj;
+	int& screenHeight;
+	int& screenWith;
 	Texture terrain;
 	Shader sh;
 	Shader ui;
+	VertexArray quadMesh;
 
 
 public:
-	Renderer(const glm::mat4& proj, glm::mat4* view);
+	Renderer(glm::mat4& proj, glm::mat4* view, glm::mat4& uiProj, int& screenHeight, int& screenWith);
 	~Renderer();
 	void Draw(const VertexArray& va, const IndexBuffer& ib, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
 	void Draw(ChunkMesh* chunk);
-	void DrawUi(const VertexArray& va);
+	void DrawUi(glm::vec2 Pos, glm::vec2 Size);
 };
