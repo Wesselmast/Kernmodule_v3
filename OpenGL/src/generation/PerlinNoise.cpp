@@ -25,10 +25,9 @@ PerlinNoise::PerlinNoise() {
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
 
+	//double permutation to avoid buffer overflow
 	perm = new int[512];
-	for (int i = 0; i < 512; i++) {
-		perm[i] = initPerm[i % 256];
-	}
+	for (int i = 0; i < 512; i++) perm[i] = initPerm[i % 256];
 }
 
 double PerlinNoise::noise(float x, float y) {
