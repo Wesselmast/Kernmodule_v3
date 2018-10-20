@@ -9,7 +9,7 @@ I just obliterated the z axis, because 2d perlin noise was good enough for our p
 */
 
 PerlinNoise::PerlinNoise() {
-	perm = new int[256] {
+	int initPerm[] = {
 	151,160,137,91,90,15,
 	131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
 	190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,
@@ -24,6 +24,10 @@ PerlinNoise::PerlinNoise() {
 	49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
+
+	//double permutation to avoid buffer overflow
+	perm = new int[512];
+	for (int i = 0; i < 512; i++) perm[i] = initPerm[i % 256];
 }
 
 double PerlinNoise::noise(float x, float y) {

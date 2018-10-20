@@ -5,19 +5,17 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
 	pn = std::make_unique<PerlinNoise>();
+	waterPlane = this->height / 5;
+	if (heightScale < 1.0f) heightScale = 1.0f;
 }
 
 Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
 	std::unique_ptr<Entity> entity = std::make_unique<Entity>(chunk);
 
-	if (heightScale < 1.0f) heightScale = 1.0f;
-
 	this->heightScale = heightScale;
 	this->xPos = xPos;
 	this->zPos = zPos;
-
-	waterPlane = height / 5;
 
 	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
