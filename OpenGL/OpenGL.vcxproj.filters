@@ -66,6 +66,12 @@
     <ClCompile Include="src\generation\PerlinNoise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ui\UiElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\UiRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1230,6 +1236,12 @@
     <ClInclude Include="src\generation\PerlinNoise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\ui\UiRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\UiElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\p.png">
@@ -1239,6 +1251,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\terrain.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\CANDEMAN.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\CandyTerrain.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Crossair.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\Slot.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

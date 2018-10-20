@@ -8,6 +8,9 @@
 
 const float t = 1.0f / 16.0f;
 
+
+
+
 void Addplane(std::vector<float>* vertexBuffer, side s, int x, int y, int z, int texX, int texY) {
 
 	float ux = x;
@@ -107,26 +110,36 @@ void AddBlock(std::vector<float>* vertexBuffer, Block b) {
 	}
 }
 
+ChunkMeshGenerator::ChunkMeshGenerator()
+{
+	layout = new VertexBufferLayout;
+	
+	layout->Push<float>(3);
+	layout->Push<float>(3);
+	layout->Push<float>(2);
+}
+
 ChunkMesh* ChunkMeshGenerator::generateMesh(const Chunk& chunk)
 {
 
 	ChunkMesh* mesh = new ChunkMesh;
-
+	
 	mesh->va = new VertexArray;
 	mesh->buffer = new std::vector<float>;
 
-	VertexBufferLayout* layout = new VertexBufferLayout;
-
-
-	for (int x = 0; x < chunk.GetSize(); x++) {
-		for (int y = 0; y < chunk.GetHeight(); y++) {
-			for (int z = 0; z < chunk.GetSize(); z++) {
-				Block b = chunk.GetBlock(x,y,z);
-					if (b.getType() != blockType::Air) {
+	int height = chunk.GetHeight();
+	int size = chunk.GetSize();
+	
+	for (int x = 0; x < size; x++) {
+		for (int y = 0; y < height; y++) {
+			for (int z = 0; z < size; z++) {
+				 blockType b = chunk.GetBlockType(x,y,z);
+					if (b != blockType::Air) {
 						for (int i = 0; i < 6; i++) {
-							Block temp = chunk.GetNeighbour(x, y, z, (side)i);
-							if ((temp.getType() == blockType::Air) || ((temp.getXPos() == b.getXPos()) && (temp.getYPos() == b.getYPos()) && (temp.getZPos() == b.getZPos()))) {
-								Addplane(mesh->buffer, (side)i, x + chunk.GetXPos(), y, z + chunk.GetYPos(), b.Planes[(side)i].xTex, b.Planes[(side)i].yTex);
+							blockType temp = chunk.GetNeighbourType(x, y, z, (side)i);
+							if (temp == blockType::Air) {
+								Block bl = chunk.GetBlock(x, y, z);
+								Addplane(mesh->buffer, (side)i, x + chunk.GetXPos(), y, z + chunk.GetYPos(), bl.Planes[(side)i].xTex, bl.Planes[(side)i].yTex);
 							}
 						}
 					
@@ -134,18 +147,14 @@ ChunkMesh* ChunkMeshGenerator::generateMesh(const Chunk& chunk)
 			}
 		}
 	}
+	
 
-	std::vector<float>* v = mesh->buffer;
 
-	if (v->size() > 0) {
-		VertexBuffer* vb = new VertexBuffer(&((*v)[0]), v->size() * sizeof(float));
+	VertexBuffer* vb = new VertexBuffer(&((*mesh->buffer)[0]), mesh->buffer->size() * sizeof(float));
 
-		layout->Push<float>(3);
-		layout->Push<float>(3);
-		layout->Push<float>(2);
-		mesh->va->AddBuffer(*vb, *layout);
-	}
-
+	mesh->va->AddBuffer(*vb, *layout);
+	
+	
 	return mesh;
 }
 

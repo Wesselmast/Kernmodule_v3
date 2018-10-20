@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)OpenGL\include\GLFW;$(SolutionDir)OpenGL\include;src/vendor;src/rendering;src/generation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)OpenGL\include\GLFW;$(SolutionDir)OpenGL\include;src/vendor;src/rendering;src/generation;src/ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -121,7 +121,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)OpenGL\include\GLFW;$(SolutionDir)OpenGL\include;src/vendor;src/rendering;src/generation;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)OpenGL\include\GLFW;$(SolutionDir)OpenGL\include;src/vendor;src/rendering;src/generation;src/ui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLM_ENABLE_EXPERIMENTAL;GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -162,6 +162,8 @@
     <ClCompile Include="src\rendering\Renderer.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
     <ClCompile Include="src\rendering\Texture.cpp" />
+    <ClCompile Include="src\ui\UiElement.cpp" />
+    <ClCompile Include="src\ui\UiRenderer.cpp" />
     <ClCompile Include="src\vendor\stb_image.cpp" />
     <ClCompile Include="src\rendering\VertexArray.cpp" />
     <ClCompile Include="src\rendering\VertexBuffer.cpp" />
@@ -315,6 +317,8 @@
     <ClInclude Include="src\rendering\Renderer.h" />
     <ClInclude Include="src\rendering\Shader.h" />
     <ClInclude Include="src\rendering\Texture.h" />
+    <ClInclude Include="src\ui\UiElement.h" />
+    <ClInclude Include="src\ui\UiRenderer.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
@@ -561,8 +565,12 @@
     <ClInclude Include="src\generation\Entity.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\CANDEMAN.png" />
+    <Image Include="res\textures\CandyTerrain.png" />
+    <Image Include="res\textures\Crossair.png" />
     <Image Include="res\textures\p.png" />
     <Image Include="res\textures\pack.png" />
+    <Image Include="res\textures\Slot.png" />
     <Image Include="res\textures\terrain.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

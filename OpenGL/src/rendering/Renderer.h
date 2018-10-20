@@ -30,8 +30,8 @@ private:
 	int& screenWith;
 	Texture terrain;
 	Shader sh;
-	Shader ui;
-	VertexArray quadMesh;
+
+
 
 
 public:
@@ -39,7 +39,7 @@ public:
 	~Renderer();
 	void Draw(const VertexArray& va, const IndexBuffer& ib, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
-	void Draw(const VertexArray & va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
+	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
 	void Draw(ChunkMesh* chunk);
-	void DrawUi(glm::vec2 Pos, glm::vec2 Size);
+	void DrawUi(VertexArray& va,Shader& ui, glm::vec2 Pos, glm::vec2 Size, Texture& tex);
 };

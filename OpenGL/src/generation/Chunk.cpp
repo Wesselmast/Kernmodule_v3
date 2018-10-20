@@ -80,3 +80,49 @@ Block Chunk::GetNeighbour(int x, int y, int z, side s) const
 	}
 	return Block(0, 0, 0, blockType::Air);
 }
+
+blockType Chunk::GetBlockType(int x, int y, int z) const
+{
+	if (size == 0 || height == 0)
+		return blockType::Air;
+
+	if (x < 0)
+		return blockType::Air;
+	if (y < 0)
+		return blockType::Air;
+	if (z < 0)
+		return blockType::Air;
+	if (x > size - 1)
+		return blockType::Air;
+	if (y > height - 1)
+		return blockType::Air;
+	if (z > size - 1)
+		return blockType::Air;
+
+
+	return (blockType)blocks[x][y][z];
+}
+
+blockType Chunk::GetNeighbourType(int x, int y, int z, side s) const
+{
+	if (s == side::Back) {
+		return GetBlockType(x, y, z - 1);
+	}
+	if (s == side::Bottom) {
+		return GetBlockType(x, y - 1, z);
+	}
+	if (s == side::Front) {
+		return GetBlockType(x, y, z + 1);
+	}
+	if (s == side::Left) {
+		return GetBlockType(x - 1, y, z);
+	}
+	if (s == side::Right) {
+		return GetBlockType(x + 1, y, z);
+	}
+	if (s == side::Top) {
+		return GetBlockType(x, y + 1, z);
+	}
+	return blockType::Air;
+}
+

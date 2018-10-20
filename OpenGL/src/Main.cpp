@@ -26,8 +26,9 @@
 
 #include "Chunk.h"
 #include "ChunkManager.h"
+#include "UiRenderer.h"
 
-const bool FULLSCREEN = true;
+const bool FULLSCREEN = false;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
@@ -36,18 +37,18 @@ bool endApp = false;
 bool firstFrame = true;
 
 
-int SCREENWIDTH = FULLSCREEN ? 1920 : 854;
-int SCREENHEIGHT = FULLSCREEN ? 1080 : 480; 
+int SCREENWIDTH = FULLSCREEN ? 1920 : 896;
+int SCREENHEIGHT = FULLSCREEN ? 1080 : 504;
 
-glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / (float)SCREENHEIGHT, 0.1f, 100.0f);
-glm::mat4 uiProj = glm::ortho(0.0f, 854.0f, 0.0f, 480.0f);
+glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / (float)SCREENHEIGHT, 0.1f, 300.0f);
+glm::mat4 uiProj = glm::ortho(0.0f, 896.0f, 0.0f, 504.0f);
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 	SCREENWIDTH = width;
 	SCREENHEIGHT = height;
-	proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / SCREENHEIGHT, 0.1f, 100.0f);
+	proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / SCREENHEIGHT, 0.1f, 300.0f);
 }
 
 void processInput(GLFWwindow *window)
@@ -105,7 +106,7 @@ int main(void)
 
 		/* Make the window's context current */
 		glfwMakeContextCurrent(window);
-		glfwSwapInterval(1);
+		glfwSwapInterval(0);
 
 		if (glewInit() != GLEW_OK) {
 			std::cout << "Error!" << std::endl;
@@ -137,7 +138,19 @@ int main(void)
 			//--------------------------------------------------------------------------------------------------------------------
 
 			Renderer renderer(proj, &view, uiProj, SCREENHEIGHT, SCREENWIDTH);
+			UiRenderer UiRenderer(renderer);
 			Camera cam(window);
+			
+
+			UiElement crosair(glm::vec2(896/2, 504/2), glm::vec2(16,16), "res/textures/Crossair.png");
+
+			int s = (896 - (9 * 40))/2 + 20;
+			std::vector<UiElement*> el;
+
+			for (size_t i = 0; i < 9; i++)
+			{
+				el.push_back( new UiElement(glm::vec2(s + 37 * i, 20), glm::vec2(40, 40), "res/textures/Slot.png"));
+			}
 			
 			
 			ChunkMeshGenerator mg;
@@ -145,7 +158,7 @@ int main(void)
 			WorldGeneration w(&manager, &cam);
 
 			/*size | height | amount of chunks | amount of perlin octaves | height scale | biome interval*/
-			w.generateWorld(5, 30, 150, 3, 3.5f, 25);
+			w.generateWorld(10, 60, 30*30, 3, 5.5f, 5);
 			cam.SetManager(&manager);
 
 
@@ -163,6 +176,8 @@ int main(void)
 				else {
 					firstFrame = false;
 				}
+
+				//std::cout << 1.0f/deltaTime << std::endl;
 				
 				lastFrame = currentFrame;
 
@@ -178,8 +193,17 @@ int main(void)
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 				manager.DisplayAllChunks();
-				renderer.DrawUi(glm::vec2(427,240),glm::vec2(5,5));
-				renderer.DrawUi(glm::vec2(247, 0), glm::vec2(360,40));
+
+
+				
+				
+				UiRenderer.RenderElement(crosair);
+
+				for (size_t i = 0; i < 9; i++)
+				{
+					UiRenderer.RenderElement(*el[i]);
+				}
+				
 
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);

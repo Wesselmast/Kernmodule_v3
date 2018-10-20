@@ -21,4 +21,7 @@ public:
 	int GetYPos() const { return zPos; }
 	Block GetBlock(int x, int y, int z) const;
 	Block GetNeighbour(int x, int y, int z, side s) const;
+
+	blockType GetBlockType(int x, int y, int z) const;
+	blockType GetNeighbourType(int x, int y, int z, side s) const;
 };

@@ -100,7 +100,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
 
 
-Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f, 55.0f, 0.0f), currentChunk(nullptr)
+Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f,100.0f, 0.0f), currentChunk(nullptr)
 {
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);

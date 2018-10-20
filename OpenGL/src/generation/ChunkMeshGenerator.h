@@ -6,9 +6,12 @@
 
 class ChunkMeshGenerator {
 
-
+private:
+	VertexBufferLayout* layout;
 
 public:
+	ChunkMeshGenerator();
 	ChunkMesh* generateMesh(const Chunk& chunk);
+
 	
 };
