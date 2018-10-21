@@ -4,6 +4,7 @@
 #include "ChunkMesh.h"
 #include "Chunk.h"
 
+
 class ChunkMeshGenerator {
 
 private:

@@ -95,7 +95,15 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
+
 	mousewheelPos += yoffset;
+
+	if (mousewheelPos > 9) {
+		mousewheelPos = 0;
+	}
+	if (mousewheelPos < 0) {
+		mousewheelPos = 9;
+	}
 }
 
 
@@ -133,7 +141,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 	//righButton = false;
 	processInput(window, deltaTime);
 	selectedBlock = std::abs((int)std::round(mousewheelPos) % 9);
-	std::cout << mousewheelPos << "    " << selectedBlock << std::endl;
+	//std::cout << mousewheelPos << "    " << selectedBlock << std::endl;
 
 	glm::vec3 direction(1.0f);
 	direction.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
