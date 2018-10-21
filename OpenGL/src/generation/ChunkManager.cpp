@@ -51,6 +51,57 @@ Block ChunkManager::GetBlock(float x, float y, float z)
 	return c->GetBlock(x,y,z);
 }
 
+blockType ChunkManager::GetBlockType(float x, float y, float z)
+{
+	Chunk* c = GetChunk(x, z);
+
+	if (c == nullptr) {
+		std::cout << "Block with position(" << " x: " << x << " y: " << y << " z: " << z << ") doesn't exist" << std::endl;
+		return blockType::Air;
+	}
+
+	x -= c->GetXPos();
+	z -= c->GetYPos();
+
+
+	return c->GetBlockType(x, y, z);
+}
+
+blockType ChunkManager::GetNeighbourType(float x, float y, float z, side s)
+{
+	Chunk* c = GetChunk(x, z);
+
+	if (c == nullptr) {
+		std::cout << "Block with position(" << " x: " << x << " y: " << y << " z: " << z << ") doesn't exist" << std::endl;
+		return blockType::Air;
+	}
+
+	x -= c->GetXPos();
+	z -= c->GetYPos();
+
+
+	if (s == side::Back) {
+		return GetBlockType(x, y, z - 1);
+	}
+	if (s == side::Bottom) {
+		return GetBlockType(x, y - 1, z);
+	}
+	if (s == side::Front) {
+		return GetBlockType(x, y, z + 1);
+	}
+	if (s == side::Left) {
+		return GetBlockType(x - 1, y, z);
+	}
+	if (s == side::Right) {
+		return GetBlockType(x + 1, y, z);
+	}
+	if (s == side::Top) {
+		return GetBlockType(x, y + 1, z);
+	}
+
+	return blockType::Air;
+}
+
 void ChunkManager::RemoveBlock(float x, float y, float z)
 {
 	Chunk* chunk = GetChunk(x, z);

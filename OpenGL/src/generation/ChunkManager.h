@@ -32,6 +32,8 @@ public:
 
 	Chunk* GetChunk(float x, float z);
 	Block GetBlock(float x, float y, float z);
+	blockType GetBlockType(float x, float y, float z);
+	blockType GetNeighbourType(float x, float y, float z, side s);
 
 	void RemoveBlock(float x, float y, float z);
 	void AddBlock(float x, float y, float z,blockType type);
