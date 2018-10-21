@@ -16,21 +16,13 @@ glm::vec2 typeToTex(side s, blockType t) {
 		}
 	}
 
-	if (t == blockType::Sand) {
-		return glm::vec2(2, 1);
-	}
+	if (t == blockType::Sand) return glm::vec2(2, 1);
+	if (t == blockType::Dirt) return glm::vec2(2, 0);
+	if (t == blockType::Stone) return glm::vec2(1, 0);
+	if (t == blockType::Bedrock) return glm::vec2(1, 1);
+	if (t == blockType::GrayBrick) return glm::vec2(6, 0);
+	if (t == blockType::RedBrick) return glm::vec2(7, 0);
 
-	if (t == blockType::Dirt) {
-		return glm::vec2(2, 0);
-	}
-
-	if (t == blockType::Stone) {
-		return glm::vec2(1, 0);
-	}
-
-	if (t == blockType::Bedrock) {
-		return glm::vec2(1, 1);
-	}
 #pragma endregion
 
 #pragma region Trees
@@ -43,9 +35,8 @@ glm::vec2 typeToTex(side s, blockType t) {
 		}
 	}
 
-	if (t == blockType::OakLeaf) {
-		return glm::vec2(5, 3);
-	}
+	if (t == blockType::OakLeaf) return glm::vec2(5, 3);
+	if (t == blockType::OakPlank) return glm::vec2(4, 0);
 
 	if (t == blockType::BirchLog) {
 		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
@@ -56,9 +47,8 @@ glm::vec2 typeToTex(side s, blockType t) {
 		}
 	}
 
-	if (t == blockType::BirchLeaf) {
-		return glm::vec2(5, 3);
-	}
+	if (t == blockType::BirchLeaf) return glm::vec2(5, 3);
+	if (t == blockType::BirchPlank) return glm::vec2(3, 1);
 
 #pragma endregion
 
