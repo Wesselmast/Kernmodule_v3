@@ -148,12 +148,10 @@ int main(void)
 			std::vector<UiElement*> el;
 			std::vector<UiElement*> els;
 
-			for (size_t i = 0; i < 9; i++)
-			{
+			for (size_t i = 0; i < 9; i++) {
 				el.push_back( new UiElement(glm::vec2(s + 37 * i, 20), glm::vec2(40, 40), "res/textures/Slot.png"));
 				els.push_back( new  UiElement(glm::vec2(s + 37 * i, 20), glm::vec2(40, 40), "res/textures/SlotSelected.png"));
 			}
-			
 			
 			ChunkMeshGenerator mg;
 			ChunkManager manager(renderer);
@@ -179,8 +177,6 @@ int main(void)
 					firstFrame = false;
 				}
 
-				//std::cout << 1.0f/deltaTime << std::endl;
-				
 				lastFrame = currentFrame;
 
 				//chance at biome switch!

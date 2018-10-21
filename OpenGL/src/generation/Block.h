@@ -1,25 +1,22 @@
 #pragma once
 #include <map>
 
-
 enum side { Front, Back, Right, Left, Top, Bottom };
 enum blockType { 
-	Grass, Dirt, Stone, Sand, Bedrock, GrayBrick, RedBrick,
-	OakLog, OakLeaf, BirchLog, BirchLeaf, OakPlank, BirchPlank,
-	Cactus,
-	Water,
+	Dirt, Stone, Sand, GrayBrick, RedBrick,
+	OakLog, BirchLog, OakPlank, BirchPlank, 
+	BirchLeaf, OakLeaf, Cactus, Grass,
+	Water, Bedrock,
 	Air
 };
 
 class BlockPlane {
-
 public:
 	BlockPlane() {}
 	BlockPlane(side s, int xTex, int yTex) : s(s), xTex(xTex), yTex(yTex){}
 	side s;
 	int xTex;
 	int yTex;
-
 };
 
 class Block {
