@@ -171,6 +171,7 @@
     <ClCompile Include="src\generation\Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\CubeUi.shader" />
     <None Include="res\shaders\Sprite.shader" />
     <None Include="res\shaders\Ui.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />

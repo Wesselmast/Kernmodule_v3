@@ -41,5 +41,6 @@ public:
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform);
 	void Draw(const VertexArray& va, Shader& shader, glm::mat4 modelTransform, unsigned int amountOfVerts);
 	void Draw(ChunkMesh* chunk);
-	void DrawUi(VertexArray& va,Shader& ui, glm::vec2 Pos, glm::vec2 Size, Texture& tex);
+	void DrawUi(VertexArray& va,Shader& ui, glm::vec2 Pos, glm::vec2 Size, glm::vec3 rot, Texture& tex);
+	void DrawIcon(VertexArray& va, Shader& ui, glm::vec2 Pos, glm::vec2 Size);
 };

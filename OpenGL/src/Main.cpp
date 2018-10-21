@@ -41,7 +41,7 @@ int SCREENWIDTH = FULLSCREEN ? 1920 : 896;
 int SCREENHEIGHT = FULLSCREEN ? 1080 : 504;
 
 glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)SCREENWIDTH / (float)SCREENHEIGHT, 0.1f, 300.0f);
-glm::mat4 uiProj = glm::ortho(0.0f, 896.0f, 0.0f, 504.0f);
+glm::mat4 uiProj = glm::ortho(0.0f, 896.0f, 0.0f, 504.0f,0.1f, 500.0f);
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -146,10 +146,12 @@ int main(void)
 
 			int s = (896 - (9 * 40))/2 + 20;
 			std::vector<UiElement*> el;
+			std::vector<UiElement*> els;
 
 			for (size_t i = 0; i < 9; i++)
 			{
 				el.push_back( new UiElement(glm::vec2(s + 37 * i, 20), glm::vec2(40, 40), "res/textures/Slot.png"));
+				els.push_back( new  UiElement(glm::vec2(s + 37 * i, 20), glm::vec2(40, 40), "res/textures/SlotSelected.png"));
 			}
 			
 			
@@ -201,8 +203,14 @@ int main(void)
 
 				for (size_t i = 0; i < 9; i++)
 				{
-					UiRenderer.RenderElement(*el[i]);
+					if (cam.selectedBlock == i) {
+						UiRenderer.RenderElement(*els[i]);
+					}
+					else {
+						UiRenderer.RenderElement(*el[i]);
+					}
 				}
+				UiRenderer.RenderCube();
 				
 
 				/* Swap front and back buffers */

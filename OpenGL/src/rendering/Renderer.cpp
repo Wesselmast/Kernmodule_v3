@@ -80,12 +80,17 @@ void Renderer::Draw(ChunkMesh* mesh)
 	Draw(*(mesh->va), sh, glm::mat4(1), mesh->buffer->size() / 8);
 }
 
-void Renderer::DrawUi(VertexArray& va, Shader& ui, glm::vec2 Pos, glm::vec2 Size, Texture& tex)
+void Renderer::DrawUi(VertexArray& va, Shader& ui, glm::vec2 Pos, glm::vec2 Size, glm::vec3 rot, Texture& tex)
 {
 	tex.Bind();
 	glm::mat4 transform(1.0f);
-	transform = glm::translate(glm::mat4(1.0f), glm::vec3(Pos.x - Size.x/2, Pos.y - Size.y/2, 0.0f));
-	transform *= glm::scale(glm::mat4(1.0f), glm::vec3(Size.x, Size.y, 0.0f));
+	
+	
+	transform = glm::translate(transform, glm::vec3((Pos.x - Size.x / 2), (Pos.y - Size.y / 2), -300.0f));
+	transform = glm::scale(transform, glm::vec3(Size.x, Size.y, 1.0f));
+	
+	
+	
 
 	glm::mat4 mvp = glm::scale(glm::mat4(1.0f), glm::vec3(((float)screenHeight * 896)/((float)screenWith * 504), 1.0f, 1.0f)) * uiProj * transform;
 	ui.Bind();
@@ -96,4 +101,22 @@ void Renderer::DrawUi(VertexArray& va, Shader& ui, glm::vec2 Pos, glm::vec2 Size
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	
 	terrainBound = false;
+}
+void Renderer::DrawIcon(VertexArray& va, Shader& ui, glm::vec2 Pos, glm::vec2 Size)
+{
+	terrain.Bind();
+	glm::mat4 transform(1.0f);
+
+	transform = glm::translate(transform, glm::vec3((Pos.x - Size.x / 2), (Pos.y - Size.y / 2), -250.0f));
+	transform = glm::rotate(transform, (float)45 * 0.0174532925f, glm::vec3(1.0f, 1.5f, 0.4f));
+	transform = glm::scale(transform, glm::vec3(Size.x, Size.y, Size.x));
+
+	glm::mat4 mvp = glm::scale(glm::mat4(1.0f), glm::vec3(((float)screenHeight * 896) / ((float)screenWith * 504), 1.0f, 1.0f)) * uiProj * transform;
+	ui.Bind();
+	ui.SetUniformMat4f("u_MP", mvp);
+
+	va.Bind();
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	terrainBound = true;
 }

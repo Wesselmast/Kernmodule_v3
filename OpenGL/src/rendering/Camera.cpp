@@ -10,7 +10,7 @@ glm::vec3 cameraUp(0.0f, 1.0f, 0.0f);
 
 float pitch = 0.0f;
 float yaw = -90.0f;
-
+float mousewheelPos;
 
 float lastX = 400, lastY = 400;
 bool firstMouse = false;
@@ -93,6 +93,10 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 		leftButton = false;
 	}
 }
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	mousewheelPos += yoffset;
+}
 
 
 
@@ -104,6 +108,7 @@ Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f,100.0f, 0.0f
 {
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	glfwSetScrollCallback(window, scroll_callback);
 	yVelocity = 0;
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -119,7 +124,7 @@ Camera::Camera(GLFWwindow* window) : window(window), cameraPos(0.0f,100.0f, 0.0f
 	hitbox[6] = glm::vec3(0.3f, -1.9f, 0.3f);
 	hitbox[7] = glm::vec3(-0.3f, -1.9f, 0.3f);
 
-
+	selectedBlock = 0;
 
 }
 
@@ -127,7 +132,8 @@ glm::mat4 Camera::getView(const float & deltaTime)
 {
 	//righButton = false;
 	processInput(window, deltaTime);
-
+	selectedBlock = std::abs((int)std::round(mousewheelPos) % 9);
+	std::cout << mousewheelPos << "    " << selectedBlock << std::endl;
 
 	glm::vec3 direction(1.0f);
 	direction.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
@@ -198,7 +204,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 		glm::vec3 lookBlock = getPlaceBlock();
 
 		if (lookBlock.y != 10000) {
-			m->AddBlock(lookBlock.x, lookBlock.y, lookBlock.z, blockType :: Stone);
+			m->AddBlock(lookBlock.x, lookBlock.y, lookBlock.z, (blockType)selectedBlock);
 		}
 		leftButton = false;
 	}

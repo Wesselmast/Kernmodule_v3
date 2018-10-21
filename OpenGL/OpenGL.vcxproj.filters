@@ -463,6 +463,7 @@
     </None>
     <None Include="res\shaders\Sprite.shader" />
     <None Include="res\shaders\Ui.shader" />
+    <None Include="res\shaders\CubeUi.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\stb_image.h">
