@@ -23,8 +23,6 @@ class Block {
 private:
 	int x, y, z;
 	blockType type;
-	
-
 public:
 	Block(int x, int y, int z, blockType type);
 	std::map<side, BlockPlane> Planes;
@@ -32,5 +30,4 @@ public:
 	int getYPos() { return y; }
 	int getZPos() { return z; }
 	blockType getType() { return type; }
-
 };
