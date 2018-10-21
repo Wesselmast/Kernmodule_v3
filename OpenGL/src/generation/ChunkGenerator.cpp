@@ -17,8 +17,8 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 	this->xPos = xPos;
 	this->zPos = zPos;
 
-	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
-	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
+	if (type == Desert) topType = GrayBrick, middleType = Sand, bottomType = Stone; 
+	if (type == Forest) topType = OakPlank, middleType = Dirt, bottomType = Stone;
 
 	for (int x = 0; x < size; ++x) {
 		for (int z = 0; z < size; ++z) {
@@ -46,7 +46,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 			//entity spawning section
 			if (rand() % density == 1 && y > waterPlane && !isNextToEntity(chunk, x, y, z)) {
 				if (type == Desert) entity->generateEntity(x, y, z, entityType::Cactus_Plant);
-				if (type == Forest && topType == Grass) {
+				if (type == Forest) {
 					if (rand() % 2 == 1) entity->generateEntity(x, y, z, entityType::Oak_Tree);
 					else entity->generateEntity(x, y, z, entityType::Birch_Tree);
 				}
