@@ -5,7 +5,6 @@ enum entityType {
 	Oak_Tree, Birch_Tree, Cactus_Plant
 };
 
-
 class Entity {
 private: //section for constants
 	const int cactusLength = 3;

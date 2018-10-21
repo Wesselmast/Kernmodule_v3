@@ -35,9 +35,6 @@ glm::vec2 typeToTex(side s, blockType t) {
 		}
 	}
 
-	if (t == blockType::OakLeaf) return glm::vec2(5, 3);
-	if (t == blockType::OakPlank) return glm::vec2(4, 0);
-
 	if (t == blockType::BirchLog) {
 		if (s == side::Left || s == side::Right || s == side::Front || s == side::Back) {
 			return glm::vec2(5, 7);
@@ -47,6 +44,8 @@ glm::vec2 typeToTex(side s, blockType t) {
 		}
 	}
 
+	if (t == blockType::OakLeaf) return glm::vec2(5, 3);
+	if (t == blockType::OakPlank) return glm::vec2(4, 0);
 	if (t == blockType::BirchLeaf) return glm::vec2(5, 3);
 	if (t == blockType::BirchPlank) return glm::vec2(3, 1);
 
@@ -69,7 +68,6 @@ glm::vec2 typeToTex(side s, blockType t) {
 	}
 #pragma endregion
 
-	return glm::vec2(8, 0);
 }
 
 Block::Block(int x, int y, int z, blockType type) : x(x), y(y), z(z), type(type) {

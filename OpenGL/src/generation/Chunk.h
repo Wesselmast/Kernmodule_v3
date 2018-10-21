@@ -9,7 +9,6 @@ private:
 	int size, height;
 	int xPos, yPos, zPos;
 	std::vector<std::vector<std::vector<char>>> blocks;
-
 public:
 	Chunk();
 	Chunk(int size,int height, int xPos, int yPos, int zPos);
