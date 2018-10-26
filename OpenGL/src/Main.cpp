@@ -135,8 +135,6 @@ int main(void) {
 				else firstFrame = false;
 				lastFrame = currentFrame;
 
-				std::cout << 60 / deltaTime << std::endl;
-				
 				w.updateChunks();
 
 				if(endApp)
