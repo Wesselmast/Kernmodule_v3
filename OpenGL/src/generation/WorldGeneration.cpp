@@ -12,11 +12,11 @@ void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int a
 	startBiomeInterval = chanceAtBiome;
 	biomeInterval = startBiomeInterval;
 
-	//pick a starter biome
+	//pick a random starter biome
 	pickNextBiome();
 
 	//start off with one chunk at origin
-	man->AddChunk(*(chunkGen->generateChunk(0, 0, heightScale, type)));
+	man->addChunk(*(chunkGen->generateChunk(0, 0, heightScale, type)));
 }
 
 void WorldGeneration::updateChunks() {
@@ -29,20 +29,20 @@ void WorldGeneration::updateChunks() {
 		else biomeInterval -= 1;
 	}
 	for (int i = 0; i < temp.size(); i++) {
-		man->AddChunk(*(chunkGen->generateChunk(temp[i].x, temp[i].y, heightScale, type)));
+		man->addChunk(*(chunkGen->generateChunk(temp[i].x, temp[i].y, heightScale, type)));
 	}
 }
 
-std::vector<glm::vec2> WorldGeneration::getNeighbours() {
+std::vector<glm::vec2> WorldGeneration::getNeighbours() const {
 	std::vector<glm::vec2> temp;
-	glm::vec2 thisChunk = glm::vec2(man->GetChunk(player->getXPos(), player->getZPos())->GetXPos(), man->GetChunk(player->getXPos(), player->getZPos())->GetYPos());
+	const glm::vec2 thisChunk = glm::vec2(man->getChunk(player->getXPos(), player->getZPos())->getXPos(), man->getChunk(player->getXPos(), player->getZPos())->getZPos());
 
 	//spawn chunks around the origin that don't exist yet
-	int num = std::floor(std::sqrt(amtOfChunks));
+	const int num = std::floor(std::sqrt(amtOfChunks));
 	for (int i = -num / 2; i < num - (num / 2); i++) {
 		for (int j = -num / 2; j < num - (num / 2); j++) {
 			if (i == 0 && j == 0) continue;
-			if (!man->ChunkExist(i * size + thisChunk.x, j * size + thisChunk.y)) {
+			if (!man->chunkExist(i * size + thisChunk.x, j * size + thisChunk.y)) {
 				temp.push_back(glm::vec2(i * size + thisChunk.x, j * size + thisChunk.y));
 			}
 		}

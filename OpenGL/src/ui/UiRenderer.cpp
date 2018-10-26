@@ -103,7 +103,7 @@ void Addplane(std::vector<float>& vertexBuffer, side s, int texX, int texY) {
 void CreateCube(std::vector<float>& vertexBuffer, Block block) {
 	for (int i = 0; i < 6; i++)
 	{
-		Addplane(vertexBuffer, (side)i, block.Planes[(side)i].xTex, block.Planes[(side)i].yTex);
+		Addplane(vertexBuffer, (side)i, block.planes[(side)i].xTex, block.planes[(side)i].yTex);
 	}
 }
 

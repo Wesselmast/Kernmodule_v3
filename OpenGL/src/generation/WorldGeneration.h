@@ -16,7 +16,7 @@ private: //section for private variables
 	ChunkManager* man;
 	Camera* player;
 private: //section for private functions
-	std::vector<glm::vec2> getNeighbours();
+	std::vector<glm::vec2> getNeighbours() const;
 	void pickNextBiome();
 public: //section for public functions
 	WorldGeneration(ChunkManager* man, Camera* player);

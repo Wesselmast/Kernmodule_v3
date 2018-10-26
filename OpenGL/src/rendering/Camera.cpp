@@ -2,11 +2,9 @@
 #include <algorithm>
 #include <iostream>
 
-
 glm::vec3 input(0);
 glm::vec3 cameraFront(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp(0.0f, 1.0f, 0.0f);
-
 
 float pitch = 0.0f;
 float yaw = -90.0f;
@@ -16,19 +14,12 @@ float lastX = 400, lastY = 400;
 bool firstMouse = false;
 bool jump = false;
 
-
-
 glm::vec3 p1(0, 0, 0);
 glm::vec3 p2(0, -4, 0);
-
 
 bool kak = false;
 bool righButton = false;
 bool leftButton = false;
-
-
-
-
 
 void processInput(GLFWwindow *window, float deltaTime)
 {
@@ -201,7 +192,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 		glm::vec3 lookBlock = getLookAtBlock();
 
 		if (lookBlock.y != 10000) {
-			m->RemoveBlock(lookBlock.x, lookBlock.y, lookBlock.z);
+			m->removeBlock(lookBlock.x, lookBlock.y, lookBlock.z);
 		}
 		righButton = false;
 	}
@@ -212,7 +203,7 @@ glm::mat4 Camera::getView(const float & deltaTime)
 		glm::vec3 lookBlock = getPlaceBlock();
 
 		if (lookBlock.y != 10000) {
-			m->AddBlock(lookBlock.x, lookBlock.y, lookBlock.z, (blockType)selectedBlock);
+			m->addBlock(lookBlock.x, lookBlock.y, lookBlock.z, (blockType)selectedBlock);
 		}
 		leftButton = false;
 	}
@@ -284,7 +275,7 @@ glm::vec3 Camera::getLookAtBlock()
 			}
 		}
 		
-		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+		if (m->getBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
 			return glm::vec3(currentVoxel.x, currentVoxel.y, currentVoxel.z);
 		}
 
@@ -344,8 +335,8 @@ Block Camera::blockRay(glm::vec3 startPos, glm::vec3 endPos) {
 			}
 		}
 
-		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
-			return m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z);
+		if (m->getBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+			return m->getBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z);
 		}
 
 		it++;
@@ -408,7 +399,7 @@ glm::vec3 Camera::getPlaceBlock()
 			}
 		}
 
-		if (m->GetBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
+		if (m->getBlock(currentVoxel.x, currentVoxel.y, currentVoxel.z).getType() != blockType::Air) {
 			return prevVoxel;
 		}
 
@@ -425,7 +416,7 @@ bool Camera::CheckCollision(glm::vec3 pos)
 {   
 	
 	glm::vec3 gridPos(std::round(pos.x), std::round(pos.y), std::round(pos.z));
-	Block b = m->GetBlock(gridPos.x, gridPos.y, gridPos.z);
+	Block b = m->getBlock(gridPos.x, gridPos.y, gridPos.z);
 	int type = b.getType();
 
 	if (b.getType() == blockType::Air) {

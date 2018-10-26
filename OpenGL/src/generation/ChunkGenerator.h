@@ -9,7 +9,7 @@ enum biome {
 };
 
 class ChunkGenerator {
-private: //section for constants
+private: //section for private constant variables
 	const int density = 85;
 	const int middleDepth = 3;
 	const int airLayer = 20;
@@ -21,8 +21,7 @@ private: //section for private variables
 	blockType topType, middleType, bottomType;
 	std::unique_ptr<PerlinNoise> pn;
 private: //section for private functions
-	int calculateHeights(int a, int b);
-	bool isNextToEntity(Chunk* chunk, int xPos, int yPos, int zPos);
+	int calculateHeights(int a, int b) const;
 public: //section for public functions
 	ChunkGenerator(int size, int height, int amtOfOctaves);
 	Chunk* generateChunk(int oX, int oY, float heightScale, biome type);

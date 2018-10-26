@@ -39,7 +39,6 @@ public:
 	glm::vec3 getPlaceBlock();
 	Block blockRay(glm::vec3 startPos, glm::vec3 endPos);
 
-
 	int selectedBlock;
 
 };

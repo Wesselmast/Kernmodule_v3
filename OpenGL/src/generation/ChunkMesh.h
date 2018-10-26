@@ -5,16 +5,11 @@
 #include <vector>
 
 class ChunkMesh {
-
-private:
-
-
-public:
-	ChunkMesh(){}
-	~ChunkMesh() { delete va; delete layout; delete buffer; }
-
+public: //section for public variables
 	std::vector<float>* buffer;
 	VertexArray* va;
 	VertexBufferLayout* layout;
-
+public: //section for public functions
+	ChunkMesh(){}
+	~ChunkMesh() { delete va; delete layout; delete buffer; }
 };

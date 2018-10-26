@@ -6,13 +6,12 @@
 
 
 class ChunkMeshGenerator {
-
-private:
+private: //section for private variables
 	VertexBufferLayout* layout;
-
-public:
+private: //section for private functions
+	void addPlane(std::vector<float>* vertexBuffer, side s, int x, int y, int z, int texX, int texY) const;
+	void addBlock(std::vector<float>* vertexBuffer, Block b) const;
+public: //section for public functions
 	ChunkMeshGenerator();
-	ChunkMesh* generateMesh(const Chunk& chunk);
-
-	
+	ChunkMesh* generateMesh(const Chunk& chunk) const;
 };

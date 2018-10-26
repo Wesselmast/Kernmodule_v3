@@ -25,12 +25,12 @@ PerlinNoise::PerlinNoise() {
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
 
-	//double permutation to avoid buffer overflow
+	//double permutation to avoid buffer overflow (which causes random lines to appear in the perlin noise somehow?)
 	perm = new int[512];
 	for (int i = 0; i < 512; i++) perm[i] = initPerm[i % 256];
 }
 
-double PerlinNoise::noise(float x, float y) {
+float PerlinNoise::noise(float x, float y) const {
 	int X = (int)std::floor(x) % 256;
 	int Y = (int)std::floor(y) % 256;
 	x -= std::floor(x);
@@ -42,10 +42,10 @@ double PerlinNoise::noise(float x, float y) {
 	return lerp(v, lerp(u, grad(perm[A], x, y), grad(perm[B], x - 1, y)), lerp(u, grad(perm[A + 1], x, y - 1), grad(perm[B + 1], x - 1, y - 1)));
 }
 
-double PerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
-	double amp = 1.0;
-	double freq = 1.0;
-	double res = 0.0;
+float PerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) const {
+	float amp = 1.0;
+	float freq = 1.0;
+	float res = 0.0;
 
 	for (int i = 0; i < amtOfOctaves; i++) {
 		res += noise(x * freq, y * freq) * amp;
@@ -55,15 +55,15 @@ double PerlinNoise::octaveNoise(float x, float y, int amtOfOctaves) {
 	return std::min(1.0, std::max((res + 1.0) * 0.5, 0.0));
 }
 
-float PerlinNoise::fade(float t) {
+float PerlinNoise::fade(float t) const {
 	return t * t * t * (t * (t * 6 - 15) + 10);
 }
 
-float PerlinNoise::lerp(float t, float a, float b) {
+float PerlinNoise::lerp(float t, float a, float b) const {
 	return a + t * (b - a);
 }
 
-float PerlinNoise::grad(int hash, float x, float y) {
+float PerlinNoise::grad(int hash, float x, float y) const {
 	//for 2d you can just convert x and y straight up instead of calculating gradient directions
 	return ((hash & 1) == 0 ? x : -x) + ((hash & 2) == 0 ? y : -y);
 }
