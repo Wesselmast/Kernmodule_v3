@@ -28,7 +28,7 @@
 #include "ChunkManager.h"
 #include "UiRenderer.h"
 
-const bool FULLSCREEN = false;
+const bool FULLSCREEN = true;
 
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
