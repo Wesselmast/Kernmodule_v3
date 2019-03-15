@@ -5,7 +5,8 @@
 This perlin noise is based on the "improved perlin noise" made by Ken Perlin himself:
 https://mrl.nyu.edu/~perlin/noise/
 
-I just obliterated the z axis, because 2d perlin noise was good enough for our project.
+I got rid of the z axis, because 2d perlin noise was good enough for our project.
+I also converted the code from Java to C++.
 */
 
 PerlinNoise::PerlinNoise() {
@@ -25,7 +26,6 @@ PerlinNoise::PerlinNoise() {
 	138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180
 	};
 
-	//double permutation to avoid buffer overflow (which causes random lines to appear in the perlin noise somehow?)
 	perm = new int[512];
 	for (int i = 0; i < 512; i++) perm[i] = initPerm[i % 256];
 }
