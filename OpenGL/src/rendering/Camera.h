@@ -10,23 +10,21 @@
 
 
 class Camera {
-
 private:
 	GLFWwindow* window;
+	Chunk* currentChunk;
+	ChunkManager* m;
+	std::array<glm::vec3, 8> hitbox;
 	glm::vec3 cameraPos;
 	glm::vec3 relativeCamPos;
-	Chunk* currentChunk;
 	float yVelocity;
-	std::array<glm::vec3, 8> hitbox;
-	ChunkManager* m;
-
 public:
 	Camera(GLFWwindow* window);
 	glm::mat4 getView(const float& deltaTime);
-	bool CheckCollision(glm::vec3 pos);
-	bool CheckAll(glm::vec3 pos);
+	bool checkCollision(glm::vec3 pos);
+	bool checkAll(glm::vec3 pos);
 	void SetManager(ChunkManager* manager) { m = manager; }
-	
+
 	float getXPos() { return cameraPos.x; }
 	float getYPos() { return cameraPos.y; }
 	float getZPos() { return cameraPos.z; }
@@ -40,5 +38,4 @@ public:
 	Block blockRay(glm::vec3 startPos, glm::vec3 endPos);
 
 	int selectedBlock;
-
 };

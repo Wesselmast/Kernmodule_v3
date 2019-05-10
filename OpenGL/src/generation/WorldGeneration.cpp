@@ -12,10 +12,7 @@ void WorldGeneration::generateWorld(int size, int height, int amtOfChunks, int a
 	startBiomeInterval = chanceAtBiome;
 	biomeInterval = startBiomeInterval;
 
-	//pick a random starter biome
 	pickNextBiome();
-
-	//start off with one chunk at origin
 	man->addChunk(*(chunkGen->generateChunk(0, 0, heightScale, type)));
 }
 

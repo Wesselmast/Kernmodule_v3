@@ -4,27 +4,27 @@
 #include "Chunk.h"
 #include "Entity.h"
 
-enum biome {
+enum Biome {
 	Forest, Desert
 };
 
 class ChunkGenerator {
-private: //section for private constant variables
+private:
 	const int density = 85;
 	const int middleDepth = 3;
 	const int airLayer = 20;
-private: //section for private variables
+private:
 	int startX, startZ, size, height, xPos, zPos;
 	int waterPlane;
 	int amtOfOctaves;
 	int heightScale;
-	blockType topType, middleType, bottomType;
-	std::unique_ptr<PerlinNoise> pn;
-private: //section for private functions
+	BlockType topType, middleType, bottomType;
+	std::unique_ptr<PerlinNoise> perlinNoise;
+private:
 	int calculateHeights(int a, int b) const;
-public: //section for public functions
+public:
 	ChunkGenerator(int size, int height, int amtOfOctaves);
-	Chunk* generateChunk(int oX, int oY, float heightScale, biome type);
+	Chunk* generateChunk(int oX, int oY, float heightScale, Biome type);
 	~ChunkGenerator();
 };
 

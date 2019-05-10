@@ -146,13 +146,13 @@ int main(void) {
 				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 				manager.displayAllChunks();
-				uiRenderer.RenderElement(crosshair);
+				uiRenderer.renderElement(crosshair);
 
 				for (int i = 0; i < 9; i++) {
-					if (cam.selectedBlock == i) uiRenderer.RenderElement(*slotSelected[i]);
-					else uiRenderer.RenderElement(*slot[i]);
+					if (cam.selectedBlock == i) uiRenderer.renderElement(*slotSelected[i]);
+					else uiRenderer.renderElement(*slot[i]);
 				}
-				uiRenderer.RenderCube();
+				uiRenderer.renderCube();
 				
 				/* Swap front and back buffers */
 				glfwSwapBuffers(window);

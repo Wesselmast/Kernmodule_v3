@@ -7,7 +7,6 @@
 class UiRenderer {
 
 private:
-
 	Texture terrain;
 
 	Renderer renderer;
@@ -16,14 +15,12 @@ private:
 	VertexBufferLayout lay;
 	Shader Ui;
 
-
 	std::vector<ChunkMesh*> iconMeshes;
 	VertexBufferLayout cubeLayout;
 	Shader cubeShader;
 
 public:
 	UiRenderer(Renderer& renderer);
-	void RenderElement(UiElement& element);
-	void RenderCube();
-	
+	void renderElement(UiElement& element);
+	void renderCube();
 };

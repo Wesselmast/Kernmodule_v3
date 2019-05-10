@@ -1,0 +1,539 @@
+﻿
+Renamed 'Pos' to 'pos':
+-----------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(88, 64)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(92, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(92, 73)
+
+Renamed 'Size' to 'size':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(88, 79)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(92, 59)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(92, 81)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(94, 46)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(94, 54)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(94, 62)
+
+Renamed 'DrawIcon' to 'drawIcon':
+---------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(88, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(45, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(149, 12)
+
+Renamed 'DrawUi' to 'drawUi':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(71, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(44, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(142, 11)
+
+Renamed 'Draw' to 'draw':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(113, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(31, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(40, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(50, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(64, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(68, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(40, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(41, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(42, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.h(43, 7)
+
+Renamed 'resault' to 'result':
+------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(60, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(61, 40)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(64, 6)
+
+Renamed 'CompileShader' to 'compileShader':
+-------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(50, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(54, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(84, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(85, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(29, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(31, 15)
+
+Renamed 'ParseShader' to 'parseShader':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(13, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(42, 25)
+
+Renamed 'CheckCollision' to 'checkCollision':
+---------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(187, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(361, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.h(24, 7)
+
+Renamed 'CheckAll' to 'checkAll':
+---------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(135, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(139, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(157, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(184, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.h(25, 7)
+
+Renamed 'Bind' to 'bind':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(15, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(12, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(36, 5)
+
+Renamed 'Unbind' to 'unbind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(19, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(13, 7)
+
+Renamed 'GetCount' to 'getCount':
+---------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(15, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(37, 41)
+
+Renamed 'm_RendererID' to 'rendererID':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(6, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(7, 40)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(12, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(16, 40)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(5, 15)
+
+Renamed 'm_Count' to 'count':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.cpp(5, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(6, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\IndexBuffer.h(15, 48)
+
+Renamed 'CreateShader' to 'createShader':
+-----------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(43, 17)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(76, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(32, 15)
+
+Renamed 'Bind' to 'bind':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(21, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(28, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(33, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(43, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(53, 28)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(77, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(95, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(92, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(18, 7)
+
+Renamed 'UnBind' to 'unBind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(96, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(19, 7)
+
+Renamed 'SetUniform4f' to 'setUniform4f':
+-----------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(100, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(22, 7)
+
+Renamed 'SetUniform1i' to 'setUniform1i':
+-----------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(105, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(23, 7)
+
+Renamed 'SetUniformMat4f' to 'setUniformMat4f':
+-----------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(34, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(44, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(55, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(78, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(96, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(110, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(24, 7)
+
+Renamed 'GetUniformLocation' to 'getUniformLocation':
+-----------------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(101, 17)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(106, 17)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(111, 28)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(114, 13)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(30, 6)
+
+Renamed 'm_RendererID' to 'rendererID':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(41, 48)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(43, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(47, 25)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(93, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(8, 15)
+
+Renamed 'm_uniformLocationCashe' to 'uniformLocationCashe':
+-----------------------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(115, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(115, 43)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(116, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.cpp(122, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Shader.h(9, 39)
+
+Renamed 'Bind' to 'bind':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(22, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(64, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(70, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(87, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(33, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(16, 7)
+
+Renamed 'Unbind' to 'unbind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(38, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(17, 7)
+
+Renamed 'unbind' to 'unBind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(38, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(17, 7)
+
+Renamed 'm_BPP' to 'BPP':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 87)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(10, 63)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(10, 24)
+
+Renamed 'BPP' to 'bpp':
+-----------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 87)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(10, 63)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(10, 24)
+
+Renamed 'm_Height' to 'height':
+-------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 74)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(10, 52)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(21, 58)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(10, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(20, 40)
+
+Renamed 'm_Wixth' to 'width':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(10, 6)
+
+Renamed 'm_localBuffer' to 'localBuffer':
+-----------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(10, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(21, 96)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(26, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(26, 37)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(9, 17)
+
+Renamed 'm_RendererID' to 'rendererID':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 4)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(12, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(13, 38)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(30, 30)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(35, 38)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(8, 15)
+
+Renamed 'm_FilePath' to 'filePath':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.cpp(7, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(7, 14)
+
+Renamed 'GetWith' to 'getWith':
+-------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(19, 13)
+
+Renamed 'GetHeight' to 'getHeight':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Texture.h(20, 13)
+
+Renamed 'Bind' to 'bind':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(35, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(46, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(57, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(80, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Renderer.cpp(98, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(14, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(27, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.h(14, 7)
+
+Renamed 'Bind' to 'bind':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(15, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(16, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.h(12, 7)
+
+Renamed 'Unbind' to 'unBind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(31, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.h(15, 7)
+
+Renamed 'AddBuffer' to 'addBuffer':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(133, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(13, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.h(13, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(123, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(133, 22)
+
+Renamed 'm_RendererID' to 'rendererID':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(6, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(10, 34)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(28, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.h(8, 15)
+
+Renamed 'Unbind' to 'unBind':
+-----------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(18, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.h(13, 7)
+
+Renamed 'm_RendererID' to 'rendererID':
+---------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(5, 26)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(6, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(11, 29)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.cpp(15, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBuffer.h(5, 15)
+
+Renamed 'GetSizeOfType' to 'getSizeOfType':
+-------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(23, 50)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(12, 22)
+
+Renamed 'm_Elements' to 'elements':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(26, 35)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(42, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(48, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(52, 77)
+
+Renamed 'm_Stride' to 'stride':
+-------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(27, 15)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(31, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(43, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(49, 3)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(53, 49)
+
+Renamed 'Push' to 'push':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(97, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(98, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(99, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(35, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(40, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(46, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(121, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(122, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(125, 13)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(126, 13)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(127, 13)
+
+Renamed 'GetStride' to 'getStride':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexArray.cpp(22, 91)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\VertexBufferLayout.h(52, 22)
+
+Renamed 'Addplane' to 'addPlane':
+---------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(14, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(102, 3)
+
+Renamed 'CreateCube' to 'createCube':
+-------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(100, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(125, 3)
+
+Renamed 'RenderElement' to 'renderElement':
+-------------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\Main.cpp(149, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\Main.cpp(152, 45)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\Main.cpp(153, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(128, 18)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.h(26, 7)
+
+Renamed 'RenderCube' to 'renderCube':
+-------------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\Main.cpp(155, 16)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(132, 18)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.h(27, 7)
+
+Renamed 's' to 'side':
+----------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(19, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(24, 43)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(91, 29)
+
+Renamed 'side' to 'Side':
+-------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(3, 28)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(7, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(7, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(7, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(7, 71)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(10, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(13, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(29, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(29, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(29, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(29, 71)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(32, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(32, 30)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(38, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(38, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(38, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(38, 71)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(41, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(41, 30)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(55, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(55, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(55, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(55, 71)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(58, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(58, 30)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(64, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(64, 31)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(64, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(64, 71)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(67, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(70, 12)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(88, 28)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(89, 17)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(90, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(90, 46)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(5, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(19, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(32, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(34, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(38, 48)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(39, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(40, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(41, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(42, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(43, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(44, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(59, 56)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(60, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(61, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(62, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(63, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(64, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(65, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.h(20, 42)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.h(22, 50)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(60, 69)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(71, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(72, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(73, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(74, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(75, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(76, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.h(28, 56)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(8, 69)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(14, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(26, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(38, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(50, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(62, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(74, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(90, 29)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(117, 57)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(120, 32)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(120, 96)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(120, 121)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.h(12, 50)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(14, 49)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(20, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(34, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(47, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(60, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(73, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(86, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(102, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(102, 49)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(102, 77)
+
+Renamed 'blockType' to 'BlockType':
+-----------------------------------
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(3, 36)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(6, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(18, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(19, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(20, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(21, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(22, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(23, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(28, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(37, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(46, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(47, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(48, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(49, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(54, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(63, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(79, 11)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.cpp(86, 35)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(10, 6)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(30, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(32, 33)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(36, 29)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Block.h(40, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(8, 146)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(12, 43)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(24, 26)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(28, 51)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(29, 35)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(30, 35)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(31, 35)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(32, 42)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(33, 44)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(34, 42)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(35, 22)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(45, 24)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(48, 1)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(49, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(50, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(51, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(52, 20)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(53, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(54, 29)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(55, 27)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(56, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(59, 1)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.cpp(66, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.h(13, 37)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.h(21, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Chunk.h(22, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkGenerator.cpp(28, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkGenerator.cpp(57, 30)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkGenerator.cpp(59, 39)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkGenerator.h(21, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(38, 25)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(46, 1)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(51, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(60, 1)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(65, 10)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(77, 9)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.cpp(92, 56)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.h(27, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.h(28, 2)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkManager.h(30, 43)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(114, 5)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(115, 14)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(117, 7)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\ChunkMeshGenerator.cpp(118, 19)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(23, 41)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(29, 64)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(36, 68)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(44, 41)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(50, 64)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(58, 68)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(64, 55)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\generation\Entity.cpp(66, 41)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(139, 138)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(176, 56)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(239, 80)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(293, 80)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(300, 24)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(350, 80)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\rendering\Camera.cpp(366, 21)
+C:\Users\mastw\Desktop\GithubSchool\Kernmodule1\OpenGL\src\ui\UiRenderer.cpp(122, 54)

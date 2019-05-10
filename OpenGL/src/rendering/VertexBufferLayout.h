@@ -4,16 +4,15 @@
 #include "Renderer.h"
 #include "ErrorHandling.h"
 
-struct VertexBufferElement
-{
+struct VertexBufferElement {
 	unsigned int type;
 	unsigned int count;
 	char normalized;
 
-	static unsigned int GetSizeOfType(unsigned int type) {
+	static unsigned int getSizeOfType(unsigned int type) {
 		switch (type) {
-			case GL_FLOAT:return 4;
-			case GL_UNSIGNED_INT:return 4;
+		case GL_FLOAT:return 4;
+		case GL_UNSIGNED_INT:return 4;
 		}
 
 		return 0;
@@ -24,32 +23,32 @@ struct VertexBufferElement
 
 class VertexBufferLayout {
 private:
-	std::vector<VertexBufferElement> m_Elements;
-	unsigned int m_Stride;
+	std::vector<VertexBufferElement> elements;
+	unsigned int stride;
 
 public:
 	VertexBufferLayout() :
-		m_Stride(0){}
-
+		stride(0) {
+	}
 
 	template<typename T>
-	void Push(unsigned int count) {
+	void push(unsigned int count) {
 		static_assert(false);
 	}
 
 	template<>
-	void Push<float>(unsigned int count) {
-		m_Elements.push_back({ GL_FLOAT, count, GL_FALSE });
-		m_Stride += sizeof(GL_FLOAT) * count;
+	void push<float>(unsigned int count) {
+		elements.push_back({ GL_FLOAT, count, GL_FALSE });
+		stride += sizeof(GL_FLOAT) * count;
 	}
 
 	template<>
-	void Push<unsigned int>(unsigned int count) {
-		m_Elements.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });
-		m_Stride += sizeof(GLuint) * count;
+	void push<unsigned int>(unsigned int count) {
+		elements.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });
+		stride += sizeof(GLuint) * count;
 	}
 
-	inline const std::vector<VertexBufferElement> getElements() const { return m_Elements; }
-	inline unsigned int GetStride() const { return m_Stride; }
+	inline const std::vector<VertexBufferElement> getElements() const { return elements; }
+	inline unsigned int getStride() const { return stride; }
 
 };

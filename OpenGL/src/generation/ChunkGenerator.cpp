@@ -2,7 +2,7 @@
 
 ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(size), height(height + airLayer), amtOfOctaves(amtOfOctaves) {
 	//get random starting position for perlin noise
-	pn = std::make_unique<PerlinNoise>();
+	perlinNoise = std::make_unique<PerlinNoise>();
 	startX = rand() % 9999;
 	startZ = rand() % 9999;
 
@@ -10,7 +10,7 @@ ChunkGenerator::ChunkGenerator(int size, int height, int amtOfOctaves) : size(si
 	if (heightScale < 1.0f) heightScale = 1.0f;
 }
 
-Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biome type) {
+Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, Biome type) {
 	Chunk* chunk = new Chunk(size, height, xPos, 0, zPos);
 	std::unique_ptr<Entity> entity = std::make_unique<Entity>(chunk);
 
@@ -18,14 +18,14 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 	this->xPos = xPos;
 	this->zPos = zPos;
 
-	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone; 
+	if (type == Desert) topType = Sand, middleType = Sand, bottomType = Stone;
 	if (type == Forest) topType = Grass, middleType = Dirt, bottomType = Stone;
 
 	for (int x = 0; x < size; ++x) {
 		for (int z = 0; z < size; ++z) {
 			//air layer section
 			for (int i = -airLayer; i < 1; ++i) {
-				chunk->addBlock(x, height + i, z, blockType::Air);
+				chunk->addBlock(x, height + i, z, BlockType::Air);
 			}
 
 			//top layer section
@@ -46,17 +46,17 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 
 			//entity spawning section
 			if (rand() % density == 1 && y > waterPlane && !entity->isNextToEntity(*chunk)) {
-				if (type == Desert) entity->generateEntity(x, y, z, entityType::Cactus_Plant);
+				if (type == Desert) entity->generateEntity(x, y, z, EntityType::Cactus_Plant);
 				if (type == Forest) {
-					if (rand() % 2 == 1) entity->generateEntity(x, y, z, entityType::Oak_Tree);
-					else entity->generateEntity(x, y, z, entityType::Birch_Tree);
+					if (rand() % 2 == 1) entity->generateEntity(x, y, z, EntityType::Oak_Tree);
+					else entity->generateEntity(x, y, z, EntityType::Birch_Tree);
 				}
 			}
 
 			//bedrock & water spawning section
-			chunk->addBlock(x, -1, z, blockType::Bedrock);
+			chunk->addBlock(x, -1, z, BlockType::Bedrock);
 			if (chunk->getBlock(x, waterPlane, z).getType() == Air) {
-				chunk->addBlock(x, waterPlane, z, blockType::Water);
+				chunk->addBlock(x, waterPlane, z, BlockType::Water);
 			}
 		}
 	}
@@ -67,7 +67,7 @@ Chunk* ChunkGenerator::generateChunk(int xPos, int zPos, float heightScale, biom
 int ChunkGenerator::calculateHeights(int a, int b) const {
 	float xCoord = (((float)a / size) + (startX + (xPos / size))) / ((float)(height - airLayer) / heightScale);
 	float zCoord = (((float)b / size) + (startZ + (zPos / size))) / ((float)(height - airLayer) / heightScale);
-	return std::round(pn->octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer));
+	return std::round(perlinNoise->octaveNoise(xCoord, zCoord, amtOfOctaves) * (height - airLayer));
 }
 
 ChunkGenerator::~ChunkGenerator() {

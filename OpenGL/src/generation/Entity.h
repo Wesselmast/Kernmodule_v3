@@ -1,25 +1,25 @@
 #pragma once
 #include "Chunk.h"
 
-enum entityType {
+enum EntityType {
 	Oak_Tree, Birch_Tree, Cactus_Plant
 };
 
 class Entity {
-private: //section for private constant variables
+private:
 	const int cactusLength = 3;
 	const int treeLength = rand() % 3 + 4;
-private: //section for private variables
+private:
 	int xPos, yPos, zPos;
 	Chunk* chunk;
-private: //section for private functions
+private:
 	void spawnOak() const;
 	void spawnBirch() const;
 	void spawnCactus() const;
 	bool ifCorner(int a, int b, int t) const;
-public: //section for public functions
+public:
 	Entity(Chunk* chunk);
-	void generateEntity(int x, int y, int z, entityType type);
+	void generateEntity(int x, int y, int z, EntityType type);
 	bool isNextToEntity(const Chunk& chunk) const;
 	~Entity();
 };

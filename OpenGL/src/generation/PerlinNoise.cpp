@@ -6,7 +6,7 @@ This perlin noise is based on the "improved perlin noise" made by Ken Perlin him
 https://mrl.nyu.edu/~perlin/noise/
 
 I got rid of the z axis, because 2d perlin noise was good enough for our project.
-I also converted the code from Java to C++.
+I also converted the code from Java to C++, obviously!
 */
 
 PerlinNoise::PerlinNoise() {
